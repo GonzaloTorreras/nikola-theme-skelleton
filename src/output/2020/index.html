@@ -25,10 +25,19 @@
 <!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../rss.xml">RSS feed</a></li>
 <!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="('/pages',%20'Pages')">Pages</a></li>
 </ul>
-<div class="translation-menu-wrapper">
-                <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'lang-item-link active ', 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': 'lang-item-link', 'extra_li_class': 'lang-item'}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu"></ul>
+<!-- macro: ui.langSwitcher() --><div class="translation-menu-wrapper">
+        <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'lang-item-link active ', 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': 'lang-item-link', 'extra_li_class': 'lang-item'}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu">
+<li class="menu-item lang-item active">
+            <a href="../" rel="alternate" hreflang="en" class="menu-link lang-item-link active ">en</a>
+</li>        
+        
+        <li class="menu-item lang-item">
+            <a href="../es/" rel="alternate" hreflang="es" class="menu-link lang-item-link">es</a>
+</li>
+</ul>
 </div>
-            <ul class="translations-menu menu-horizontal flex-aright"></ul></nav></header><main id="site-content"><!-- macro: ui.section({'class': 'post-listing-wrapper'}) --><div class="section post-listing-wrapper">
+
+        </nav></header><main id="site-content"><!-- macro: ui.section({'class': 'post-listing-wrapper'}) --><div class="section post-listing-wrapper">
     <div class="container">
 <!-- macro: ui.post_listing([<Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>]) --><div class="post-listing"><article class="post-item" data-translations_available="es, en" data-reading_time="1" data-post_cats="" data-post_tags="etiqueta" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="None"><!--<Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>--><header class="post-header"><a class="post-link" href="../posts/test/"></a>
             </header><section class="post-content"><h2 class="post-title">
@@ -46,7 +55,11 @@
                     <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
-<ul class="col col-2"></ul></nav></section></footer>
+<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item ">
+            <a href="en/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item ">
+            <a href="#" class="menu-link ">child1</a>
+</li></ul>
+</li></ul></nav></section></footer>
 </div>
 
 

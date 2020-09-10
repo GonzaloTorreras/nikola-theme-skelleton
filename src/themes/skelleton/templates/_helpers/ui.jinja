@@ -11,13 +11,24 @@
 {%- endmacro -%}
 
 {#
-    TODO:
+    This macro will convert "legacy" (from config, theme setting or basically that format)
+#}
+{% macro legacy_menu_generator() %}
+
+{% endmacro %}
+{#
+    TODO menuConstructor():
     - Accesibility ARIA
     - Conversor from legacy menu  in config.py to xmlAttr, ideally a new/different setting for the theme?.
 #}
 {%- macro menuConstructor(items,opts = false) -%}
 {{- macros.verbose( "macro: ui.menuConstructor(%s, %s)"|format(items, opts) ) -}}
+    {#
+        menuFlow:       str(horizonal | vertical). generate class menu-${horizontal||vertical} for styling.
+        menuExtraClass: str(""). Custom class, for example to have different/individual menus selectors, such translations-menu
+    #}
     {%- set _opts = {
+        "menuFlow": "horizontal",
         "menuExtraClass": ""
     } -%}
     {%- for key,val in opts.items() -%} {# foreach incoming opts and mix with defaults #}
@@ -25,8 +36,8 @@
         {%- set _dummy = _opts.update( {key: val}) -%}
     {%- endfor -%}
 
-<ul class="menu-horizontal flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
-    {%- for item in items.items|sort(attribute="class") -%} {# TODO: Sort is not working (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
+<ul class="menu-{{_opts.menuFlow }} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
+    {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
         {% set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) %}
 
@@ -35,13 +46,40 @@
 
         {% set extra_li_class = item.pop("extra_li_class") if item.extra_li_class else false %}
         
-        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class )  }}"><a {{- item|xmlattr -}}>{{- text -}}</a></li>
-        {%- if children -%}
-            {{- loop(item.children) -}}
-        {%- endif -%}
+        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class )  }}">
+            <a {{- item|xmlattr -}}>{{- text -}}</a>
+            {%- if children -%}
+                <ul class="submenu">
+                {{- loop(children) -}}
+                </ul>
+            {%- endif -%}
+        </li>
     {%- endfor -%}
 </ul>
 {%- endmacro -%}
+
+{% macro langSwitcher() %}
+{{- macros.verbose( "macro: ui.langSwitcher()" ) -}}
+    {% set translation_links = [] %}
+    {% for langname in translations|sort %}
+        {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
+        {% set link = _link('root', None, langname) %} 
+        {% set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) %} {# Display full lang name or code lang. #}
+        {% set class = "lang-item-link" ~ (" active " if lang == langname) %}
+        {# update dict with all the links xmlAttr formatted. #}
+        {% set _dummy = translation_links.append({
+                            "href":link,
+                            "text": langname,
+                            "rel": "alternate",
+                            "hreflang": langname,
+                            "class": class,
+                            "extra_li_class": "lang-item"
+                        }) %} 
+    {% endfor %}
+    <div class="translation-menu-wrapper">
+        {{ menuConstructor(translation_links, {"menuExtraClass": "translation-menu"}) }}
+    </div>
+{% endmacro %}
 
 {%- macro section(section) -%}
 {{- macros.verbose( "macro: ui.section(%s)"|format(section) ) -}}

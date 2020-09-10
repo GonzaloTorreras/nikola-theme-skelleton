@@ -14,28 +14,7 @@
             {% endif %}
 
             
-            {% set translation_links = [] %}
-            {% for langname in translations|sort %}
-                {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
-                {% set link = _link('root', None, langname) %} 
-                {% set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) %} {# Display full lang name or code lang. #}
-                {% set class = "lang-item-link" ~ (" active " if lang == langname) %}
-                {# update dict with all the links xmlAttr formatted. #}
-                {% set _dummy = translation_links.append({
-                                    "href":link,
-                                    "text": langname,
-                                    "rel": "alternate",
-                                    "hreflang": langname,
-                                    "class": class,
-                                    "extra_li_class": "lang-item"
-                                }) %} 
-            {% endfor %}
-            <div class="translation-menu-wrapper">
-                {{ ui.menuConstructor(translation_links, {"menuExtraClass": "translation-menu"}) }}
-            </div>
-            <ul class="translations-menu menu-horizontal flex-aright">
-                
-            </ul>
+            {{ ui.langSwitcher() }}
         </nav>
     </header>
 {% endblock header %}
