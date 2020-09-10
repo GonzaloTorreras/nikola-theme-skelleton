@@ -9,6 +9,7 @@
     {%- endfor -%}
 </ul>
 {%- endmacro -%}
+
 {#
     TODO:
     - Accesibility ARIA
@@ -25,36 +26,22 @@
     {%- endfor -%}
 
 <ul class="menu-horizontal flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
-    {%- for item in items -%}
+    {%- for item in items.items|sort(attribute="class") -%} {# TODO: Sort is not working (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
+        
+        {% set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) %}
+
         {%- set children = item.pop("children") if item.children else false -%}
         {%- set text = item.pop("text") -%}
-        <li><a {{- item|xmlattr -}}>{{- text -}}</a></li>
+
+        {% set extra_li_class = item.pop("extra_li_class") if item.extra_li_class else false %}
+        
+        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class )  }}"><a {{- item|xmlattr -}}>{{- text -}}</a></li>
         {%- if children -%}
             {{- loop(item.children) -}}
         {%- endif -%}
     {%- endfor -%}
 </ul>
 {%- endmacro -%}
-{#
-
-    {
-        "ele": "ul",
-        "children": "href":
-    }
-
-}
-{%- macro generateHTML(xml) -%}
-{{- macros.verbose( "macro: ui.generateHTML(%s)"|format(xml) ) -}}
-    {%- if xml is iterable -%}
-
-        {%- for key,val in xml -%}
-            {%- if key == ele%}
-        {%- endfor -%}
-    {%- else -%}
-
-    {%- endif -%}
-{%- endmacro -%}
-#}
 
 {%- macro section(section) -%}
 {{- macros.verbose( "macro: ui.section(%s)"|format(section) ) -}}
@@ -78,8 +65,8 @@
         {{- caller() -}}
     </div>
 </{{- element -}}>
-
 {%- endmacro -%}
+
 {#
 
     Blog post listing
