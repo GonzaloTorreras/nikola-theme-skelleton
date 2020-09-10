@@ -1,40 +1,40 @@
-{% macro menu(links,menuExtraClass="") %}
+{%- macro menu(links,menuExtraClass="") -%}
 {{- macros.verbose( "macro: ui.menu(%s)"|format(links) ) -}}
 
-<ul class="menu-horizontal flex-hright{{ ' %s'|format(menuExtraClass) if menuExtraClass }}">
-    {% for link, text in links %}
-        {% set class = links[loop.index].class if links[loop.index0].class is defined else "" %}
-        {% set active = " active" if link == current_url %}<!-- TODO: figure out current_url to check for active status on menu-->
-        {{ '<li class="menu-item"><a class="menu-link %s" href="%s">%s</a></li>'|format(class ~ active, link, text) }}
-    {% endfor %}
+<ul class="menu-horizontal flex-hright{{- ' %s'|format(menuExtraClass) if menuExtraClass -}}">
+    {%- for link, text in links -%}
+        {%- set class = links[loop.index].class if links[loop.index0].class is defined else "" -%}
+        {%- set active = " active" if link == current_url -%}<!-- TODO: figure out current_url to check for active status on menu-->
+        {{- '<li class="menu-item"><a class="menu-link %s" href="%s">%s</a></li>'|format(class ~ active, link, text) -}}
+    {%- endfor -%}
 </ul>
-{% endmacro %}
+{%- endmacro -%}
 {#
     TODO:
     - Accesibility ARIA
     - Conversor from legacy menu  in config.py to xmlAttr, ideally a new/different setting for the theme?.
 #}
-{% macro menuConstructor(items,opts = false) %}
+{%- macro menuConstructor(items,opts = false) -%}
 {{- macros.verbose( "macro: ui.menuConstructor(%s, %s)"|format(items, opts) ) -}}
-    {% set _opts = {
+    {%- set _opts = {
         "menuExtraClass": ""
-    } %}
-    {% for key,val in opts.items() %} {# foreach incoming opts and mix with defaults #}
+    } -%}
+    {%- for key,val in opts.items() -%} {# foreach incoming opts and mix with defaults #}
         {# Overwrite defaults _opts with arg #}
-        {% set _dummy = _opts.update( {key: val}) %}
-    {% endfor %}
+        {%- set _dummy = _opts.update( {key: val}) -%}
+    {%- endfor -%}
 
-<ul class="menu-horizontal flex-hright{{ ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass }}">
-    {% for item in items %}
-        {% set children = item.pop("children") if item.children else false %}
-        {% set text = item.pop("text") %}
-        <li><a {{ item|xmlattr }}>{{ text }}</a></li>
+<ul class="menu-horizontal flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
+    {%- for item in items -%}
+        {%- set children = item.pop("children") if item.children else false -%}
+        {%- set text = item.pop("text") -%}
+        <li><a {{- item|xmlattr -}}>{{- text -}}</a></li>
         {%- if children -%}
             {{- loop(item.children) -}}
         {%- endif -%}
     {%- endfor -%}
 </ul>
-{% endmacro %}
+{%- endmacro -%}
 {#
 
     {
@@ -43,97 +43,97 @@
     }
 
 }
-{% macro generateHTML(xml) %}
+{%- macro generateHTML(xml) -%}
 {{- macros.verbose( "macro: ui.generateHTML(%s)"|format(xml) ) -}}
-    {% if xml is iterable %}
+    {%- if xml is iterable -%}
 
-        {% for key,val in xml %}
-            {% if key == ele%}
-        {% endfor %}
-    {% else %}
+        {%- for key,val in xml -%}
+            {%- if key == ele%}
+        {%- endfor -%}
+    {%- else -%}
 
-    {% endif %}
-{% endmacro %}
+    {%- endif -%}
+{%- endmacro -%}
 #}
 
-{% macro section(section) %}
+{%- macro section(section) -%}
 {{- macros.verbose( "macro: ui.section(%s)"|format(section) ) -}}
-    {% set opts = {
+    {%- set opts = {
             "ele": "div",
             "class":"section "
         }
-    %}
-    {% for key,val in section.items() %}
+    -%}
+    {%- for key,val in section.items() -%}
         {# Overwrite defaults opts with arg #}
-        {% if key != "class" %}
-            {% set _dummy = opts.update( {key: val}) %}
-        {% else %}
-            {% set _dummy = opts.update( {key: "section " ~ val }) %}
-        {% endif %}
-    {% endfor %}
+        {%- if key != "class" -%}
+            {%- set _dummy = opts.update( {key: val}) -%}
+        {%- else -%}
+            {%- set _dummy = opts.update( {key: "section " ~ val }) -%}
+        {%- endif -%}
+    {%- endfor -%}
 
-    {% set element = opts.pop("ele") %} {# Remove key ele from dict to be used #}
+    {%- set element = opts.pop("ele") -%} {# Remove key ele from dict to be used #}
 <{{- element -}} {{- opts|xmlattr -}}>
     <div class="container">
-        {{ caller() }}
+        {{- caller() -}}
     </div>
-</{{ element }}>
+</{{- element -}}>
 
-{% endmacro %}
+{%- endmacro -%}
 {#
 
     Blog post listing
 #}
-{% macro post_listing(posts) %}
+{%- macro post_listing(posts) -%}
 {{- macros.verbose( "macro: ui.post_listing(%s)"|format(posts) ) -}}
 
     <div class="post-listing">
     {%- for post in posts -%}
         <article class="post-item" 
-        {% if is_verbose %}
-        data-translations_available="{{ post.translated_to|join(', ')|e }}"
-        data-reading_time="{{ post.reading_time|e }}" 
-        data-post_cats="{{ post.categories|join(', ')|e }}"
-        data-post_tags="{{ post.tags|join(', ')|e }}"
-        data-post_author="{{ post.author()|e }}" 
-        data-post_date="{{ post.date|e }}"
-        data-post_status="{{ post.post_status|e }}"
-        data-post_featured_image="{{ post.previewimage|e }}" 
-        {% endif %}
+        {%- if is_verbose -%}
+        data-translations_available="{{- post.translated_to|join(', ')|e -}}"
+        data-reading_time="{{- post.reading_time|e -}}" 
+        data-post_cats="{{- post.categories|join(', ')|e -}}"
+        data-post_tags="{{- post.tags|join(', ')|e -}}"
+        data-post_author="{{- post.author()|e -}}" 
+        data-post_date="{{- post.date|e -}}"
+        data-post_status="{{- post.post_status|e -}}"
+        data-post_featured_image="{{- post.previewimage|e -}}" 
+        {%- endif -%}
         >
         <!--
-        {{ post|pprint }}
+        {{- post|pprint -}}
         -->
             <header class="post-header">
-                <a class="post-link" href="{{ post.permalink()|e }}">
-                    {{'<img loading="lazy" class="post-img" src="' ~ post.previewimage|e ~ '" />' if post.previewimage }}
+                <a class="post-link" href="{{- post.permalink()|e -}}">
+                    {{- '<img loading="lazy" class="post-img" src="%s" />'|format( post.previewimage|e ) if post.previewimage -}}
                 </a>
             </header>
             <section class="post-content">
                 <h2 class="post-title">
-                    <a class="post-link" href="{{ post.permalink()|e }}">
-                        {{ post.title()|e }}
+                    <a class="post-link" href="{{- post.permalink()|e -}}">
+                        {{- post.title()|e -}}
                     </a>
                 </h2>
-                {{ post_tags(post.tags) }}
-                <div class="post-body">{{ post.text()|striptags|truncate(50,false,"")|e }}</div>
-                
+                {{- post_tags(post.tags) -}}
+                <div class="post-body">{{- post.text()|striptags|truncate(50,false,"")|e -}}</div>
             </section>
         </article>
     {%- endfor -%}
     </div>
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro post_tags(tags = false) %}
+{%- macro post_tags(tags = false) -%}
 {{- macros.verbose( "macro: ui.post_tags(%s)"|format(tags|pprint) ) -}}
-    
-    {% set tags = post.tags if ( post and not tags ) %}
-    <!-- {{ tags }} -->
-    {% if tags %}
+    {%- if (not tags) and post is defined -%}
+        {%- set tags = post.tags -%}
+    {%- endif -%}
+    <!-- {{- tags -}} -->
+    {%- if tags -%}
     <ul class="post-tags" itemprop="keywords">
-        {% for tag in tags %}
-            {{ '<li><a class="post-tag-link" href="%s">%s</a></li>'|format(_link('tag',tag),tag|e) }}
-        {% endfor %}
+        {%- for tag in tags -%}
+            {{- '<li><a class="post-tag-link" href="%s">%s</a></li>'|format(_link('tag',tag),tag|e) -}}
+        {%- endfor -%}
     </ul>
-    {% endif %}
-{% endmacro %}
+    {%- endif -%}
+{%- endmacro -%}
