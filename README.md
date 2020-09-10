@@ -14,8 +14,8 @@ a much more richier and easier workflow for theming.
 # Features
 - [X] NO recursive parenting. This is the root of ALL, not inherits from extra parent. This is, your master parent dot. You wont need to loop up in to 3 different themes anymore.
 - [X] Easily understandable frontend.
-- [-] Commented code (work in progress).
-- [-] Helpers, almost for everything.
+- [ ] Commented code*.
+- [ ] Helpers, almost for everything*.
     - [X] Section generator (for fast page generator).
     - [X] Menu constructor (unlimited multilevel, very flexible).
 - [X] Lang switcher (multilingual) will try to link the current item visited for the translated version if exists, root on default.
@@ -23,6 +23,8 @@ a much more richier and easier workflow for theming.
 - [X] Fragmented CSS approach.
 - [X] NO dependencies, not even jQuery.
 - [ ] Rich theme settings for easy customization without code editing.
-- [ ] Improved config.py.
+- [ ] Fragmented config.py*.
+
+###### * = (work in progress)
 
 
