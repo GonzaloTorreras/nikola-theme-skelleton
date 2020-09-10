@@ -1,0 +1,7 @@
+{#
+    This will be used only IF you change the config:
+    ARCHIVES_ARE_INDEXES = True (default = false).
+    By default, it will redirect to template index.tmpl
+#}
+{% set body_class = body_class ~ "archive-index"%}
+{% extends "index.tmpl" %}

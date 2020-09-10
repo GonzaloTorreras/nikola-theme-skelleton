@@ -1,0 +1,22 @@
+
+{% block footer %}
+    <footer id="site-footer">
+        <section class="container">
+            <nav class="cols dflex flex-g1">
+                <ul class="col col-1">
+                    <a class="logo" href="{{ logo_url if logo_url else '/'}}">{{ blog_title }}</a>
+
+                    <p>{{ content_footer }}</p>
+                </ul>
+                <ul class="col col-2">
+
+                </ul>
+                <ul class="col col-2">
+
+                </ul>
+            </nav>
+        </section>
+        {{ template_hooks['page_footer']() }}
+    </footer>
+{% endblock %}
+

@@ -1,0 +1,8 @@
+[Theme]
+engine = jinja
+author = Gonzalo Torreras
+author_url = https://gonzalotorreras.com
+license = MIT
+
+[Family]
+family = skelleton

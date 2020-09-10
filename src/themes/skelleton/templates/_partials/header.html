@@ -1,0 +1,33 @@
+
+{% block header %}
+    <header id="site-header">
+        <nav class="container header-menu menu-horizontal flex-jspace_between">
+            
+            <a class="logo" href="{{ logo_url if logo_url else '/'}}">{{ blog_title }}</a>
+
+             {{ ui.menu(navigation_links[lang], "main-menu") }}
+
+            {% if search_form %}
+                <div class="searchform" role="search">
+                    
+                </div>
+            {% endif %}
+            {% set translation_links = [] %}
+            {% for langname in translations|sort %}
+                {% set link = _link('root', None, langname) %}
+                {% set _dummy = translation_links.append( {"href":link, "text": langname} ) %}
+            {% endfor %}
+            <div class="translations-menu-wrapper">
+                {{ ui.menuConstructor(translation_links, {"menuExtraClass": "translation_links"}) }}
+                {#
+                <li><a class="lang-link" href="{{ _link('root', None, langname) }}" rel="alternate" hreflang="{{ langname }}">{{ messages("LANGUAGE", langname) }}</a></li>
+                #}
+
+            </div>
+            <ul class="translations-menu menu-horizontal flex-aright">
+                
+            </ul>
+        </nav>
+    </header>
+{% endblock header %}
+

@@ -1,0 +1,16 @@
+{#
+    Available data:
+        post: A post object, containing descriptive post.text() for the gallery.
+        crumbs: A list of link, crumb to implement breadcrumbs.
+        folders: A list of folders to implement hierarchical gallery navigation.
+        enable_comments: To enable/disable comments in galleries.
+        thumbnail_size: The THUMBNAIL_SIZE option.
+        photo_array: a list of dictionaries, each containing:
+        url: URL for the full-sized image.
+        url_thumb: URL for the thumbnail.
+        title: The title of the image.
+        size: A dict containing w and h, the real size of the thumbnail.
+        photo_array_json: a JSON dump of photo_array, used by the justified-layout script
+#}
+{% set body_class = body_class ~ "gallery "%}
+{% extends "base.tmpl" %}

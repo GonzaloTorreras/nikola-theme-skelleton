@@ -1,0 +1,7 @@
+{#
+    This will be used only IF you change the config:
+    AUTHOR_PAGES_ARE_INDEXES = True (default = false).
+    By default, it will redirect to template index.tmpl
+#}
+{% set body_class = body_class ~ "authors-index"%}
+{% extends "index.tmpl" %}

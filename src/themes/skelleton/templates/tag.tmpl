@@ -1,0 +1,12 @@
+{% set body_class = '%s %s'|format(body_class, kind) %} {# (tag || category) #}
+{% extends "listing.tmpl" %}
+
+{% block hero %}
+    {%- call ui.section({
+        "class": "post-listing-wrapper"
+    }) -%}
+        <!-- TODO: Multilingual support message for title -->
+        {% set tag_message = "Posts in %s: "|format(kind) %}
+        {{ '<h1 class="tag-title">%s %s</h1>'|format(tag_message|e, tag|e|title) }}
+    {%- endcall -%}
+{% endblock %}

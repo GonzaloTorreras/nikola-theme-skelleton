@@ -1,0 +1,4 @@
+Sitemap: https://gonzalotorreras.github.io/nikola-theme-skelleton/sitemapindex.xml
+
+User-Agent: *
+Host: gonzalotorreras.github.io

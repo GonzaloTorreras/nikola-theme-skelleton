@@ -1,0 +1,25 @@
+{% set body_class = "%sblog listing"|format(body_class) %}        
+{% extends "base.tmpl" %}
+
+{#{ macros.include_css('<link href="/assets/css/blog.css" rel="preload" as="style" type="text/css" onload="this.rel=\'stylesheet\'" />') }#}
+{% block head_include %}
+    {{ super() }}
+    <link href="/assets/css/blog.css" rel="preload" as="style" type="text/css" onload="this.rel='stylesheet'" />
+{% endblock %}
+
+
+{% block content %}
+    {% block hero %}
+
+    {% endblock %}
+
+    {%- call ui.section({
+        "class": "post-listing-wrapper"
+    }) -%}
+        {{- ui.post_listing(posts) -}}
+    {%- endcall -%}
+
+    {% block pre_footer %}
+
+    {% endblock %}
+{% endblock content %}
