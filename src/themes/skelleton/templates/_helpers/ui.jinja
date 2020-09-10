@@ -9,18 +9,26 @@
     {% endfor %}
 </ul>
 {% endmacro %}
-
+{#
+    TODO:
+    - Accesibility ARIA
+    - Conversor from legacy menu  in config.py to xmlAttr, ideally a new/different setting for the theme?.
+#}
 {% macro menuConstructor(items,opts = false) %}
-{{- macros.verbose( "macro: ui.menuConstructor(%s, %s)"|format(items|e, opts|e) ) -}}
-    {% set opts = {
+{{- macros.verbose( "macro: ui.menuConstructor(%s, %s)"|format(items, opts) ) -}}
+    {% set _opts = {
         "menuExtraClass": ""
     } %}
+    {% for key,val in opts.items() %} {# foreach incoming opts and mix with defaults #}
+        {# Overwrite defaults _opts with arg #}
+        {% set _dummy = _opts.update( {key: val}) %}
+    {% endfor %}
 
-<ul class="menu-horizontal flex-hright{{ ' %s'|format(opts.menuExtraClass) if opts.menuExtraClass }}">
+<ul class="menu-horizontal flex-hright{{ ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass }}">
     {% for item in items %}
         {% set children = item.pop("children") if item.children else false %}
         {% set text = item.pop("text") %}
-        <li><a {{ item|xmlattr }}>{{ item.text }}</a></li>
+        <li><a {{ item|xmlattr }}>{{ text }}</a></li>
         {%- if children -%}
             {{- loop(item.children) -}}
         {%- endif -%}
@@ -102,9 +110,11 @@
                 </a>
             </header>
             <section class="post-content">
-                <a class="post-link" href="{{ post.permalink()|e }}">
-                    <h2 class="post-title">{{ post.title()|e }}</h2>
-                </a>
+                <h2 class="post-title">
+                    <a class="post-link" href="{{ post.permalink()|e }}">
+                        {{ post.title()|e }}
+                    </a>
+                </h2>
                 {{ post_tags(post.tags) }}
                 <div class="post-body">{{ post.text()|striptags|truncate(50,false,"")|e }}</div>
                 

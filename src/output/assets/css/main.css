@@ -355,126 +355,143 @@
   }
 
 
-:root{
-    --block-padding: 1.5rem;
-    --grid-gap: 1rem;
+/*  MAIN.CSS
+    ========================================================================== */
 
-    --main-color: green;
-    --main-color-text: #fff;
+    :root{
+        --block-padding: 1.5rem;
+        --grid-gap: 1rem;
 
-    --secondary-color: #1f1f1f;
-    --secondary-color-text: #fff;
+        --main-color: green;
+        --main-color-text: #fff;
 
-    --font-size-min: 18px;
-    --font-size-min: 22px;
-    
-    --body-bg: #f1f1f1;
+        --secondary-color: #1f1f1f;
+        --secondary-color-text: #fff;
 
-    --header-bg: var(--secondary-color);
-    --footer-bg: var(--secondary-color);
+        --font-size-min: 18px;
+        --font-size-min: 22px;
+        
+        --body-bg: #f1f1f1;
 
-    --bg-section: var(--body-bg);
-}
-html{
-    font-size: var(--font-size-min);
-    scroll-behavior: smooth; /** smooth scroll for anchors and so on **/
-}
-body{
-    background-color: #f1f1f1;
-    font-size: 19px;
-    font-size: min(max(1rem, 2vw), var(--font-size-max));
-}
+        --header-bg: var(--secondary-color);
+        --footer-bg: var(--secondary-color);
 
-pre{
-    width: 100%;
-    overflow: auto;
-}
-img{
-    max-width: 100%;
-}
+        --bg-section: var(--body-bg);
+    }
+    html{
+        font-size: var(--font-size-min);
+        scroll-behavior: smooth; /** smooth scroll for anchors **/
+    }
+    body{
+        background-color: #f1f1f1;
+        font-size: 19px;
+        font-size: min(max(1rem, 2vw), var(--font-size-max));
+    }
 
-a{
-    color: var(--main-color);
-    transition-duration: .2s;
-    transition-property: color, text-decoration, background-color, border-color;
-}
+    pre{
+        width: 100%;
+        overflow: auto;
+    }
+    img{
+        max-width: 100%;
+    }
+
+    a{
+        color: var(--main-color);
+        transition-duration: .2s;
+        transition-property: color, text-decoration, background-color, border-color;
+    }
 
 
 /*  Menus
     ============================ */
-.menu-horizontal{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    .menu-horizontal{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
 
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.menu-link{
-    display: inline-block;
-    padding: .3rem .7rem;
-    margin: 0 .1rem;
-    text-decoration: none;
-    color: var(--main-color);
-}
-.menu-link:hover,
-.menu-link:focus,
-.menu-link.active{
-    text-decoration: underline;
-    outline: 0;
-}
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .menu-link{
+        display: inline-block;
+        padding: .3rem .7rem;
+        margin: 0 .1rem;
+        text-decoration: none;
+        color: var(--main-color);
+    }
+    .menu-link:hover,
+    .menu-link:focus,
+    .menu-link.active{
+        text-decoration: underline;
+        outline: 0;
+    }
 
 
 /*  Flex
     ============================ */
-.dflex{
-    display: flex;
-}
-.flex-wwrap{
-    flex-wrap: wrap;
-}
-.flex-g1{
-    flex-grow: 1;
-}
-.flex-hright,
-.flex-jright{
-    justify-content: flex-end;
-}
-.flex-hspace_between,
-.flex-jspace_between{
-    justify-content: space-between;
-}
-.flex-vcenter,
-.flex-acenter{
-    align-items: center;
-}
+    .dflex{
+        display: flex;
+    }
+    .flex-wwrap{
+        flex-wrap: wrap;
+    }
+    .flex-g1{
+        flex-grow: 1;
+    }
+    .flex-hright,
+    .flex-jright{
+        justify-content: flex-end;
+    }
+    .flex-hspace_between,
+    .flex-jspace_between{
+        justify-content: space-between;
+    }
+    .flex-vcenter,
+    .flex-acenter{
+        align-items: center;
+    }
+    /** this helps to force the height of the whole page to 100vh min,
+    and dynamically expand #site-content up to that height
+    **/
+    .site-box{
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        flex-direction: column;
+    }
+    #site-content{
+        flex-grow: 1;
+    }
+    /**
+        .site-box.is-boxed can be controlled
+        with {% set is_boxed = true %}
+    **/
+    .is-boxed{
+        width: 1300px;
+        max-width: 100%;
+        margin: auto;
+        background-color: #fff;
+    }
 
-/*
-.boxed{
-    width: 1300px;
-    max-width: 100%;
-    margin: auto;
-    background-color: #fff;
-}
-*/
-.container{
-    width: 900px;
-    max-width: 100%;
-    padding: 0 2rem;
-    margin: auto;
-}
+    .container{
+        width: 900px;
+        max-width: 100%;
+        padding: 0 2rem;
+        margin: auto;
+    }
 
-.section{
-
-    padding: 2rem 0;
-    background-color: var(--bg-section);
-}
+    .section{
+        padding: 2rem 0;
+        background-color: var(--bg-section);
+    }
 
 
 
 /*  Header
-    ========================================================================== */
+========================================================================== */
 
     #site-header{
         background-color: var(--header-bg);
@@ -525,13 +542,13 @@ a{
 ========================================================================== */
 
     #is_verbose{
-        position:sticky;
+        position:fixed;
         bottom:0;
         max-height: 10vh;
         width: 100%;
         margin:0;
         padding: .5rem;
-        background-color: #1f1f1f;
+        background-color: rgba(31, 31, 31, .5);
         color: #f1f1f1;
         font-size: 12px;
         line-height: 1em;

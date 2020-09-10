@@ -2,6 +2,7 @@
 
 import time
 
+# Full file in: https://getnikola.com/conf.html
 
 # ! Some settings can be different in different languages.
 # ! A comment stating (translatable) is used to denote those.
@@ -15,14 +16,14 @@ import time
 # Data about this site
 BLOG_AUTHOR = "Gonzalo Torreras"  # (translatable)
 BLOG_TITLE = "Skelleton framework"  # (translatable)
-# This is the main URL for your site. It will be used
-# in a prominent link. Don't forget the protocol (http/https)!
+
+# Absolute URL to live site
 SITE_URL = "https://gonzalotorreras.github.io/nikola-theme-skelleton/"
 
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = ""
-BLOG_EMAIL = "hi@gonzalotorreras.com"
+BLOG_EMAIL = "hola@gonzalotorreras.com"
 BLOG_DESCRIPTION = {"en": "EN description", "es": "ES description" }  # (translatable)
 
 # What is the default language?
@@ -32,7 +33,7 @@ DEFAULT_LANG = "en"
 # The format is {"translationcode" : "path/to/translation" }
 # the path will be used as a prefix for the generated pages location
 TRANSLATIONS = {
-    DEFAULT_LANG: "",
+    "en": "",
     "es": "./es",
 }
 
@@ -72,10 +73,15 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 #          else they won’t be highlighted when active.
 
 NAVIGATION_LINKS = {
-    DEFAULT_LANG: (
+    "en": (
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
         ("/rss.xml", "RSS feed"),
+        (
+            (
+                ("/pages","Pages")
+            ), 'Pages'
+        ),
     ),
 
     "es": (

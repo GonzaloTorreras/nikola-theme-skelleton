@@ -1,2 +1,12 @@
 {% set body_class = body_class ~ "author "%}
 {% extends "listing.tmpl" %}
+
+{% block hero %}
+    {%- call ui.section({
+        "class": "post-listing-wrapper"
+    }) -%}
+        <!-- TODO: Multilingual support message for title -->
+        {% set tag_message = "Posts by %s: "|format(blog_author) %}
+        {{ '<h1 class="tag-title">%s %s</h1>'|format(tag_message|e, tag|e|title) }}
+    {%- endcall -%}
+{% endblock %}

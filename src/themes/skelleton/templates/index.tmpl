@@ -1,3 +1,44 @@
 {% set body_class = body_class ~ "index "%}
 {% extends "listing.tmpl" %}
 
+{% block content %}
+    {% block hero %}
+        {%- call ui.section({
+            "class": "hero"
+        }) %}
+
+
+        {% endcall %}
+    {% endblock hero %}
+
+    {%- call ui.section({
+        "class": "item-listing-wrapper"
+    }) %}
+        {{ items }}
+
+    {% if folders or files %}
+        <ul>
+        {% for name in folders %}
+            <li><a href="{{ name|e }}">📂&nbsp;{{ name|e }}</a>
+        {% endfor %}
+        {% for name in files %}
+            <li><a href="{{ name|e }}.html">📄&nbsp;{{ name|e }}</a>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if code %}
+    <h1>{{ title }}
+        {% if source_link %}
+            <small><a href="{{ source_link }}">({{ messages("Source") }})</a></small>
+        {% endif %}
+        </h1>
+        {{ code }}
+    {% endif %}
+
+    {% endcall %}
+
+    {% block pre_footer %}
+
+    {% endblock pre_footer %}
+{% endblock content %}
+

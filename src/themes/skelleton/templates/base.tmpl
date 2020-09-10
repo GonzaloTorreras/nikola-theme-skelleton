@@ -30,7 +30,11 @@
     } %}
     #}
     {% set is_boxed = True %}
-
+    {# 
+        When true, will use the lang codes instead the full language name for the lang switcher.
+    #}
+    {% set translation_menu_lang_code = true %}
+    
     {# Init vars if weren't declared prior the extends() #}
     {% if not body_class %}
         {% set body_class = "" %}
@@ -111,24 +115,22 @@
 </head>
 <body {{ 'class="%s"'|format(body_class) if body_class }}>
 {% block body %}
-{{ '<div class="boxed">' if is_boxed }}
-    <a href="#content" hidden class="">{{ messages("Skip to main content") }}</a>
+    <div class="site-box {{ 'is_boxed' if is_boxed }}">
+        <a href="#content" hidden class="">{{ messages("Skip to main content") }}</a>
 
-    {% include "_partials/header.html" %}
+        {% include "_partials/header.html" %}
 
-    {% block container_wrapper %}
+        {% block container_wrapper %}
             <main id="site-content">
                 {% block content %}
                     <h1>Hello world! - {{ blog_title }}</h1>
                 {% endblock %}
             </main>
+        {%- endblock container_wrapper -%}
 
+        {%- include "_partials/footer.html" -%}
 
-    {%- endblock container_wrapper -%}
-
-    {%- include "_partials/footer.html" -%}
-
-    {{- '</div>' if is_boxed -}}
+    </div>
 
     {#{ base.late_load_js() }#}
 

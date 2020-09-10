@@ -2,5 +2,5 @@
     Available data:
     items
 #}
-{% set body_class = body_class ~ "list "%}
-{% extends "listing.tmpl" %}
+{% set body_class = "%slist list-%s "|format(body_class, kind) %}
+{% extends "archive.tmpl" %}

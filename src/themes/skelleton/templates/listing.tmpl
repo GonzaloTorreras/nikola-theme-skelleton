@@ -1,4 +1,4 @@
-{% set body_class = "%sblog listing"|format(body_class) %}        
+{% set body_class = "%sblog listing "|format(body_class) %}        
 {% extends "base.tmpl" %}
 
 {#{ macros.include_css('<link href="/assets/css/blog.css" rel="preload" as="style" type="text/css" onload="this.rel=\'stylesheet\'" />') }#}
@@ -13,11 +13,13 @@
 
     {% endblock %}
 
+{% if posts %}
     {%- call ui.section({
         "class": "post-listing-wrapper"
     }) -%}
         {{- ui.post_listing(posts) -}}
     {%- endcall -%}
+{% endif %}
 
     {% block pre_footer %}
 

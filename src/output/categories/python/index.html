@@ -11,24 +11,26 @@
 <!-- TODO: FavIcon --><meta name="theme-color" content="#27462a">
 <!-- extra_head -->
 </head>
-<body class=" tagblog listing">
-<div class="boxed">
-    <a href="#content" hidden class="">Skip to main content</a>
+<body class=" tagblog listing ">
+    <div class="site-box is_boxed">
+        <a href="#content" hidden class="">Skip to main content</a>
 
 
     <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../">Skelleton framework</a>
 
-             <!-- macro: ui.menu((('/archive.html', 'Archive'), ('/categories/', 'Tags'), ('/rss.xml', 'RSS feed'))) --><ul class="menu-horizontal flex-hright main-menu">
+             <!-- macro: ui.menu((('/archive.html', 'Archive'), ('/categories/', 'Tags'), ('/rss.xml', 'RSS feed'), (('/pages', 'Pages'), 'Pages'))) --><ul class="menu-horizontal flex-hright main-menu">
 <!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../../archive.html">Archive</a></li>
 <!-- TODO: figure out current_url to check for active status on menu-->
         <li class="menu-item"><a class="menu-link " href="../">Tags</a></li>
 <!-- TODO: figure out current_url to check for active status on menu-->
         <li class="menu-item"><a class="menu-link " href="../../rss.xml">RSS feed</a></li>
+<!-- TODO: figure out current_url to check for active status on menu-->
+        <li class="menu-item"><a class="menu-link " href="('/pages',%20'Pages')">Pages</a></li>
 </ul>
 <div class="translations-menu-wrapper">
-                <!-- macro: ui.menuConstructor([{&#39;href&#39;: &#39;/&#39;, &#39;text&#39;: &#39;en&#39;}, {&#39;href&#39;: &#39;/es/.&#39;, &#39;text&#39;: &#39;es&#39;}], {&#39;menuExtraClass&#39;: &#39;translation_links&#39;}) -->
-<ul class="menu-horizontal flex-hright">
-<li><a href="../../"></a></li>        <li><a href="../../es/"></a></li>
+                <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'active '}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined}], {'menuExtraClass': 'translation_links'}) --> 
+<ul class="menu-horizontal flex-hright translation_links">
+<li><a href="../../" rel="alternate" hreflang="en" class="active ">en</a></li>        <li><a href="../../es/" rel="alternate" hreflang="es">es</a></li>
 </ul>
 </div>
             <ul class="translations-menu menu-horizontal flex-aright"></ul></nav></header><main id="site-content"><!-- macro: ui.section({'class': 'post-listing-wrapper'}) --><div class="section post-listing-wrapper">
@@ -38,6 +40,7 @@
     </div>
 </div>
 
+
 <!-- macro: ui.section({'class': 'post-listing-wrapper'}) -->
  <div class="section post-listing-wrapper">
     <div class="container">
@@ -46,9 +49,11 @@
         --><header class="post-header"><a class="post-link" href="../../posts/welcome-to-nikola/">
                     
                 </a>
-            </header><section class="post-content"><a class="post-link" href="../../posts/welcome-to-nikola/">
-                    <h2 class="post-title">Welcome to Nikola</h2>
-                </a>
+            </header><section class="post-content"><h2 class="post-title">
+                    <a class="post-link" href="../../posts/welcome-to-nikola/">
+                        Welcome to Nikola
+                    </a>
+                </h2>
                 <!-- macro: ui.post_tags(['blog', 'demo', 'nikola', 'python']) -->    <!--  -->
 
                 <div class="post-body">If you can see this in a web browser, it means</div>
@@ -59,14 +64,17 @@
 </div>
 
 
+
             </main><footer id="site-footer"><section class="container"><nav class="cols dflex flex-g1"><ul class="col col-1">
 <a class="logo" href="../../">Skelleton framework</a>
 
-                    <p>Contents © 2020         <a href="mailto:hi@gonzalotorreras.com">Gonzalo Torreras</a></p>
+                    <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
 <ul class="col col-2"></ul></nav></section></footer>
 </div>
+
+
         <script defer src="../../assets/js/main.js"></script><pre id="is_verbose"> Template in use: tag.tmpl
  </pre>
 </body>

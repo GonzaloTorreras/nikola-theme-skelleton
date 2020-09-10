@@ -12,9 +12,9 @@
 <!-- TODO: FavIcon --><meta name="theme-color" content="#27462a">
 <!-- extra_head -->
 </head>
-<body class="author blog listing">
-<div class="boxed">
-    <a href="#content" hidden class="">Ir al contenido principal</a>
+<body class="author blog listing ">
+    <div class="site-box is_boxed">
+        <a href="#content" hidden class="">Ir al contenido principal</a>
 
 
     <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../../">Skelleton framework</a>
@@ -27,21 +27,32 @@
         <li class="menu-item"><a class="menu-link " href="../../rss.xml">Canal RSS</a></li>
 </ul>
 <div class="translations-menu-wrapper">
-                <!-- macro: ui.menuConstructor([{&#39;href&#39;: &#39;/&#39;, &#39;text&#39;: &#39;en&#39;}, {&#39;href&#39;: &#39;/es/.&#39;, &#39;text&#39;: &#39;es&#39;}], {&#39;menuExtraClass&#39;: &#39;translation_links&#39;}) -->
-<ul class="menu-horizontal flex-hright">
-<li><a href="../../../"></a></li>        <li><a href="../../"></a></li>
+                <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': 'active '}], {'menuExtraClass': 'translation_links'}) --> 
+<ul class="menu-horizontal flex-hright translation_links">
+<li><a href="../../../" rel="alternate" hreflang="en">en</a></li>        <li><a href="../../" rel="alternate" hreflang="es" class="active ">es</a></li>
 </ul>
 </div>
             <ul class="translations-menu menu-horizontal flex-aright"></ul></nav></header><main id="site-content"><!-- macro: ui.section({'class': 'post-listing-wrapper'}) --><div class="section post-listing-wrapper">
     <div class="container">
-        <!-- macro: ui.post_listing([<Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>]) --><div class="post-listing"><article class="post-item" data-translations_available="es, en" data-reading_time="1" data-post_cats="" data-post_tags="etiqueta" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="None"><!--
+        <!-- TODO: Multilingual support message for title -->
+        <h1 class="tag-title">Posts by Gonzalo Torreras:  </h1>
+    </div>
+</div>
+
+
+<!-- macro: ui.section({'class': 'post-listing-wrapper'}) -->
+ <div class="section post-listing-wrapper">
+    <div class="container">
+        <!-- macro: ui.post_listing([<Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>]) --><div class="post-listing"><article class="post-item" data-translations_available="en, es" data-reading_time="1" data-post_cats="" data-post_tags="etiqueta" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="None"><!--
         <Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>
         --><header class="post-header"><a class="post-link" href="../../posts/test-es/">
                     
                 </a>
-            </header><section class="post-content"><a class="post-link" href="../../posts/test-es/">
-                    <h2 class="post-title">Test ES</h2>
-                </a>
+            </header><section class="post-content"><h2 class="post-title">
+                    <a class="post-link" href="../../posts/test-es/">
+                        Test ES
+                    </a>
+                </h2>
                 <!-- macro: ui.post_tags(['etiqueta']) -->    <!--  -->
 
                 <div class="post-body">Write your post here.</div>
@@ -52,14 +63,17 @@
 </div>
 
 
+
             </main><footer id="site-footer"><section class="container"><nav class="cols dflex flex-g1"><ul class="col col-1">
 <a class="logo" href="../../../">Skelleton framework</a>
 
-                    <p>Contents © 2020         <a href="mailto:hi@gonzalotorreras.com">Gonzalo Torreras</a></p>
+                    <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
 <ul class="col col-2"></ul></nav></section></footer>
 </div>
+
+
         <script defer src="../../../assets/js/main.js"></script><pre id="is_verbose"> Template in use: author.tmpl
  </pre>
 </body>
