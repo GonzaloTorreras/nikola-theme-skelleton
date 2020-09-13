@@ -14,11 +14,3 @@ jobs:
       run:
         using: 'docker'
         image: 'Dockerfile'
-      branding:
-        icon: 'zap'
-        color: 'orange'
-      inputs:
-        dry_run:
-          description: 'Build without publishing code'
-          default: false
-          required: false
