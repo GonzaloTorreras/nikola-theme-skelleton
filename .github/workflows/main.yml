@@ -1,7 +1,10 @@
 on:
   push:
-    branches:
-    - master
+    # Ignore always to deactivation
+    branches-ignore:
+      - '**'
+    #branches:
+    #- master
 jobs:
   nikola_build:
     runs-on: ubuntu-latest
