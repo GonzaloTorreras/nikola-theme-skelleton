@@ -10,4 +10,4 @@ jobs:
     - name: Check out
       uses: actions/checkout@v2
     - name: Build and Deploy Nikola
-      run: docker build . --file Dockerimage
+      run: docker build . --file Dockerfile
