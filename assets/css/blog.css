@@ -9,15 +9,18 @@
     margin: 0.5rem;
     background-color: #ffffff;
 }
-.post-item .post-content{
+.post-listing .post-content{
     padding: var(--block-padding);
 }
-
 .post-tags {
     list-style: none;
     padding: 0;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
 }
+.post-listing .post-tags {
+    margin: .5rem var(--block-padding);
+}
+
 .post-tags li{
     display: inline-block;
 }
