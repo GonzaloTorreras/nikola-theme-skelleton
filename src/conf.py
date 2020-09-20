@@ -79,8 +79,15 @@ NAVIGATION_LINKS = {
         ("/rss.xml", "RSS feed"),
         (
             (
-                ("/pages","Pages")
-            ), 'Pages'
+                ("/pages","Pages 1.1"),
+                (
+                 (
+                     ("/pages","Pages 1.2.1"),
+                     ("/pages","Pages 1.2.2"),
+                 ),
+                 "Pages 1.2"
+                )
+            ), 'Page X'
         ),
     ),
 

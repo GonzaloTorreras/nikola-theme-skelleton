@@ -3,15 +3,14 @@
     <header id="site-header">
         <nav class="container header-menu menu-horizontal flex-jspace_between">
             
-            <a class="logo" href="{{ logo_url if logo_url else '/'}}">{{ blog_title }}</a>
+            {{ '<a class="logo" href="%s">%s</a>'|format(logo_url if logo_url else '/', blog_title) }}
 
-             {{ ui.menu(navigation_links[lang], "main-menu") }}
+            {#{ ui.menu(navigation_links[lang], "main-menu") }#}
+            {{ ui.legacy_menu_generator(navigation_links[lang]) }}
 
-            {% if search_form %}
-                <div class="searchform" role="search">
-                    
-                </div>
-            {% endif %}
+            {#% if search_form % TODO: Theme option for search form in Header. #}
+                {{ ui.searchForm() }}
+            {#% endif %#}
 
             
             {{ ui.langSwitcher() }}

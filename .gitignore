@@ -4,3 +4,4 @@ __pycache__/
 .doit.*
 .history/
 .vscode/
+.vscode/settings.json

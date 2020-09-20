@@ -13,8 +13,59 @@
 {#
     This macro will convert "legacy" (from config, theme setting or basically that format)
 #}
-{% macro legacy_menu_generator() %}
+{% macro legacy_menu_generator(items, opts = false) %}
+    {{- macros.verbose( "macro: ui.legacy_menu_generator(%s, %s)"|format(items, opts) ) -}}
+    {% set new_menu = [] %}
+    {% for link,text in items %}
+        
+        {% set item = {
+            "text": text,
+            "href": link   
+        } %}
 
+        {% if link is not string %}
+            {% set children = [] %}
+
+            {#
+                For some reason trying to iterate a nested
+                tupple as (key,val in tupple) gives an error.
+            #}
+            {% for child in link recursive %}
+                
+                {% set textC = child[1] %}
+
+                {% if child[0] is not string %}
+                    {{- loop( child[0] ) -}}
+                    {% set hrefC = "#" %}
+                    {% set childrenC = [] %}
+                {% else %}
+                    {% set hrefC = child[0] %}
+                    {% set childrenC = false %}
+                {% endif %}
+
+                {#
+                    TODO: Nested children (2nth) is not working and are parsing to prev level
+                    - Parent
+                        - Child 1
+                            - Child 1.1 (not working).
+                        - Child 2
+                #}
+                {% set _dummy = children
+                                    .append({
+                                        "text": textC,
+                                        "href": hrefC,
+                                        "class": "submenu-item",
+                                        "data-depth": loop.depth,
+                                        "children": childrenC
+                                    }) %}
+            {% endfor %}
+            
+            {% set _dummy = item.update({ "href": "#", "children": children }) %}
+        {% endif %}
+
+        {% set _dummy = new_menu.append(item) %}
+    {% endfor %}
+    {{ menuConstructor(new_menu, opts) }}
 {% endmacro %}
 {#
     TODO menuConstructor():
@@ -31,11 +82,12 @@
         "menuFlow": "horizontal",
         "menuExtraClass": ""
     } -%}
+    {% if opts %}
     {%- for key,val in opts.items() -%} {# foreach incoming opts and mix with defaults #}
         {# Overwrite defaults _opts with arg #}
         {%- set _dummy = _opts.update( {key: val}) -%}
     {%- endfor -%}
-
+    {% endif %}
 <ul class="menu-{{_opts.menuFlow }} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
     {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
@@ -46,7 +98,7 @@
 
         {% set extra_li_class = item.pop("extra_li_class") if item.extra_li_class else false %}
         
-        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class )  }}">
+        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class ) ~ (' with-children ' if children)  }}">
             <a {{- item|xmlattr -}}>{{- text -}}</a>
             {%- if children -%}
                 <ul class="submenu">
@@ -60,14 +112,21 @@
 
 {% macro langSwitcher() %}
 {{- macros.verbose( "macro: ui.langSwitcher()" ) -}}
-    {% set translation_links = [] %}
+    {% set translation_links = [
+        {
+            "href": "#",
+            "text": lang,
+            "class": "active",
+            "children": []
+        }
+    ] %}
     {% for langname in translations|sort %}
         {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
-        {% set link = _link('root', None, langname) %} 
+        {% set link = (_link('root', None, langname) if lang != langname else "#" ) %} 
         {% set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) %} {# Display full lang name or code lang. #}
-        {% set class = "lang-item-link" ~ (" active " if lang == langname) %}
+        {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
         {# update dict with all the links xmlAttr formatted. #}
-        {% set _dummy = translation_links.append({
+        {% set _dummy = translation_links[0].children.append({
                             "href":link,
                             "text": langname,
                             "rel": "alternate",
@@ -80,6 +139,20 @@
         {{ menuConstructor(translation_links, {"menuExtraClass": "translation-menu"}) }}
     </div>
 {% endmacro %}
+
+{% macro searchForm() %}
+<div class="search-form-wrapper" role="search">
+<form class="search-form" action="#"> 
+{# TODO: 
+    - messages: SEARCH + SEARCH_PLACEHOLDER 
+    - Button submit icon
+#}
+    <input type="text" required placeholder="{#{ messages('SEARCH_PLACEHOLDER', langname ) }#}" />
+    <button type="submit">S{#{ messages('SEARCH', langname ) }#}</button>
+</form>
+</div>
+{% endmacro %}
+
 
 {%- macro section(section) -%}
 {{- macros.verbose( "macro: ui.section(%s)"|format(section) ) -}}
@@ -123,7 +196,8 @@
         data-post_author="{{- post.author()|e -}}" 
         data-post_date="{{- post.date|e -}}"
         data-post_status="{{- post.post_status|e -}}"
-        data-post_featured_image="{{- post.previewimage|e -}}" 
+        data-post_featured_image="{{- post.featured_image|e -}}" 
+        data-post_previewimage="{{- post.previewimage|e -}}" 
         {%- endif -%}
         >
         <!--

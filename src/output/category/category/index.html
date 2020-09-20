@@ -18,22 +18,89 @@
 
     <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../">Skelleton framework</a>
 
-             <!-- macro: ui.menu((('/archive.html', 'Archive'), ('/categories/', 'Tags'), ('/rss.xml', 'RSS feed'), (('/pages', 'Pages'), 'Pages'))) --><ul class="menu-horizontal flex-hright main-menu">
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../../archive.html">Archive</a></li>
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../../categories/">Tags</a></li>
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../../rss.xml">RSS feed</a></li>
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="('/pages',%20'Pages')">Pages</a></li>
+            <!-- macro: ui.legacy_menu_generator((('/archive.html', 'Archive'), ('/categories/', 'Tags'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Pages 1.1'), ((('/pages', 'Pages 1.2.1'), ('/pages', 'Pages 1.2.2')), 'Pages 1.2')), 'Page X')), False) -->        
+
+
+        
+
+
+        
+
+
+        
+
+
+                
+
+
+                
+
+                
+
+
+                
+
+
+
+            
+
+    <!-- macro: ui.menuConstructor([{'text': 'Archive', 'href': '/archive.html'}, {'text': 'Tags', 'href': '/categories/'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Page X', 'href': '#', 'children': [{'text': 'Pages 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Pages 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Pages 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Pages 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}], False) --><ul class="menu-horizontal flex-hright">
+<li class="menu-item ">
+            <a href="../../archive.html" class="menu-link ">Archive</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="../../categories/" class="menu-link ">Tags</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="../../rss.xml" class="menu-link ">RSS feed</a>
+</li>        
+        
+        <li class="menu-item  with-children ">
+            <a href="#" class="menu-link ">Page X</a><ul class="submenu">
+<li class="menu-item ">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="1" children="False">Pages 1.1</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Pages 1.2.1</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Pages 1.2.2</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Pages 1.2</a>
+</li>
 </ul>
-<!-- macro: ui.langSwitcher() --><div class="translation-menu-wrapper">
-        <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'lang-item-link active ', 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': 'lang-item-link', 'extra_li_class': 'lang-item'}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu">
-<li class="menu-item lang-item active">
-            <a href="../../" rel="alternate" hreflang="en" class="menu-link lang-item-link active ">en</a>
+</li>
+</ul>
+<div class="search-form-wrapper" role="search">
+<form class="search-form" action="#"> 
+    <input type="text" required placeholder=""><button type="submit">S</button>
+</form>
+</div>
+
+
+            
+            <!-- macro: ui.langSwitcher() --> 
+  
+ 
+  
+    <div class="translation-menu-wrapper">
+        <!-- macro: ui.menuConstructor([{'href': '#', 'text': 'en', 'class': 'active', 'children': [{'href': '#', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item  active with-children ">
+            <a href="#" class="menu-link active">en</a><ul class="submenu">
+<li class="menu-item lang-item">
+            <a href="#" rel="alternate" hreflang="en" class="menu-link ">en</a>
 </li>        
         
         <li class="menu-item lang-item">
-            <a href="../../es/" rel="alternate" hreflang="es" class="menu-link lang-item-link">es</a>
+            <a href="../../es/" rel="alternate" hreflang="es" class="menu-link ">es</a>
 </li>
 </ul>
+</li></ul>
 </div>
 
         </nav></header><main id="site-content"><!-- macro: ui.section({'class': 'hero'}) --><div class="section hero">
@@ -54,7 +121,7 @@
                     <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
-<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item ">
+<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item  with-children ">
             <a href="en/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item ">
             <a href="#" class="menu-link ">child1</a>
 </li></ul>

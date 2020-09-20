@@ -377,6 +377,11 @@
         --footer-bg: var(--secondary-color);
 
         --bg-section: var(--body-bg);
+
+        /** Available globally: 
+        --border-radius: 10px;
+
+        **/
     }
     html{
         font-size: var(--font-size-min);
@@ -385,12 +390,20 @@
     body{
         background-color: #f1f1f1;
         font-size: 19px;
-        font-size: min(max(1rem, 2vw), var(--font-size-max));
+        font-size: clamp(var(--font-size-min), 2.5vw, var(--font-size-max));
+        /* font-size: min(max(1rem, 2vw), var(--font-size-max)); */
     }
 
     pre{
         width: 100%;
+        max-height: 100vh;
+        resize: both;
         overflow: auto;
+        box-shadow: 0 0 2px teal;
+        padding: .5rem;
+        border: 3px solid rgba(255,255,255,.4);
+        background-color: rgba(255,255,255,.4);
+        border-radius: var(--border-radius, 0);
     }
     img{
         max-width: 100%;
@@ -402,6 +415,12 @@
         transition-property: color, text-decoration, background-color, border-color;
     }
 
+    input[type="text"],
+    input[type="submit"],
+    input[type="reset"],
+    button{
+      border-radius: var(--border-radius, 0);
+    }
 
 /*  Menus
     ============================ */
@@ -428,7 +447,22 @@
         outline: 0;
     }
 
-
+    
+    .submenu {
+        position: absolute;
+        background-color: var(--header-bg);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        
+        opacity: 0;
+        pointer-events: none;
+    }
+    .with-children:hover .submenu,
+    .with-children:focus-within .submenu{
+        opacity: 1;
+        pointer-events: auto;
+    }
 /*  Flex
     ============================ */
     .dflex{
@@ -481,7 +515,10 @@
         padding: 0 2rem;
         margin: auto;
     }
-
+    #site-header .container,
+    #site-footer .container{
+      width: 1100px;
+    }
     .section{
         padding: 2rem 0;
         background-color: var(--bg-section);
@@ -553,6 +590,7 @@
             padding: .25rem;
             background-color: var(--header-bg);
         }
+        /*
         .lang-item:not(.active){
             opacity: 0;
             pointer-events: none;
@@ -576,6 +614,7 @@
             order: 1;
             padding-right: 1rem;
         }
+        */
 
 
 /*  Footer
@@ -585,7 +624,12 @@
         background-color: var(--footer-bg);
         padding: .8rem 0;
     }
+    #site-footer .col{
 
+    }
+    #site-footer ul{
+      padding:0 ;
+    }
     #site-footer,
     #site-footer a{
         color: #fff;
