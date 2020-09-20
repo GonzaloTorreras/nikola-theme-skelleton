@@ -24,13 +24,14 @@ SITE_URL = "https://gonzalotorreras.github.io/nikola-theme-skelleton/"
 # If not set, defaults to SITE_URL
 # BASE_URL = ""
 BLOG_EMAIL = "hola@gonzalotorreras.com"
-BLOG_DESCRIPTION = {"en": "EN description", "es": "ES description" }  # (translatable)
+BLOG_DESCRIPTION = { "en": "A theme for Nikola static web generator, from scratch!",
+                     "es": "Un tema para `Nikola static web generator`, ¡desde 0!"
+                   }  # (translatable)
 
 # What is the default language?
 DEFAULT_LANG = "en"
 
 # What other languages do you have?
-# The format is {"translationcode" : "path/to/translation" }
 # the path will be used as a prefix for the generated pages location
 TRANSLATIONS = {
     "en": "",
@@ -38,13 +39,8 @@ TRANSLATIONS = {
 }
 
 # What will translated input files be named like?
-
-# If you have a page something.rst, then something.pl.rst will be considered
-# its Polish translation.
-#     (in the above example: path == "something", ext == "rst", lang == "pl")
 # this pattern is also used for metadata:
 #     something.meta -> something.pl.meta
-
 TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
 # Links for the sidebar / navigation bar.  (translatable)
@@ -63,10 +59,7 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 #     )
 #
 # WARNING: Support for submenus is theme-dependent.
-#          Only one level of submenus is supported.
-# WARNING: Some themes, including the default Bootstrap 4 theme,
-#          may present issues if the menu is too large.
-#          (in Bootstrap, the navbar can grow too large and cover contents.)
+# WARNING: Some themes, including the default Bootstrap 4 theme.
 # WARNING: If you link to directories, make sure to follow
 #          ``STRIP_INDEXES``.  If it’s set to ``True``, end your links
 #          with a ``/``, otherwise end them with ``/index.html`` — or
@@ -76,6 +69,7 @@ NAVIGATION_LINKS = {
     "en": (
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
+        ("/blog/", "Blog"),
         ("/rss.xml", "RSS feed"),
 
         (
@@ -123,10 +117,10 @@ THEME_COLOR = '#27462a'
 
 # Config for bootblog4:
 THEME_CONFIG = {
-    DEFAULT_LANG: {
+    #DEFAULT_LANG: {
         # Show the latest featured post in a large box, with the previewimage as its background.
         'featured_large': True
-    }
+    #}
 }
 
 
@@ -262,7 +256,10 @@ METADATA_FORMAT = "YAML"
 # output / TRANSLATION[lang] / TAG_PATH / tag.html (list of posts for a tag)
 # output / TRANSLATION[lang] / TAG_PATH / tag RSS_EXTENSION (RSS feed for a tag)
 # (translatable)
-# TAG_PATH = "categories"
+TAG_PATH = {
+    "en":"tags",
+    "es": "etiquetas"
+}
 
 # By default, the list of tags is stored in
 #     output / TRANSLATION[lang] / TAG_PATH / index.html
@@ -274,7 +271,7 @@ METADATA_FORMAT = "YAML"
 
 # If TAG_PAGES_ARE_INDEXES is set to True, each tag's page will contain
 # the posts themselves. If set to False, it will be just a list of links.
-# TAG_PAGES_ARE_INDEXES = False
+TAG_PAGES_ARE_INDEXES = False
 
 # Set descriptions for tag pages to make them more interesting. The
 # default is no description. The value is used in the meta description
@@ -303,16 +300,14 @@ HIDDEN_TAGS = ['featured']
 # TAGLIST_MINIMUM_POSTS number of posts or more with every tag. Every tag
 # page is still generated, linked from posts, and included in the sitemap.
 # However, more obscure tags can be hidden from the tag index page.
-TAGLIST_MINIMUM_POSTS = 2
+TAGLIST_MINIMUM_POSTS = 1
 
 # A list of dictionaries specifying tags which translate to each other.
 # Format: a list of dicts {language: translation, language2: translation2, …}
-# For example:
-#   [
-#     {'en': 'private', 'de': 'Privat'},
+# TAG_TRANSLATIONS = [
+#     {'en': 'tag', 'es': 'etiqueta'},
 #     {'en': 'work', 'fr': 'travail', 'de': 'Arbeit'},
 #   ]
-# TAG_TRANSLATIONS = []
 
 # If set to True, a tag in a language will be treated as a translation
 # of the literally same tag in all other languages. Enable this if you
@@ -330,15 +325,10 @@ CATEGORY_PATH = {
 }
 CATEGORY_PREFIX = ""
 
-# By default, the list of categories is stored in
-#     output / TRANSLATION[lang] / CATEGORY_PATH / index.html
-# (see explanation for CATEGORY_PATH). This location can be changed to
-#     output / TRANSLATION[lang] / CATEGORIES_INDEX_PATH
-# with an arbitrary relative path CATEGORIES_INDEX_PATH.
-# (translatable)
+# Force category listing to be the INDEX.HTML of the prev CATEGORY_PATH setting.
 CATEGORIES_INDEX_PATH = {
-    "en": "categories.html",
-    "es": "categorias.html"
+    "en": "category/index.html",
+    "es": "categoria/index.html"
 }
 # If CATEGORY_ALLOW_HIERARCHIES is set to True, categories can be organized in
 # hierarchies. For a post, the whole path in the hierarchy must be specified,
@@ -352,7 +342,7 @@ CATEGORY_OUTPUT_FLAT_HIERARCHY = False
 
 # If CATEGORY_PAGES_ARE_INDEXES is set to True, each category's page will contain
 # the posts themselves. If set to False, it will be just a list of links.
-CATEGORY_PAGES_ARE_INDEXES = True
+CATEGORY_PAGES_ARE_INDEXES = False
 
 # Set descriptions for category pages to make them more interesting. The
 # default is no description. The value is used in the meta description
@@ -427,11 +417,14 @@ HIDDEN_CATEGORIES = []
 # output / TRANSLATION[lang] / AUTHOR_PATH / author.html (list of posts by an author)
 # output / TRANSLATION[lang] / AUTHOR_PATH / author RSS_EXTENSION (RSS feed for an author)
 # (translatable)
-# AUTHOR_PATH = "authors"
+AUTHOR_PATH = {
+               "en":"authors",
+               "es": "autores"
+}
 
 # If AUTHOR_PAGES_ARE_INDEXES is set to True, each author's page will contain
 # the posts themselves. If set to False, it will be just a list of links.
-# AUTHOR_PAGES_ARE_INDEXES = False
+AUTHOR_PAGES_ARE_INDEXES = False
 
 # Set descriptions for author pages to make them more interesting. The
 # default is no description. The value is used in the meta description
@@ -457,13 +450,13 @@ INDEX_PATH = "blog"
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
 FRONT_INDEX_HEADER = {
-    DEFAULT_LANG: ''
+    DEFAULT_LANG: 'EN'
 }
 
 # Create per-month archives instead of per-year
-# CREATE_MONTHLY_ARCHIVE = False
+CREATE_MONTHLY_ARCHIVE = False
 # Create one large archive instead of per-year
-# CREATE_SINGLE_ARCHIVE = False
+CREATE_SINGLE_ARCHIVE = True
 # Create year, month, and day archives each with a (long) list of posts
 # (overrides both CREATE_MONTHLY_ARCHIVE and CREATE_SINGLE_ARCHIVE)
 # CREATE_FULL_ARCHIVES = False
@@ -477,19 +470,22 @@ FRONT_INDEX_HEADER = {
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / index.html
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / DAY / index.html
 # (translatable)
-# ARCHIVE_PATH = ""
-# ARCHIVE_FILENAME = "archive.html"
+ARCHIVE_PATH = {
+    "en": "archive",
+    "es": "archivo"
+}
+ARCHIVE_FILENAME = "index.html"
 
 # If ARCHIVES_ARE_INDEXES is set to True, each archive page which contains a list
 # of posts will contain the posts themselves. If set to False, it will be just a
 # list of links.
-# ARCHIVES_ARE_INDEXES = False
+ARCHIVES_ARE_INDEXES = False
 
 # URLs to other posts/pages can take 3 forms:
 # rel_path: a relative URL to the current page/post (default)
 # full_path: a URL with the full path from the root
 # absolute: a complete URL (that includes the SITE_URL)
-# URL_TYPE = 'rel_path'
+URL_TYPE = 'absolute'
 
 # Extension for RSS feed files
 # RSS_EXTENSION = ".xml"
@@ -517,11 +513,11 @@ ATOM_FILENAME_BASE = "feed"
 
 # Slug the Tag URL. Easier for users to type, special characters are
 # often removed or replaced as well.
-# SLUG_TAG_PATH = True
+SLUG_TAG_PATH = True
 
 # Slug the Author URL. Easier for users to type, special characters are
 # often removed or replaced as well.
-# SLUG_AUTHOR_PATH = True
+SLUG_AUTHOR_PATH = True
 
 # A list of redirection tuples, [("foo/from.html", "/bar/to.html")].
 #
@@ -661,7 +657,7 @@ GITHUB_COMMIT_SOURCE = True
 
 # Use a thumbnail (defined by ".. previewimage:" in the gallery's index) in
 # list of galleries for each gallery
-GALLERIES_USE_THUMBNAIL = False
+GALLERIES_USE_THUMBNAIL = True
 
 # Image to use as thumbnail for those galleries that don't have one
 # None: show a grey square

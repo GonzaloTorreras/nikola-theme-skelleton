@@ -4,4 +4,10 @@
     cat_items
 #}
 {% set body_class = body_class ~ "tags "%}
-{% extends "index.tmpl" %}
+{% extends "listing.tmpl" %}
+
+{% block pre_footer %}
+    {{ items|pprint }}
+    <hr>
+    {{ cat_items|pprint }}
+{% endblock %}

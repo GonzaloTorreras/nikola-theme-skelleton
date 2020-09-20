@@ -200,21 +200,23 @@
         data-post_previewimage="{{- post.previewimage|e -}}" 
         {%- endif -%}
         >
-        <!--
-        {{- post|pprint -}}
-        -->
+        {{- "<!-- %s -->"|format(post|pprint) if is_verbose -}}
+
             <header class="post-header">
-                <a class="post-link" href="{{- post.permalink()|e -}}">
-                    {{- '<img loading="lazy" class="post-img" src="%s" />'|format( post.previewimage|e ) if post.previewimage -}}
-                </a>
+                {% if post.previewimage %}
+                    <a class="post-link" href="{{- post.permalink()|e -}}">
+                        {{- '<img loading="lazy" class="post-img" src="%s" />'|format( post.previewimage|e )  -}}
+                    </a>
+                {% endif %}
+                {{- post_tags(post.tags) -}}
             </header>
             <section class="post-content">
+
                 <h2 class="post-title">
                     <a class="post-link" href="{{- post.permalink()|e -}}">
                         {{- post.title()|e -}}
                     </a>
                 </h2>
-                {{- post_tags(post.tags) -}}
                 <div class="post-body">{{- post.text()|striptags|truncate(50,false,"")|e -}}</div>
             </section>
         </article>

@@ -6,295 +6,279 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/2012/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/2020/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/archive.html</loc>
-  <lastmod>2020-09-20T20:27:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/archive/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/authors/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/authors/gonzalo-torreras/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/authors/roberto-alsina/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/</loc>
-  <lastmod>2020-09-16T08:59:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories.html</loc>
-  <lastmod>2020-09-20T20:27:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/blog/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/etiqueta/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/python/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/category/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/category/category/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/category/nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/2012/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/archivo/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/2020/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/autores/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/archive.html</loc>
-  <lastmod>2020-09-20T20:27:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/autores/gonzalo-torreras/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/authors/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/authors/gonzalo-torreras/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/authors/roberto-alsina/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/autores/roberto-alsina/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/</loc>
-  <lastmod>2020-09-16T08:59:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categoria/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categoria/cat/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categoria/nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categorias.html</loc>
-  <lastmod>2020-09-20T20:27:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/blog/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/blog/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/demo/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/etiqueta/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/etiqueta/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/nikola/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
- </url>
- <url>
-  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/python/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/etiquetas/python/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/galleries/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/galleries/demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/about-nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/about-nikola/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/charts/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/charts/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/creating-a-theme/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/creating-a-theme/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/dr-nikolas-vendetta/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/dr-nikolas-vendetta/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/extending/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/extending/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/handbook/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/handbook/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/internals/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/internals/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/listings-demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/listings-demo/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/path-handlers/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/path-handlers/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/quickref/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/quickref/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/quickstart/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/quickstart/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/social_buttons/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/social_buttons/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/theming/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/theming/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/posts/test-es/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/posts/test/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/posts/welcome-to-nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="en" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/posts/welcome-to-nikola/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/galleries/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/galleries/demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/listings/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/listings/__pycache__/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/listings/hello.py.html</loc>
-  <lastmod>2020-09-20T20:27:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/about-nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/charts/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/creating-a-theme/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/dr-nikolas-vendetta/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/extending/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/handbook/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/internals/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/listings-demo/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/path-handlers/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/quickref/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/quickstart/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/social_buttons/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/theming/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/posts/test/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
   <xhtml:link rel="alternate" hreflang="es" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/posts/test-es/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/posts/welcome-to-nikola/</loc>
-  <lastmod>2020-09-10T10:50:00Z</lastmod>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/blog/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/demo/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/etiqueta/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/nikola/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/tags/python/</loc>
+  <lastmod>2020-09-20T21:27:00Z</lastmod>
  </url>
 </urlset>

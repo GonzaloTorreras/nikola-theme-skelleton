@@ -45,7 +45,7 @@
   
   h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: 0 0 0.67em 0;
   }
   
   /* Grouping content
@@ -413,6 +413,10 @@
         color: var(--main-color);
         transition-duration: .2s;
         transition-property: color, text-decoration, background-color, border-color;
+    }
+
+    h1,h2,h3,h4,h5,h6{
+      margin-top: 0;
     }
 
     input[type="text"],
