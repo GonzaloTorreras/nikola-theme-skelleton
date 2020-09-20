@@ -18,7 +18,9 @@
     padding: 0;
     margin: .5rem 0;
 }
-
+.post-tags li{
+    display: inline-block;
+}
 .post-tag-link {
     text-decoration: none;
     padding: .2rem .5rem;

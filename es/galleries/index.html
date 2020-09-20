@@ -17,21 +17,52 @@
 
     <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../">Skelleton framework</a>
 
-             <!-- macro: ui.menu((('/es/archive.html', 'Archivo'), ('/es/categories/', 'Etiquetas'), ('/es/rss.xml', 'Canal RSS'))) --><ul class="menu-horizontal flex-hright main-menu">
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../archive.html">Archivo</a></li>
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../categories/">Etiquetas</a></li>
-<!-- TODO: figure out current_url to check for active status on menu--><li class="menu-item"><a class="menu-link " href="../rss.xml">Canal RSS</a></li>
-</ul>
-<!-- macro: ui.langSwitcher() --><div class="translation-menu-wrapper">
-        <!-- macro: ui.menuConstructor([{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'lang-item-link', 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': 'lang-item-link active ', 'extra_li_class': 'lang-item'}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu">
-<li class="menu-item lang-item">
-            <a href="../../" rel="alternate" hreflang="en" class="menu-link lang-item-link">en</a>
+            <!-- macro: ui.legacy_menu_generator((('/es/archive.html', 'Archivo'), ('/es/categories/', 'Etiquetas'), ('/es/rss.xml', 'Canal RSS')), False) -->        
+
+
+        
+
+
+        
+
+
+    <!-- macro: ui.menuConstructor([{'text': 'Archivo', 'href': '/es/archive.html'}, {'text': 'Etiquetas', 'href': '/es/categories/'}, {'text': 'Canal RSS', 'href': '/es/rss.xml'}], False) --><ul class="menu-horizontal flex-hright">
+<li class="menu-item ">
+            <a href="../archive.html" class="menu-link ">Archivo</a>
 </li>        
         
-        <li class="menu-item lang-item active">
-            <a href="../" rel="alternate" hreflang="es" class="menu-link lang-item-link active ">es</a>
+        <li class="menu-item ">
+            <a href="../categories/" class="menu-link ">Etiquetas</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="../rss.xml" class="menu-link ">Canal RSS</a>
 </li>
 </ul>
+<div class="search-form-wrapper" role="search">
+<form class="search-form" action="#"> 
+    <input type="text" required placeholder=""><button type="submit">S</button>
+</form>
+</div>
+
+
+            
+            <!-- macro: ui.langSwitcher() --> 
+  
+ 
+  
+    <div class="translation-menu-wrapper">
+        <!-- macro: ui.menuConstructor([{'href': '#', 'text': 'es', 'class': 'active', 'children': [{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '#', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item  active with-children ">
+            <a href="#" class="menu-link active">es</a><ul class="submenu">
+<li class="menu-item lang-item">
+            <a href="../../" rel="alternate" hreflang="en" class="menu-link ">en</a>
+</li>        
+        
+        <li class="menu-item lang-item">
+            <a href="#" rel="alternate" hreflang="es" class="menu-link ">es</a>
+</li>
+</ul>
+</li></ul>
 </div>
 
         </nav></header><main id="site-content"><h1>Hello world! - Skelleton framework</h1>
@@ -41,7 +72,7 @@
                     <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
-<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'es/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item ">
+<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'es/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item  with-children ">
             <a href="es/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item ">
             <a href="#" class="menu-link ">child1</a>
 </li></ul>
