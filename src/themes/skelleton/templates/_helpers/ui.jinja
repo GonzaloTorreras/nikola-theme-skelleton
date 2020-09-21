@@ -68,11 +68,11 @@
 {% endmacro %}
 {% endif %}
 {#
-    TODO menuConstructor():
-    - Accesibility ARIA
+    TODO ui.menuConstructor():
+        - Accesibility ARIA
     -----------------------
     menuConstructor(items,opts): Richer menu generator that accepts xmlAttr format to generate a 100% customizable menu.
-    - items (dict): 
+    - items (dict): All the dict will be used to print HTML from XMLAttr. The only "required" are text and href.
 
     - opts (dict):
         - menuFlow (string): horizontal || vertical
@@ -82,13 +82,14 @@
             If you need custom styles, or want to have a more customized menu you can add extra classes.
             It will be added after default classes to UL element.
             ul.menu-horizontal.flex-hright.customClass
+    Example:
+    menuConstructor({
+
+    },{})
 #}
 {%- macro menuConstructor(items, opts = false) -%}
 {{- macros.verbose( "\nmacro:\nui.menuConstructor(\n%s,\n%s\n)\n"|format(items, opts) ) -}}
-    {#
-        menuFlow:       str(horizonal | vertical). generate class menu-${horizontal||vertical} for styling.
-        menuExtraClass: str(""). Custom class, for example to have different/individual menus selectors, such translations-menu
-    #}
+
     {%- set _opts = {
         "menuFlow": "horizontal",
         "menuExtraClass": ""
@@ -153,10 +154,12 @@
 {% endmacro %}
 
 {#
-    TODO: 
+    TODO: ui.searchForm()
     - messages: SEARCH + SEARCH_PLACEHOLDER 
     - Button submit icon
-
+    ----------------------
+    Nothing special, just one place to handle the HTML of all search forms,
+    so if you need to change it you will only need to do it here.
 #}
 {% macro searchForm() %}
 {{- macros.verbose("\nmacro:\nui.searchForm()\n") -}}
@@ -168,7 +171,9 @@
 </div>
 {% endmacro %}
 
-
+{#
+    This will help to generate richer pages
+#}
 {%- macro section(section) -%}
 {{- macros.verbose( "\nmacro:\nui.section(\n%s\n)\n"|format(section) ) -}}
     {%- set opts = {
