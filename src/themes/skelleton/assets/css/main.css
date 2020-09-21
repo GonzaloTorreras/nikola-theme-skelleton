@@ -405,6 +405,13 @@
         background-color: rgba(255,255,255,.4);
         border-radius: var(--border-radius, 0);
     }
+    code,
+    blockquote{
+        border: 3px solid rgba(255,255,255,.4);
+        background-color: rgba(255,255,255,.4);
+        border-radius: var(--border-radius, 0);
+    }
+
     img{
         max-width: 100%;
     }

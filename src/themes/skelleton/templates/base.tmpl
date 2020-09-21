@@ -41,6 +41,11 @@
 {#
     Load the macros AFTER setting up the variables
 #}
+{#
+    TODO: Figure out a way to load an unexisting file, so child theme can contain a "custom"
+    macros that will overwrite just "same name" macros.
+#}
+{#% include "_helpers/custom.jinja" ignore missing with context as custom %#}
 {% import "_helpers/base.jinja" as macros with context %}
 {% import "_helpers/ui.jinja" as ui with context %}
 

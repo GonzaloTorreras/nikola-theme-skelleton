@@ -17,7 +17,13 @@
 
     <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/">Skelleton framework</a>
 
-            <!-- macro: ui.legacy_menu_generator((('/es/archive.html', 'Archivo'), ('/es/categories/', 'Etiquetas'), ('/es/rss.xml', 'Canal RSS')), False) -->        
+            <!-- 
+macro:
+ui.legacy_menu_generator(
+(('/archivo/', 'Archivo'), ('/categorias/', 'Etiquetas'), ('/blog/', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Child 1.1'), ((('/pages', 'Child 1.2.1'), ('/pages', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+ False
+)
+ -->        
 
 
         
@@ -26,33 +32,97 @@
         
 
 
-    <!-- macro: ui.menuConstructor([{'text': 'Archivo', 'href': '/es/archive.html'}, {'text': 'Etiquetas', 'href': '/es/categories/'}, {'text': 'Canal RSS', 'href': '/es/rss.xml'}], False) --><ul class="menu-horizontal flex-hright">
-<li class="menu-item ">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/archive.html" class="menu-link ">Archivo</a>
-</li>        
         
-        <li class="menu-item ">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/categories/" class="menu-link ">Etiquetas</a>
-</li>        
+
+
         
-        <li class="menu-item ">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/rss.xml" class="menu-link ">Canal RSS</a>
-</li>
-</ul>
-<div class="search-form-wrapper" role="search">
-<form class="search-form" action="#"> 
-    <input type="text" required placeholder=""><button type="submit">S</button>
-</form>
-</div>
+
+
+                
+
+
+                
+
+                
+
+
+                
+
 
 
             
-            <!-- macro: ui.langSwitcher() --> 
+
+    <!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'Archivo', 'href': '/archivo/'}, {'text': 'Etiquetas', 'href': '/categorias/'}, {'text': 'Blog', 'href': '/blog/'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+False
+)
+ -->
+<ul class="menu-horizontal flex-hright">
+<li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/archivo/" class="menu-link ">Archivo</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/categorias/" class="menu-link ">Etiquetas</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/" class="menu-link ">Blog</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/rss.xml" class="menu-link ">RSS feed</a>
+</li>        
+        
+        <li class="menu-item  with-children ">
+            <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
+<li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="1" children="False">Child 1.1</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="2" children="False">Child 1.2.1</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="2" children="False">Child 1.2.2</a>
+</li>        
+        
+        <li class="menu-item ">
+            <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child 1.2</a>
+</li>
+</ul>
+</li>
+</ul>
+<!-- <!-- 
+macro:
+ui.searchForm()
+ --><div class="search-form-wrapper" role="search">
+    <form class="search-form" action="#">
+        <input type="text" required placeholder=""><button type="submit">S</button>
+    </form>
+</div>
+ --&gt;
+
+            
+            <!-- 
+macro:
+ui.langSwitcher()
+ --> 
   
  
   
     <div class="translation-menu-wrapper">
-        <!-- macro: ui.menuConstructor([{'href': '#', 'text': 'es', 'class': 'active', 'children': [{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '#', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}], {'menuExtraClass': 'translation-menu'}) --><ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item  active with-children ">
+        <!-- 
+macro:
+ui.menuConstructor(
+[{'href': '#', 'text': 'es', 'class': 'active', 'children': [{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '#', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}],
+{'menuExtraClass': 'translation-menu'}
+)
+ -->
+<ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item  active with-children ">
             <a href="#" class="menu-link active">es</a><ul class="submenu">
 <li class="menu-item lang-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/" rel="alternate" hreflang="en" class="menu-link ">en</a>
@@ -65,9 +135,19 @@
 </li></ul>
 </div>
 
-        </nav></header><main id="site-content"><article><!-- macro: ui.section({'ele': 'header', 'class': 'page-header'}) --><header class="section page-header"><div class="container">        <h1 class="page-title">A reStructuredText Primer</h1>
+        </nav></header><main id="site-content"><article><!-- 
+macro:
+ui.section(
+{'ele': 'header', 'class': 'page-header'}
+)
+ --><header class="section page-header"><div class="container">        <h1 class="page-title">A reStructuredText Primer</h1>
 </div>
-</header><!-- macro: ui.section({'ele': 'div', 'class': 'page-content'}) --><div class="section page-content">
+</header><!-- 
+macro:
+ui.section(
+{'ele': 'div', 'class': 'page-content'}
+)
+ --><div class="section page-content">
     <div class="container">        <div>
 <dl class="docinfo simple">
 <dt class="author">Author</dt>
@@ -445,7 +525,13 @@ list.</p>
                     <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo Torreras</a></p>
                 </ul>
 <ul class="col col-2"></ul>
-<!-- macro: ui.menuConstructor([{'text': 'RSS', 'href': 'es/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}], {'menuExtraClass': 'col col-3'}) --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item  with-children ">
+<!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'RSS', 'href': 'es/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}],
+{'menuExtraClass': 'col col-3'}
+)
+ --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item  with-children ">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/pages/quickstart/es/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item ">
             <a href="#" class="menu-link ">child1</a>
 </li></ul>

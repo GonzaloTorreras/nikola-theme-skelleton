@@ -1,20 +1,19 @@
-{%- macro menu(links,menuExtraClass="") -%}
-{{- macros.verbose( "macro: ui.menu(%s)"|format(links) ) -}}
-
-<ul class="menu-horizontal flex-hright{{- ' %s'|format(menuExtraClass) if menuExtraClass -}}">
-    {%- for link, text in links -%}
-        {%- set class = links[loop.index].class if links[loop.index0].class is defined else "" -%}
-        {%- set active = " active" if link == current_url -%}<!-- TODO: figure out current_url to check for active status on menu-->
-        {{- '<li class="menu-item"><a class="menu-link %s" href="%s">%s</a></li>'|format(class ~ active, link, text) -}}
-    {%- endfor -%}
-</ul>
-{%- endmacro -%}
-
+{% if not custom %}
+    {% set custom = {} %}
+{% endif %}
+{% if not custom.legacy_menu_generator is defined %}
 {#
-    This macro will convert "legacy" (from config, theme setting or basically that format)
+    legacy_menu_generator(items,opts): Converts "legacy" (from config settings format) to a compatible for menuConstructor().
+    - items (tuple): ( ("link/", "text"), ("link2/", "text2") )
+        Are expected to follow the tuple config.py format, accepts any amount of subdomains.
+    - Opts (dict): { ... }
+        Directly passed to menuConstructor(). Check it to see all the available opts.
+
+    Example: Use case in header menu:
+    {{ ui.legacy_menu_generator(navigation_links[lang]) }}
 #}
 {% macro legacy_menu_generator(items, opts = false) %}
-    {{- macros.verbose( "macro: ui.legacy_menu_generator(%s, %s)"|format(items, opts) ) -}}
+    {{- macros.verbose( "\nmacro:\nui.legacy_menu_generator(\n%s,\n %s\n)\n"|format(items, opts) ) -}}
     {% set new_menu = [] %}
     {% for link,text in items %}
         
@@ -67,13 +66,25 @@
     {% endfor %}
     {{ menuConstructor(new_menu, opts) }}
 {% endmacro %}
+{% endif %}
 {#
     TODO menuConstructor():
     - Accesibility ARIA
-    - Conversor from legacy menu  in config.py to xmlAttr, ideally a new/different setting for the theme?.
+    -----------------------
+    menuConstructor(items,opts): Richer menu generator that accepts xmlAttr format to generate a 100% customizable menu.
+    - items (dict): 
+
+    - opts (dict):
+        - menuFlow (string): horizontal || vertical
+            This is CSS dependent. It will use .menu-horizontal or .menu-vertical. Default: horizontal.
+
+        - menuExtraClass (string): "any"
+            If you need custom styles, or want to have a more customized menu you can add extra classes.
+            It will be added after default classes to UL element.
+            ul.menu-horizontal.flex-hright.customClass
 #}
-{%- macro menuConstructor(items,opts = false) -%}
-{{- macros.verbose( "macro: ui.menuConstructor(%s, %s)"|format(items, opts) ) -}}
+{%- macro menuConstructor(items, opts = false) -%}
+{{- macros.verbose( "\nmacro:\nui.menuConstructor(\n%s,\n%s\n)\n"|format(items, opts) ) -}}
     {#
         menuFlow:       str(horizonal | vertical). generate class menu-${horizontal||vertical} for styling.
         menuExtraClass: str(""). Custom class, for example to have different/individual menus selectors, such translations-menu
@@ -82,12 +93,9 @@
         "menuFlow": "horizontal",
         "menuExtraClass": ""
     } -%}
-    {% if opts %}
-    {%- for key,val in opts.items() -%} {# foreach incoming opts and mix with defaults #}
-        {# Overwrite defaults _opts with arg #}
-        {%- set _dummy = _opts.update( {key: val}) -%}
-    {%- endfor -%}
-    {% endif %}
+
+    {%- set _dummy = _opts.update(opts) if opts %}{# mix incoming opts with defaults #}
+
 <ul class="menu-{{_opts.menuFlow }} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
     {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
@@ -110,8 +118,12 @@
 </ul>
 {%- endmacro -%}
 
+{#
+
+
+#}
 {% macro langSwitcher() %}
-{{- macros.verbose( "macro: ui.langSwitcher()" ) -}}
+{{- macros.verbose( "\nmacro:\nui.langSwitcher()\n" ) -}}
     {% set translation_links = [
         {
             "href": "#",
@@ -140,22 +152,25 @@
     </div>
 {% endmacro %}
 
-{% macro searchForm() %}
-<div class="search-form-wrapper" role="search">
-<form class="search-form" action="#"> 
-{# TODO: 
+{#
+    TODO: 
     - messages: SEARCH + SEARCH_PLACEHOLDER 
     - Button submit icon
+
 #}
-    <input type="text" required placeholder="{#{ messages('SEARCH_PLACEHOLDER', langname ) }#}" />
-    <button type="submit">S{#{ messages('SEARCH', langname ) }#}</button>
-</form>
+{% macro searchForm() %}
+{{- macros.verbose("\nmacro:\nui.searchForm()\n") -}}
+<div class="search-form-wrapper" role="search">
+    <form class="search-form" action="#">
+        <input type="text" required placeholder="{#{ messages('SEARCH_PLACEHOLDER', langname ) }#}" />
+        <button type="submit">S{#{ messages('SEARCH', langname ) }#}</button>
+    </form>
 </div>
 {% endmacro %}
 
 
 {%- macro section(section) -%}
-{{- macros.verbose( "macro: ui.section(%s)"|format(section) ) -}}
+{{- macros.verbose( "\nmacro:\nui.section(\n%s\n)\n"|format(section) ) -}}
     {%- set opts = {
             "ele": "div",
             "class":"section "
@@ -183,7 +198,7 @@
     Blog post listing
 #}
 {%- macro post_listing(posts) -%}
-{{- macros.verbose( "macro: ui.post_listing(%s)"|format(posts) ) -}}
+{{- macros.verbose( "\nmacro:\nui.post_listing(\n%s\n)\n"|format(posts) ) -}}
 
     <div class="post-listing">
     {%- for post in posts -%}
@@ -225,7 +240,7 @@
 {%- endmacro -%}
 
 {%- macro post_tags(tags = false) -%}
-{{- macros.verbose( "macro: ui.post_tags(%s)"|format(tags|pprint) ) -}}
+{{- macros.verbose( "\nmacro:\nui.post_tags(\n%s\n)\n"|format(tags|pprint) ) -}}
     {%- if (not tags) and post is defined -%}
         {%- set tags = post.tags -%}
     {%- endif -%}
