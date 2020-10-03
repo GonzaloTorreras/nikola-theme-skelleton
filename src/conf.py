@@ -243,7 +243,7 @@ METADATA_FORMAT = "YAML"
 # untranslated posts.
 # If this is set to False, then posts that are not translated to a language
 # LANG will not be visible at all in the pages in that language.
-# SHOW_UNTRANSLATED_POSTS = True
+SHOW_UNTRANSLATED_POSTS = False
 
 # Nikola supports logo display.  If you have one, you can put the URL here.
 # Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
@@ -341,15 +341,15 @@ TAGLIST_MINIMUM_POSTS = 1
 # output / TRANSLATION[lang] / CATEGORY_PATH / CATEGORY_PREFIX category RSS_EXTENSION (RSS feed for a category)
 # (translatable)
 CATEGORY_PATH = {
-    "en": "category",
-    "es": "categoria"
+    "en": INDEX_PATH + "category",
+    "es": INDEX_PATH + "categoria"
 }
 CATEGORY_PREFIX = ""
 
 # Force category listing to be the INDEX.HTML of the prev CATEGORY_PATH setting.
 CATEGORIES_INDEX_PATH = {
-    "en": "category/index.html",
-    "es": "categoria/index.html"
+    "en": "index.html",
+    "es": "index.html"
 }
 # If CATEGORY_ALLOW_HIERARCHIES is set to True, categories can be organized in
 # hierarchies. For a post, the whole path in the hierarchy must be specified,
@@ -431,7 +431,7 @@ HIDDEN_CATEGORIES = []
 
 # If ENABLE_AUTHOR_PAGES is set to True and there is more than one
 # author, author pages are generated.
-# ENABLE_AUTHOR_PAGES = True
+ENABLE_AUTHOR_PAGES = True
 
 # Path to author pages. Final locations are:
 # output / TRANSLATION[lang] / AUTHOR_PATH / index.html (list of authors)
@@ -773,7 +773,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # If False, index-1.html has the second-newest posts, index-2.html the third-newest,
 # and index-n.html the oldest posts. When this is active, old posts can be moved
 # to other index pages when new posts are added.
-# INDEXES_STATIC = True
+INDEXES_STATIC = False
 #
 # (translatable) If PRETTY_URLS is set to True, this setting will be used to create
 # prettier URLs for index pages, such as page/2/index.html instead of index-2.html.
@@ -793,7 +793,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # Note that in case INDEXES_PAGES_MAIN is set to True, a redirection will be created
 # for the full URL with the page number of the main page to the normal (shorter) main
 # page URL.
-# INDEXES_PRETTY_PAGE_URL = False
+INDEXES_PRETTY_PAGE_URL = True
 #
 # If the following is true, a page range navigation will be inserted to indices.
 # Please note that this will undo the effect of INDEXES_STATIC, as all index pages
@@ -897,7 +897,7 @@ CONTENT_FOOTER_FORMATS = {
 
 # A simple copyright tag for inclusion in RSS feeds that works just
 # like CONTENT_FOOTER and CONTENT_FOOTER_FORMATS
-RSS_COPYRIGHT = 'Contents © {date} <a href="mailto:{email}">{author}</a> {license}'
+RSS_COPYRIGHT = '©{date} <a href="mailto:{email}">{author}</a> {license}'
 RSS_COPYRIGHT_PLAIN = 'Contents © {date} {author} {license}'
 RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 
@@ -905,7 +905,7 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, intensedebate, isso, muut, commento
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = "disqus"
+COMMENT_SYSTEM = ""
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
