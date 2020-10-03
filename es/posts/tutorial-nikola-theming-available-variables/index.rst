@@ -7,3 +7,6 @@
 .. description: 
 .. type: text
 
+#
+
+## Updated link: https://getnikola.com/template-variables.html#variables-available-in-the-tags-and-categories-page-tags-tmpl
