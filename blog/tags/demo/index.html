@@ -24,74 +24,38 @@ ui.legacy_menu_generator(
 (('/archive/', 'Archive'), ('/categories/', 'Tags'), ('/blog/', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Child 1.1'), ((('/pages', 'Child 1.2.1'), ('/pages', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
  False
 )
- -->        
-
-
-        
-
-
-        
-
-
-        
-
-
-        
-
-
-                
-
-
-                
-
-                
-
-
-                
-
-
-
-            
-
-    <!-- 
+ --><!-- 
 macro:
 ui.menuConstructor(
 [{'text': 'Archive', 'href': '/archive/'}, {'text': 'Tags', 'href': '/categories/'}, {'text': 'Blog', 'href': '/blog/'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
  -->
-<ul class="menu-horizontal flex-hright">
-<li class="menu-item ">
+<ul class="menu-horizontalflex-hright">
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/archive/" class="menu-link ">Archive</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/categories/" class="menu-link ">Tags</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/" class="menu-link ">Blog</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/rss.xml" class="menu-link ">RSS feed</a>
-</li>        
-        
-        <li class="menu-item  with-children ">
+</li>
+<li class="menu-item with-children ">
             <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
-<li class="menu-item ">
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="1" children="False">Child 1.1</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="2" children="False">Child 1.2.1</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages" class="menu-link submenu-item" data-depth="2" children="False">Child 1.2.2</a>
-</li>        
-        
-        <li class="menu-item ">
+</li>
+<li class="menu-item">
             <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child 1.2</a>
 </li>
 </ul>
@@ -106,36 +70,29 @@ ui.searchForm()
     </form>
 </div>
 
-
             
             <!-- 
 macro:
 ui.langSwitcher()
- --> 
-  
- 
-  
-    <div class="translation-menu-wrapper">
-        <!-- 
+ --><div class="translation-menu-wrapper">
+<!-- 
 macro:
 ui.menuConstructor(
 [{'href': '#', 'text': 'en', 'class': 'active', 'children': [{'href': '#', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}],
 {'menuExtraClass': 'translation-menu'}
 )
  -->
-<ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item  active with-children ">
+<ul class="menu-horizontalflex-hright translation-menu"><li class="menu-item active with-children ">
             <a href="#" class="menu-link active">en</a><ul class="submenu">
-<li class="menu-item lang-item">
+<li class="menu-itemlang-item">
             <a href="#" rel="alternate" hreflang="en" class="menu-link ">en</a>
-</li>        
-        
-        <li class="menu-item lang-item">
+</li>
+<li class="menu-itemlang-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/" rel="alternate" hreflang="es" class="menu-link ">es</a>
 </li>
 </ul>
 </li></ul>
 </div>
-
         </nav></header><main id="site-content"><!-- 
 macro:
 ui.section(
@@ -191,8 +148,8 @@ ui.menuConstructor(
 [{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}],
 {'menuExtraClass': 'col col-3'}
 )
- --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item  with-children ">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tags/demo/en/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item ">
+ --><ul class="menu-horizontalflex-hright col col-3"><li class="menu-item with-children ">
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tags/demo/en/rss.xml" target="_blank" class="menu-link ">RSS</a><ul class="submenu"><li class="menu-item">
             <a href="#" class="menu-link ">child1</a>
 </li></ul>
 </li></ul></nav></section></footer>
