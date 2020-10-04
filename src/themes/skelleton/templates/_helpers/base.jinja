@@ -1,11 +1,11 @@
-{% macro verbose(comment) -%}
+{%- macro verbose(comment) -%}
 {{- '<!-- %s -->'|format( comment|replace("<!--","")|replace("-->","") ) if is_verbose -}}
-{%- endmacro %}
+{%- endmacro -%}
 
-{% macro header_translation_menu(links) %}
+{%- macro header_translation_menu(links) -%}
 {{- macros.verbose( "macro: macros.header_translation_menu(%s)"|format(links) ) -}}
-    {{ ui.menu() }}
-{% endmacro %}
+    {{- ui.menu() -}}
+{%- endmacro -%}
 {#
     Used to generate all the links to the assets in the <head>.
     Ideally you won't call this directly but the helpers include_css() and include_js().

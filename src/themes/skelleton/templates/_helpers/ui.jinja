@@ -1,7 +1,7 @@
-{% if not custom %}
-    {% set custom = {} %}
-{% endif %}
-{% if not custom.legacy_menu_generator is defined %}
+{%- if not custom -%}
+    {%- set custom = {} -%}
+{%- endif -%}
+{%- if not custom.legacy_menu_generator is defined -%}
 {#
     legacy_menu_generator(items,opts): Converts "legacy" (from config settings format) to a compatible for menuConstructor().
     - items (tuple): ( ("link/", "text"), ("link2/", "text2") )
@@ -10,37 +10,37 @@
         Directly passed to menuConstructor(). Check it to see all the available opts.
 
     Example: Use case in header menu:
-    {{ ui.legacy_menu_generator(navigation_links[lang]) }}
+   {{- ui.legacy_menu_generator(navigation_links[lang])-}}
 #}
-{% macro legacy_menu_generator(items, opts = false) %}
+{%- macro legacy_menu_generator(items, opts = false) -%}
     {{- macros.verbose( "\nmacro:\nui.legacy_menu_generator(\n%s,\n %s\n)\n"|format(items, opts) ) -}}
-    {% set new_menu = [] %}
-    {% for link,text in items %}
+    {%- set new_menu = [] -%}
+    {%- for link,text in items -%}
         
-        {% set item = {
+        {%- set item = {
             "text": text,
             "href": link   
-        } %}
+        } -%}
 
-        {% if link is not string %}
-            {% set children = [] %}
+        {%- if link is not string -%}
+            {%- set children = [] -%}
 
             {#
                 For some reason trying to iterate a nested
                 tupple as (key,val in tupple) gives an error.
             #}
-            {% for child in link recursive %}
+            {%- for child in link recursive -%}
                 
-                {% set textC = child[1] %}
+                {%- set textC = child[1] -%}
 
-                {% if child[0] is not string %}
+                {%- if child[0] is not string -%}
                     {{- loop( child[0] ) -}}
-                    {% set hrefC = "#" %}
-                    {% set childrenC = [] %}
-                {% else %}
-                    {% set hrefC = child[0] %}
-                    {% set childrenC = false %}
-                {% endif %}
+                    {%- set hrefC = "#" -%}
+                    {%- set childrenC = [] -%}
+                {%- else -%}
+                    {%- set hrefC = child[0] -%}
+                    {%- set childrenC = false -%}
+                {%- endif -%}
 
                 {#
                     TODO: Nested children (2nth) is not working and are parsing to prev level
@@ -49,24 +49,24 @@
                             - Child 1.1 (not working).
                         - Child 2
                 #}
-                {% set _dummy = children
+                {%- set _dummy = children
                                     .append({
                                         "text": textC,
                                         "href": hrefC,
                                         "class": "submenu-item",
                                         "data-depth": loop.depth,
                                         "children": childrenC
-                                    }) %}
-            {% endfor %}
+                                    }) -%}
+            {%- endfor -%}
             
-            {% set _dummy = item.update({ "href": "#", "children": children }) %}
-        {% endif %}
+            {%- set _dummy = item.update({ "href": "#", "children": children }) -%}
+        {%- endif -%}
 
-        {% set _dummy = new_menu.append(item) %}
-    {% endfor %}
-    {{ menuConstructor(new_menu, opts) }}
-{% endmacro %}
-{% endif %}
+        {%- set _dummy = new_menu.append(item) -%}
+    {%- endfor -%}
+    {{- menuConstructor(new_menu, opts) -}}
+{%- endmacro -%}
+{%- endif -%}
 {#
     TODO ui.menuConstructor():
         - Accesibility ARIA
@@ -95,19 +95,19 @@
         "menuExtraClass": ""
     } -%}
 
-    {%- set _dummy = _opts.update(opts) if opts %}{# mix incoming opts with defaults #}
+    {%- set _dummy = _opts.update(opts) if opts -%}{# mix incoming opts with defaults #}
 
-<ul class="menu-{{_opts.menuFlow }} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
+<ul class="menu-{{_opts.menuFlow-}} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
     {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
-        {% set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) %}
+        {%- set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) -%}
 
         {%- set children = item.pop("children") if item.children else false -%}
         {%- set text = item.pop("text") -%}
 
-        {% set extra_li_class = item.pop("extra_li_class") if item.extra_li_class else false %}
+        {%- set extra_li_class = item.pop("extra_li_class") if item.extra_li_class else false -%}
         
-        <li class="menu-item {{ (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class ) ~ (' with-children ' if children)  }}">
+        <li class="menu-item{{- (extra_li_class if extra_li_class) ~ (' active' if 'active' in item.class ) ~ (' with-children ' if children) -}}">
             <a {{- item|xmlattr -}}>{{- text -}}</a>
             {%- if children -%}
                 <ul class="submenu">
@@ -123,35 +123,35 @@
 
 
 #}
-{% macro langSwitcher() %}
+{%- macro langSwitcher() -%}
 {{- macros.verbose( "\nmacro:\nui.langSwitcher()\n" ) -}}
-    {% set translation_links = [
+    {%- set translation_links = [
         {
             "href": "#",
             "text": lang,
             "class": "active",
             "children": []
         }
-    ] %}
-    {% for langname in translations|sort %}
+    ] -%}
+    {%- for langname in translations|sort -%}
         {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
-        {% set link = (_link('root', None, langname) if lang != langname else "#" ) %} 
-        {% set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) %} {# Display full lang name or code lang. #}
+        {%- set link = (_link('root', None, langname) if lang != langname else "#" ) -%} 
+        {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
         {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
         {# update dict with all the links xmlAttr formatted. #}
-        {% set _dummy = translation_links[0].children.append({
+        {%- set _dummy = translation_links[0].children.append({
                             "href":link,
                             "text": langname,
                             "rel": "alternate",
                             "hreflang": langname,
                             "class": class,
                             "extra_li_class": "lang-item"
-                        }) %} 
-    {% endfor %}
+                        }) -%} 
+    {%- endfor -%}
     <div class="translation-menu-wrapper">
-        {{ menuConstructor(translation_links, {"menuExtraClass": "translation-menu"}) }}
+       {{- menuConstructor(translation_links, {"menuExtraClass": "translation-menu"})-}}
     </div>
-{% endmacro %}
+{%- endmacro -%}
 
 {#
     TODO: ui.searchForm()
@@ -161,7 +161,7 @@
     Nothing special, just one place to handle the HTML of all search forms,
     so if you need to change it you will only need to do it here.
 #}
-{% macro searchForm() %}
+{%- macro searchForm() -%}
 {{- macros.verbose("\nmacro:\nui.searchForm()\n") -}}
 <div class="search-form-wrapper" role="search">
     <form class="search-form" action="#">
@@ -169,7 +169,7 @@
         <button type="submit">S{#{ messages('SEARCH', langname ) }#}</button>
     </form>
 </div>
-{% endmacro %}
+{%- endmacro -%}
 
 {#
     This will help to generate richer pages
@@ -223,11 +223,11 @@
         {{- "<!-- %s -->"|format(post|pprint) if is_verbose -}}
 
             <header class="post-header">
-                {% if post.previewimage %}
+                {%- if post.previewimage -%}
                     <a class="post-link" href="{{- post.permalink()|e -}}">
                         {{- '<img loading="lazy" class="post-img" src="%s" />'|format( post.previewimage|e )  -}}
                     </a>
-                {% endif %}
+                {%- endif -%}
                 {{- post_tags(post.tags) -}}
             </header>
             <section class="post-content">
