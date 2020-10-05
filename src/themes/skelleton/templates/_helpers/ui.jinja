@@ -90,14 +90,15 @@
 {%- macro menuConstructor(items, opts = false) -%}
 {{- macros.verbose( "\nmacro:\nui.menuConstructor(\n%s,\n%s\n)\n"|format(items, opts) ) -}}
 
+     {# TODO: Vertical flow extra classes #}
     {%- set _opts = {
-        "menuFlow": "horizontal",
+        "menuFlow": "horizontal", 
         "menuExtraClass": ""
     } -%}
 
     {%- set _dummy = _opts.update(opts) if opts -%}{# mix incoming opts with defaults #}
 
-<ul class="menu-{{_opts.menuFlow-}} flex-hright{{- ' %s'|format(_opts.menuExtraClass) if _opts.menuExtraClass -}}">
+{{ '<ul class="menu-%s flex-hright %s">'|format(_opts.menuFlow, _opts.menuExtraClass ) }}
     {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
         {%- set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) -%}
