@@ -7,7 +7,8 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/</loc>
-  <lastmod>2020-11-01T00:04:00Z</lastmod>
+  <lastmod>2020-11-01T00:13:00Z</lastmod>
+  <xhtml:link rel="alternate" hreflang="es" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/archive.html</loc>
@@ -32,6 +33,10 @@
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/authors/roberto-alsina/</loc>
   <lastmod>2020-10-06T09:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/category/</loc>
+  <lastmod>2020-11-01T00:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/category/category/</loc>
@@ -104,7 +109,7 @@
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/</loc>
-  <lastmod>2020-11-01T00:04:00Z</lastmod>
+  <lastmod>2020-11-01T00:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/archive.html</loc>
@@ -129,6 +134,10 @@
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/autores/roberto-alsina/</loc>
   <lastmod>2020-10-06T09:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/</loc>
+  <lastmod>2020-11-01T00:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/cat/</loc>
@@ -182,7 +191,6 @@
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/home/</loc>
   <lastmod>2020-10-06T09:56:00Z</lastmod>
-  <xhtml:link rel="alternate" hreflang="es" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/home/" />
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/internals/</loc>
