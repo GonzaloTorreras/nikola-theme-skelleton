@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Creating a Theme | Skelleton framework</title>
+<!-- Debug: NO DESCRIPTION! --><link rel="canonical" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/pages/creating-a-theme/">
+<!-- TODO: Double check author (blog_author?) --><!-- TODO: Canonical <span class="amp">&amp;</span> alternate multilingual --><!-- --><meta name="viewport" content="width=device-width">
+<link href="../../assets/css/main.css" rel="preload" as="style" type="text/css" onload="this.rel='stylesheet'">
+<!-- TODO: FavIcon --><meta name="theme-color" content="#27462a">
+<!-- extra_head -->
+</head>
+<body class="page">
+    <div class="site-box is_boxed">
+        <a href="#content" hidden class="">Skip to main content</a>
+
+
+    <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../">Skelleton framework</a>
+
+            <!-- 
+macro:
+ui.legacy_menu_generator(
+(('/archive/', 'Archive'), ('/categories/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Child 1.1'), ((('/pages', 'Child 1.2.1'), ('/pages', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+ False
+)
+ --><!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'Archive', 'href': '/archive/'}, {'text': 'Tags', 'href': '/categories/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+False
+)
+ -->
+<ul class="menu-horizontal flex-hright ">
+<li class="menu-item">
+            <a href="../../archive/" class="menu-link ">Archive</a>
+</li>
+<li class="menu-item">
+            <a href="../../categories/" class="menu-link ">Tags</a>
+</li>
+<li class="menu-item">
+            <a href="blog" class="menu-link ">Blog</a>
+</li>
+<li class="menu-item">
+            <a href="../../rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
+</li>
+<li class="menu-item with-children ">
+            <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
+<li class="menu-item">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
+</li>
+<li class="menu-item">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
+</li>
+<li class="menu-item">
+            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
+</li>
+<li class="menu-item">
+            <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child&nbsp;1.2</a>
+</li>
+</ul>
+</li>
+</ul>
+<!-- 
+macro:
+ui.searchForm()
+ --><div class="search-form-wrapper" role="search">
+    <form class="search-form" action="#">
+        <input type="text" required placeholder=""><button type="submit">S</button>
+    </form>
+</div>
+
+
+            <!-- 
+macro:
+ui.langSwitcher()
+ --><div class="translation-menu-wrapper">
+<!-- 
+macro:
+ui.menuConstructor(
+[{'href': '#', 'text': 'en', 'class': 'active', 'children': [{'href': '#', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}],
+{'menuExtraClass': 'translation-menu'}
+)
+ -->
+<ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item active with-children ">
+            <a href="#" class="menu-link active">en</a><ul class="submenu">
+<li class="menu-itemlang-item">
+            <a href="#" rel="alternate" hreflang="en" class="menu-link ">en</a>
+</li>
+<li class="menu-itemlang-item">
+            <a href="../../es/" rel="alternate" hreflang="es" class="menu-link ">es</a>
+</li>
+</ul>
+</li></ul>
+</div>
+        </nav></header><main id="site-content"><article><!-- 
+macro:
+ui.section(
+{'ele': 'header', 'class': 'page-header'}
+)
+ --><header class="section page-header"><div class="container">        <h1 class="page-title">Creating a&nbsp;Theme</h1>
+</div>
+</header><!-- 
+macro:
+ui.section(
+{'ele': 'div', 'class': 'page-content'}
+)
+ --><div class="section page-content">
+    <div class="container">        <div>
+<p>Nikola is a static site and blog generator. So is Jekyll. While I like what we have done with Nikola,
+I do admit that Jekyll (and others!) have many more, and nicer themes than Nikola&nbsp;does.</p>
+<p>This document is an attempt at making it easier for 3rd parties (that means <em>you</em> people! ;-) to
+create themes. Since I <strong>suck</strong> at designing websites, I asked for opinions on themes to port,
+and got some feedback. Since this is <strong>Not So Hard™</strong>, I will try to make time to port a few
+and see what&nbsp;happens.</p>
+<p>If you are looking for a reference, check out <a class="reference external" href="../theming/">Theming reference</a> and <a class="reference external" href="https://getnikola.com/template-variables.html">Template variables</a>.</p>
+<p>Today’s theme is <a class="reference external" href="https://github.com/poole/lanyon">Lanyon</a> which is written by <a class="reference external" href="https://twitter.com/mdo">@mdo</a>
+and released under a <span class="caps">MIT</span> license, which is liberal&nbsp;enough.</p>
+<p>So, let’s get&nbsp;started.</p>
+<div class="section" id="checking-it-out">
+<h2>Checking It&nbsp;Out</h2>
+<p>The first step in porting a theme is making the original theme work. Lanyon is awesome in that its
+<a class="reference external" href="https://github.com/poole/lanyon">GitHub project</a> is a full&nbsp;site!</p>
+<p>So:</p>
+<pre class="literal-block"># Get jekyll
+sudo apt-get install jekyll
+
+# Get Lanyon
+git clone git@github.com:poole/lanyon.git
+
+# Build it
+cd lanyon &amp;&amp; jekyll build
+
+# Look at it
+jekyll serve &amp; google-chrome http://localhost:4000</pre>
+<p>If you <strong>do not want to install Jekyll</strong>, you can also see it in action at <a class="reference external" href="http://lanyon.getpoole.com/">http://lanyon.getpoole.com/</a></p>
+<p>Some things jump to my&nbsp;mind:</p>
+<ol class="arabic simple">
+<li><p>This is one fine looking&nbsp;theme</p></li>
+<li><p>Very clear and&nbsp;readable</p></li>
+<li><p>Nice hidden&nbsp;navigation-thingy</p></li>
+</ol>
+<p>Also, from looking at <a class="reference external" href="https://github.com/poole/lanyon/blob/master/README.md">the project’s <span class="caps">README</span></a>
+it supports some nice configuration&nbsp;options:</p>
+<ol class="arabic simple">
+<li><p>Color&nbsp;schemes</p></li>
+<li><p>Reverse&nbsp;layout</p></li>
+<li><p>Sidebar overlay instead of&nbsp;push</p></li>
+<li><p>Open the sidebar by default, or on a per-page basis by using its&nbsp;metadata</p></li>
+</ol>
+<p>Let’s try to make all those nice things survive the&nbsp;porting.</p>
+</div>
+<div class="section" id="starting-from-somewhere">
+<h2>Starting From&nbsp;Somewhere</h2>
+<p>Nikola has a nice, clean, base theme from which you can start when writing your own theme.
+Why start from that instead of from a clean slate? Because theme inheritance is going to save you a ton of work,
+that’s why. If you start from scratch you won’t be able to build <strong>anything</strong> until you have a bunch of
+templates written. Starting from base, you just need to hack on the things you <strong>need</strong> to&nbsp;change.</p>
+<p>First, we create a site with some content in it. We’ll use&nbsp;the <code class="docutils literal">nikola init</code> wizard (with&nbsp;the <code class="docutils literal"><span class="pre">--demo</span></code> option) for&nbsp;that:</p>
+<pre class="literal-block">$ nikola init --demo lanyon-port
+Creating Nikola Site
+====================
+
+This is Nikola v7.8.0.  We will now ask you a few easy questions about your new site.
+If you do not want to answer and want to go with the defaults instead, simply restart with the `-q` parameter.
+--- Questions about the site ---
+Site title [My Nikola Site]:
+Site author [Nikola Tesla]:
+Site author's e-mail [n.tesla@example.com]:
+Site description [This is a demo site for Nikola.]:
+Site URL [https://example.com/]:
+--- Questions about languages and locales ---
+We will now ask you to provide the list of languages you want to use.
+Please list all the desired languages, comma-separated, using ISO 639-1 codes.  The first language will be used as the default.
+Type '?' (a question mark, sans quotes) to list available languages.
+Language(s) to use [en]:
+
+Please choose the correct time zone for your blog. Nikola uses the tz database.
+You can find your time zone here:
+http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+Time zone [UTC]:
+    Current time in UTC: 16:02:07
+Use this time zone? [Y/n]
+--- Questions about comments ---
+You can configure comments now.  Type '?' (a question mark, sans quotes) to list available comment systems.  If you do not want any comments, just leave the field blank.
+Comment system:
+
+That's it, Nikola is now configured.  Make sure to edit conf.py to your liking.
+If you are looking for themes and addons, check out https://themes.getnikola.com/ and https://plugins.getnikola.com/.
+Have fun!
+[2015-05-28T16:02:08Z] INFO: init: A new site with example data has been created at lanyon-port.
+[2015-05-28T16:02:08Z] INFO: init: See README.txt in that folder for more information.</pre>
+<p>Then, we create an empty theme inheriting from base. This theme will use Mako templates. If you prefer Jinja2,
+then you should&nbsp;use <code class="docutils literal"><span class="pre">base-jinja</span></code> as a parent&nbsp;and <code class="docutils literal">jinja</code> as engine&nbsp;instead:</p>
+<pre class="literal-block">$ cd lanyon-port/
+$ nikola theme -n lanyon --parent base --engine mako</pre>
+<p>Edit <code class="docutils literal">conf.py</code> and&nbsp;set <code class="docutils literal">THEME = 'lanyon'</code>. Also&nbsp;set <code class="docutils literal">USE_BUNDLES = False</code> (just do it for now, we’ll get to bundles later).
+Also, if you intend to publish your theme on the Index, or want to use it with older versions (v7.8.5 or older), use&nbsp;the <code class="docutils literal"><span class="pre">--legacy-meta</span></code> option&nbsp;for <code class="docutils literal">nikola theme <span class="pre">-n</span></code>.</p>
+<p>You can now build that site&nbsp;using <code class="docutils literal">nikola build</code> and it will look like&nbsp;this:</p>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-0.png"><img alt="https://getnikola.com/images/lanyon-0.thumbnail.png" src="https://getnikola.com/images/lanyon-0.thumbnail.png"></a>
+<p class="caption">This is just the base&nbsp;theme.</p>
+</div>
+</div>
+<div class="section" id="basic-css">
+<h2>Basic&nbsp;<span class="caps">CSS</span></h2>
+<p>The next step is to know exactly how Lanyon’s pages work. To do this, we read its <span class="caps">HTML</span>.
+First let’s look at the head&nbsp;element:</p>
+<pre class="code html"><a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">"http://www.w3.org/1999/xhtml"</span> <span class="na">xml:lang</span><span class="o">=</span><span class="s">"en"</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en-us"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-3"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-4"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-5"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://gmpg.org/xfn/11"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"profile"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-6"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">"content-type"</span> <span class="na">content</span><span class="o">=</span><span class="s">"text/html; charset=utf-8"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-7"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-8"></a><span class="c">&lt;!-- Enable responsiveness on mobile devices--&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-9"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0, maximum-scale=1"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-10"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-11"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-12"></a>    Lanyon <span class="ni">&amp;middot;</span> A Jekyll theme
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-13"></a><span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-14"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-15"></a><span class="c">&lt;!-- CSS --&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-16"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/public/css/poole.css"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-17"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/public/css/syntax.css"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-18"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/public/css/lanyon.css"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-19"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-20"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-21"></a><span class="c">&lt;!-- Icons --&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-22"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"apple-touch-icon-precomposed"</span> <span class="na">sizes</span><span class="o">=</span><span class="s">"144x144"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/public/apple-touch-icon-144-precomposed.thumbnail.png"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-23"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"shortcut icon"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/public/favicon.ico"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-24"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-25"></a><span class="c">&lt;!-- RSS --&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-26"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"alternate"</span> <span class="na">type</span><span class="o">=</span><span class="s">"application/rss+xml"</span> <span class="na">title</span><span class="o">=</span><span class="s">"RSS"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/atom.xml"</span><span class="p">&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-27"></a>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-28"></a><span class="c">&lt;!-- Google Analytics --&gt;</span>
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-29"></a>[...]
+<a name="rest_code_1bd76a8af8e44e6190ab3d506f428d6b-30"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</pre>
+<p>The interesting part there is that it loads a few <span class="caps">CSS</span> files. If you check the source of your Nikola site, you will
+see something fairly&nbsp;similar:</p>
+<pre class="code html"><a name="rest_code_f33e1a74115249ce83ab8066c161a80e-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">prefix</span><span class="o">=</span><span class="s">"og: http://ogp.me/ns# article: http://ogp.me/ns/article# "</span> <span class="na">vocab</span><span class="o">=</span><span class="s">"http://ogp.me/ns"</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-5"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"description"</span> <span class="na">content</span><span class="o">=</span><span class="s">"This is a demo site for Nikola."</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-6"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-7"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Nikola Site | My Nikola Site<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-8"></a>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-9"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"assets/css/rst_base.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-10"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"assets/css/code.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-11"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"assets/css/theme.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-12"></a>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-13"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"alternate"</span> <span class="na">type</span><span class="o">=</span><span class="s">"application/rss+xml"</span> <span class="na">title</span><span class="o">=</span><span class="s">"RSS"</span> <span class="na">href</span><span class="o">=</span><span class="s">"rss.xml"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-14"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"canonical"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://example.com/index.html"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-15"></a><span class="c">&lt;!--[if lt IE 9]&gt;&lt;script src="assets/js/html5.js"&gt;&lt;/script&gt;&lt;![endif]--&gt;</span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"posts/welcome-to-nikola.html"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/html"</span><span class="p">&gt;</span>
+<a name="rest_code_f33e1a74115249ce83ab8066c161a80e-16"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</pre>
+<p>Luckily, since this is all under a very liberal license, we can just copy these <span class="caps">CSS</span> files into
+Nikola, adapting the paths a little so that they follow our&nbsp;conventions:</p>
+<pre class="literal-block">$ mkdir -p themes/lanyon/assets/css
+$ cp ../lanyon/public/css/poole.css themes/lanyon/assets/css/
+$ cp ../lanyon/public/css/lanyon.css themes/lanyon/assets/css/</pre>
+<p>Notice I am <em>not</em>&nbsp;copying <code class="docutils literal">syntax.css</code>? That’s because Nikola handles that styles for syntax highlighting
+in a particular way, using a setting&nbsp;called <code class="docutils literal">CODE_COLOR_SCHEME</code> where you can configure
+what color scheme the syntax highlighter uses. You can use your&nbsp;own <code class="docutils literal">assets/css/code.css</code> if you
+don’t like the provided&nbsp;ones.</p>
+<p>Nikola <strong>requires</strong> <code class="docutils literal">assets/css/rst_base.css</code> and <code class="docutils literal">assets/css/code.css</code> to function properly.
+We will also add themes for Jupyter&nbsp;(<code class="docutils literal">assets/css/ipython.min.css</code>
+and <code class="docutils literal">assets/css/nikola_ipython.css</code>) into the template; note that they are
+activated only if you configured&nbsp;your <code class="docutils literal">POSTS</code>/<code class="docutils literal">PAGES</code> with ipynb support.
+There’s&nbsp;also <code class="docutils literal">assets/css/nikola_rst.css</code>, which adds Bootstrap 3-style reST notes&nbsp;etc.</p>
+<p>But how do I tell <strong>our</strong> lanyon theme to use those <span class="caps">CSS</span> files instead of whatever it’s using now?
+By giving our theme its own&nbsp;base_helper.tmpl.</p>
+<p>That file is a <strong>template</strong> used to generate parts of the pages. It’s large and
+complicated but we don’t need to change a lot of it. First, make a copy in your
+theme (note this command requires setting&nbsp;your <code class="docutils literal">THEME</code> in <code class="docutils literal">conf.py</code> to
+<code class="docutils literal">lanyon</code>):</p>
+<pre class="literal-block">$ nikola theme -c base_helper.tmpl</pre>
+<p>The part we want to change is&nbsp;this:</p>
+<pre class="code html+mako"><a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-1"></a><span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">"html_stylesheets()"</span><span class="cp">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-2"></a>    <span class="cp">%</span><span class="k">if</span> <span class="n">use_bundles</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-3"></a>        <span class="cp">%</span><span class="k">if</span> <span class="n">use_cdn</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-4"></a>            <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/all.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-5"></a>        <span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-6"></a>            <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/all-nocdn.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-7"></a>        <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-8"></a>    <span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-9"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/rst_base.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-10"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/nikola_rst.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-11"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/code.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-12"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/theme.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-13"></a>        <span class="cp">%</span><span class="k">if</span> <span class="n">has_custom_css</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-14"></a>            <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/custom.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-15"></a>        <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-16"></a>    <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-17"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="n">needs_ipython_css</span><span class="p">:</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-18"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/ipython.min.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-19"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/nikola_ipython.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-20"></a>    <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_fd8b5c51190c4fc685990976ad9c8be4-21"></a><span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span>
+</pre>
+<p>And we will change it so it uses the lanyon styles instead of theme.css (again, ignore the bundles for&nbsp;now!):</p>
+<pre class="code html+mako"><a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-1"></a><span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">"html_stylesheets()"</span><span class="cp">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-2"></a>    <span class="cp">%</span><span class="k">if</span> <span class="n">use_bundles</span><span class="p">:</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-3"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/all.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-4"></a>    <span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-5"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/rst_base.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-6"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/nikola_rst.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-7"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/poole.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-8"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/lanyon.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-9"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/code.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-10"></a>        <span class="cp">%</span><span class="k">if</span> <span class="n">has_custom_css</span><span class="p">:</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-11"></a>            <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/custom.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-12"></a>        <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-13"></a>    <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-14"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="n">needs_ipython_css</span><span class="p">:</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-15"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/ipython.min.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-16"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"/assets/css/nikola_ipython.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-17"></a>    <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-18"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400"</span><span class="p">&gt;</span>
+<a name="rest_code_f4fe4faa927a4d0f996f47765fee2105-19"></a><span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span>
+</pre>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-1.png"><img alt="https://getnikola.com/images/lanyon-1.thumbnail.png" src="https://getnikola.com/images/lanyon-1.thumbnail.png"></a>
+<p class="caption">You may say this looks like crap. Don’t worry, we are just starting&nbsp;:-)</p>
+</div>
+</div>
+<div class="section" id="page-layout">
+<h2>Page&nbsp;Layout</h2>
+<p>This is trickier but should be no problem for people with a basic understanding of <span class="caps">HTML</span> and a desire to make a&nbsp;theme!</p>
+<p>Lanyon’s content is split in two parts: a sidebar and the rest. The sidebar looks like this (shortened for&nbsp;comprehension):</p>
+<pre class="code html"><a name="rest_code_d1458156b5304360b98c5d4f790704b0-1"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-2"></a><span class="c">&lt;!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-3"></a><span class="c">     styles, `#sidebar-checkbox` for behavior. --&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-4"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span> <span class="na">id</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-5"></a>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-6"></a><span class="c">&lt;!-- Toggleable sidebar --&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-7"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar"</span> <span class="na">id</span><span class="o">=</span><span class="s">"sidebar"</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-8"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-item"</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-9"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A reserved <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://jekyllrb.com"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>Jekyll<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> theme that places the utmost gravity on content with a hidden drawer. Made by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://twitter.com/mdo"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>@mdo<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-10"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-11"></a>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-12"></a>    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav"</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-13"></a>        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav-item active"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-14"></a>        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav-item"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/about/"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-15"></a>        [...]
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-16"></a>    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<a name="rest_code_d1458156b5304360b98c5d4f790704b0-17"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre>
+<p>So, a plain body, with an input element that controls the sidebar, a div which is the sidebar itself.
+Inside that, div.sidebar-item for items, and a nav with &#8220;navigational links&#8221;. This is followed by the &#8220;masthead&#8221; and
+the content itself, which we will look at in a&nbsp;bit.</p>
+<p>If we look for the equivalent code in Nikola’s side, we see&nbsp;this:</p>
+<pre class="code html"><a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-1"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-2"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#content"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sr-only sr-only-focusable"</span><span class="p">&gt;</span>Skip to main content<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-3"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-4"></a><span class="p">&lt;</span><span class="nt">header</span> <span class="na">id</span><span class="o">=</span><span class="s">"header"</span> <span class="na">role</span><span class="o">=</span><span class="s">"banner"</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-5"></a><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">"brand"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://example.com/"</span> <span class="na">title</span><span class="o">=</span><span class="s">"My Nikola Site"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"home"</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"blog-title"</span><span class="p">&gt;</span>My Nikola Site<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-6"></a><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">"menu"</span> <span class="na">role</span><span class="o">=</span><span class="s">"navigation"</span><span class="p">&gt;&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-7"></a><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"../archive.html"</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-8"></a>                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"../categories/index.html"</span><span class="p">&gt;</span>Tags<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a name="rest_code_c8ed4a794a774bd1b5bbd9c87bd1c03a-9"></a>                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"../rss.xml"</span><span class="p">&gt;</span>RSS feed<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre>
+<p>So Nikola has the &#8220;masthead&#8221; above the nav element, and uses list elements in nav instead of bare links.
+Not all that different is&nbsp;it?</p>
+<p>Let’s make it lanyon-like! We will need 2 more templates: <a class="reference external" href="https://github.com/getnikola/nikola/blob/master/nikola/data/themes/base/templates/base.tmpl">base.tmpl</a> and <a class="reference external" href="https://github.com/getnikola/nikola/blob/master/nikola/data/themes/base/templates/base_header.tmpl">base_header.tmpl</a>. Get them and put them in&nbsp;your <code class="docutils literal">themes/lanyon/templates</code> folder.</p>
+<p>Let’s look&nbsp;at <code class="docutils literal">base.tmpl</code> first. It’s short and nice, it looks like a webpage without
+all the interesting&nbsp;stuff:</p>
+<pre class="code html+mako"><a name="rest_code_8117f768865049fc9f71e4405b67eac7-1"></a><span class="cp">## -*- coding: utf-8 -*-</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"base"</span> <span class="na">file=</span><span class="s">"base_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"header"</span> <span class="na">file=</span><span class="s">"base_header.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-4"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"footer"</span> <span class="na">file=</span><span class="s">"base_footer.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-5"></a><span class="cp">${</span><span class="n">set_locale</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-6"></a><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_headstart</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-7"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-8"></a><span class="cp">### Leave this block alone.</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-9"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-10"></a><span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'extra_head'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-13"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#content"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sr-only sr-only-focusable"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s2">"Skip to main content"</span><span class="p">)</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-14"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-15"></a>        <span class="cp">${</span><span class="n">header</span><span class="o">.</span><span class="n">html_header</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-16"></a>        <span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">"content"</span> <span class="na">role</span><span class="o">=</span><span class="s">"main"</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-17"></a>            <span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-18"></a>        <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-19"></a>        <span class="cp">${</span><span class="n">footer</span><span class="o">.</span><span class="n">html_footer</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-20"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-21"></a>    <span class="cp">${</span><span class="n">body_end</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-22"></a>    <span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'body_end'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-23"></a>    <span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">late_load_js</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-24"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_8117f768865049fc9f71e4405b67eac7-25"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre>
+<p>That link which says &#8220;Skip to main content&#8221; is very important for accessibility, so we will leave it in
+place. But below, you can see how it creates the &#8220;container&#8221; div we see in the Nikola page, and the content is
+created&nbsp;by <code class="docutils literal">html_header()</code> which is defined&nbsp;in <code class="docutils literal">base_header.tmpl</code> The&nbsp;actual <code class="docutils literal">nav</code> element is done
+by&nbsp;the <code class="docutils literal">html_navigation_links</code> function out of&nbsp;the <code class="docutils literal">NAVIGATION_LINKS</code> and <code class="docutils literal">NAVIGATION_ALT_LINKS</code> options. (Let&#8217;s put the alt links after regular ones; Bootstrap puts it on the right side, for&nbsp;example.)</p>
+<p>So, first, lets change that base template to be more&nbsp;lanyon-like:</p>
+<pre class="code html+mako"><a name="rest_code_af20d2062d77456f9af5c88b9554a804-1"></a><span class="cp">## -*- coding: utf-8 -*-</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"base"</span> <span class="na">file=</span><span class="s">"base_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"header"</span> <span class="na">file=</span><span class="s">"base_header.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-4"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"footer"</span> <span class="na">file=</span><span class="s">"base_footer.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-5"></a><span class="cp">${</span><span class="n">set_locale</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-6"></a><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_headstart</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-7"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-8"></a><span class="cp">### Leave this block alone.</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-9"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-10"></a><span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'extra_head'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-13"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#content"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sr-only sr-only-focusable"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s2">"Skip to main content"</span><span class="p">)</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-14"></a>    <span class="c">&lt;!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-15"></a><span class="c">            styles, `#sidebar-checkbox` for behavior. --&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-16"></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span> <span class="na">id</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-17"></a>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-18"></a>    <span class="c">&lt;!-- Toggleable sidebar --&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-19"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar"</span> <span class="na">id</span><span class="o">=</span><span class="s">"sidebar"</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-20"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-item"</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-21"></a>            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A reserved <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://getnikola.com"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>Nikola<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> theme that places the utmost gravity on content with a hidden drawer. Made by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://twitter.com/mdo"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>@mdo<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> for Jekyll,
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-22"></a>            ported to Nikola by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://twitter.com/ralsina"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>@ralsina<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-23"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-24"></a>        <span class="cp">${</span><span class="n">header</span><span class="o">.</span><span class="n">html_navigation_links</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-25"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-26"></a>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-27"></a>    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">"content"</span> <span class="na">role</span><span class="o">=</span><span class="s">"main"</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-28"></a>        <span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-29"></a>    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-30"></a>    <span class="cp">${</span><span class="n">footer</span><span class="o">.</span><span class="n">html_footer</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-31"></a>    <span class="cp">${</span><span class="n">body_end</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-32"></a>    <span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'body_end'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-33"></a>    <span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">late_load_js</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-34"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_af20d2062d77456f9af5c88b9554a804-35"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-2.png"><img alt="https://getnikola.com/images/lanyon-2.thumbnail.png" src="https://getnikola.com/images/lanyon-2.thumbnail.png"></a>
+<p class="caption">And that’s after I exposed the sidebar by clicking on an invisible&nbsp;widget!</p>
+</div>
+<p>One problem, which causes that yellow color in the sidebar is a <span class="caps">CSS</span> conflict.
+We are&nbsp;loading <code class="docutils literal">rst_base.css</code> which specifies
+the background color&nbsp;of <code class="docutils literal">div.sidebar</code> which is more specific&nbsp;than
+<code class="docutils literal">lanyon.css</code>, which specifies&nbsp;for <code class="docutils literal">.sidebar</code> alone.</p>
+<p>There are many ways to fix this, I chose to change lanyon.css to also use&nbsp;div.sidebar:</p>
+<pre class="code css"><a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-1"></a><span class="nt">div</span><span class="p">.</span><span class="nc">sidebar</span><span class="o">,</span><span class="p">.</span><span class="nc">sidebar</span> <span class="p">{</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-2"></a>    <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-3"></a>    <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-4"></a>    <span class="k">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-5"></a>    <span class="k">left</span><span class="p">:</span> <span class="mi">-14</span><span class="kt">rem</span><span class="p">;</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-6"></a>    <span class="k">width</span><span class="p">:</span> <span class="mi">14</span><span class="kt">rem</span><span class="p">;</span>
+<a name="rest_code_4b9c2a3aa1e04305ad3f10f0d58a8334-7"></a>    <span class="err">[...]</span>
+</pre>
+<p>This is annoying but it will happen when you just grab <span class="caps">CSS</span> from different places. The &#8220;Inspect Element&#8221;
+feature of your web browser is your best friend for these&nbsp;situations.</p>
+<p>Another problem is that the contents of the nav element are wrong. They are not bare links. We will fix that&nbsp;in
+<code class="docutils literal">base_header.html</code>, like&nbsp;this:</p>
+<pre class="code html+mako"><a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-1"></a><span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">"html_navigation_links()"</span><span class="cp">&gt;</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-2"></a>    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">"menu"</span> <span class="na">role</span><span class="o">=</span><span class="s">"navigation"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav"</span><span class="p">&gt;</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-3"></a>    <span class="cp">%</span><span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">navigation_links</span><span class="p">[</span><span class="n">lang</span><span class="p">]:</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-4"></a>        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav-item"</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">url</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">text</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-5"></a>    <span class="cp">%</span><span class="k">endfor</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-6"></a>    <span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'menu'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-7"></a>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-8"></a>    <span class="cp">%</span><span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">navigation_alt_links</span><span class="p">[</span><span class="n">lang</span><span class="p">]:</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-9"></a>        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-nav-item"</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">url</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">text</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-10"></a>    <span class="cp">%</span><span class="k">endfor</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-11"></a>    <span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'menu_alt'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-12"></a>    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<a name="rest_code_2c2f3d40907249a2b41641c78d2f74a2-13"></a><span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span>
+</pre>
+<p><strong>Note: this means this theme will not support submenus in navigation. If you want that, I’ll happily take a&nbsp;patch.</strong></p>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-3.png"><img alt="https://getnikola.com/images/lanyon-3.thumbnail.png" src="https://getnikola.com/images/lanyon-3.thumbnail.png"></a>
+<p class="caption">Starting to see a&nbsp;resemblance?</p>
+</div>
+<p>Now let’s look at the content. In Lanyon, this is how the &#8220;main&#8221; content&nbsp;looks:</p>
+<pre class="code html"><a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-1"></a><span class="c">&lt;!-- Wrap is the content to shift when toggling the sidebar. We wrap the</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-2"></a><span class="c">     content to avoid any CSS collisions with our real content. --&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-3"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"wrap"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-4"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-5"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-6"></a>      <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead-title"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-7"></a>        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Home"</span><span class="p">&gt;</span>Lanyon<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-8"></a>        <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>A Jekyll theme<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-9"></a>      <span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-10"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-11"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-12"></a>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-13"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container content"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-14"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-15"></a>        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"post-title"</span><span class="p">&gt;</span>Introducing Lanyon<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-16"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"post-date"</span><span class="p">&gt;</span>02 Jan 2014<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-17"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Lanyon is an unassuming <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"http://jekyllrb.com"</span><span class="p">&gt;</span>Jekyll<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> theme [...]
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-18"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-19"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-20"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-21"></a><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-toggle"</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-22"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_0cff9e1ffa7646958efbddeb6cf3bc2e-23"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre>
+<p>Everything inside the &#8220;container content&#8221; div is… the content. The rest is a masthead with the site title
+and at the bottom a label for the sidebar toggle. Easy to do&nbsp;in <code class="docutils literal">base.tmpl</code>
+(only showing the relevant&nbsp;part):</p>
+<pre class="code html+mako"><a name="rest_code_edde621827294584a6138d88ed313839-1"></a>    <span class="c">&lt;!-- Wrap is the content to shift when toggling the sidebar. We wrap the</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-2"></a><span class="c">        content to avoid any CSS collisions with our real content. --&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-3"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"wrap"</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-4"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead"</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-5"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-6"></a>        <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead-title"</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-7"></a>            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Home"</span><span class="p">&gt;</span>Lanyon<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-8"></a>            <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>A Jekyll theme<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-9"></a>        <span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-10"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-11"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-12"></a>
+<a name="rest_code_edde621827294584a6138d88ed313839-13"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container content"</span> <span class="na">id</span><span class="o">=</span><span class="s">"content"</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-14"></a>        <span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-15"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-16"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-17"></a>    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"sidebar-checkbox"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sidebar-toggle"</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-18"></a>    <span class="cp">${</span><span class="n">footer</span><span class="o">.</span><span class="n">html_footer</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-19"></a>    <span class="cp">${</span><span class="n">body_end</span><span class="cp">}</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-20"></a>    <span class="cp">${</span><span class="n">template_hooks</span><span class="p">[</span><span class="s1">'body_end'</span><span class="p">]()</span><span class="cp">}</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-21"></a>    <span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">late_load_js</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-22"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_edde621827294584a6138d88ed313839-23"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-4.png"><img alt="https://getnikola.com/images/lanyon-4.thumbnail.png" src="https://getnikola.com/images/lanyon-4.thumbnail.png"></a>
+<p class="caption">Getting&nbsp;there!</p>
+</div>
+<p>The sidebar looks bad because of yet more <span class="caps">CSS</span> conflicts&nbsp;with <code class="docutils literal">rst_base.css</code>. By
+adding some extra styling&nbsp;in <code class="docutils literal">lanyon.css</code>, it will look&nbsp;better.</p>
+<pre class="code css"><a name="rest_code_c6c963aa22e848439222779a97fb8f17-1"></a><span class="c">/* Style and "hide" the sidebar */</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-2"></a><span class="nt">div</span><span class="p">.</span><span class="nc">sidebar</span><span class="o">,</span> <span class="p">.</span><span class="nc">sidebar</span> <span class="p">{</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-3"></a>  <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-4"></a>  <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-5"></a>  <span class="k">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-6"></a>  <span class="k">left</span><span class="p">:</span> <span class="mi">-14</span><span class="kt">rem</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-7"></a>  <span class="k">width</span><span class="p">:</span> <span class="mi">14</span><span class="kt">rem</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-8"></a>  <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-9"></a>  <span class="k">overflow-y</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-10"></a>  <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-11"></a>  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-12"></a>  <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-13"></a>  <span class="k">font-family</span><span class="p">:</span> <span class="s2">"PT Sans"</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-14"></a>  <span class="k">font-size</span><span class="p">:</span> <span class="mf">.875</span><span class="kt">rem</span><span class="p">;</span> <span class="c">/* 15px */</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-15"></a>  <span class="k">color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mf">.6</span><span class="p">);</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-16"></a>  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#202020</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-17"></a>  <span class="kp">-webkit-</span><span class="k">transition</span><span class="p">:</span> <span class="kc">all</span> <span class="mf">.3</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-18"></a>          <span class="k">transition</span><span class="p">:</span> <span class="kc">all</span> <span class="mf">.3</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+<a name="rest_code_c6c963aa22e848439222779a97fb8f17-19"></a><span class="p">}</span>
+</pre>
+<p>Also, the accessibility link on top is visible when it should not. That’s
+because we&nbsp;removed <code class="docutils literal">theme.css</code> from the base theme, and with it, we lost a
+couple of classes. We can add them&nbsp;in <code class="docutils literal">lanyon.css</code>, along with others used by other
+pieces of the&nbsp;site:</p>
+<pre class="code css"><a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-1"></a><span class="p">.</span><span class="nc">sr-only</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-2"></a>  <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-3"></a>  <span class="k">width</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-4"></a>  <span class="k">height</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-5"></a>  <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-6"></a>  <span class="k">margin</span><span class="p">:</span> <span class="mi">-1</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-7"></a>  <span class="k">overflow</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-8"></a>  <span class="k">clip</span><span class="p">:</span> <span class="nb">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-9"></a>  <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-10"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-11"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-12"></a><span class="p">.</span><span class="nc">sr-only-focusable</span><span class="p">:</span><span class="nd">active</span><span class="o">,</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-13"></a><span class="p">.</span><span class="nc">sr-only-focusable</span><span class="p">:</span><span class="nd">focus</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-14"></a>  <span class="k">position</span><span class="p">:</span> <span class="kc">static</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-15"></a>  <span class="k">width</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-16"></a>  <span class="k">height</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-17"></a>  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-18"></a>  <span class="k">overflow</span><span class="p">:</span> <span class="kc">visible</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-19"></a>  <span class="k">clip</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-20"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-21"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-22"></a><span class="p">.</span><span class="nc">breadcrumb</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-23"></a>  <span class="k">padding</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-24"></a>  <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-25"></a>  <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-26"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-27"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-28"></a><span class="p">.</span><span class="nc">breadcrumb</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-29"></a>  <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-30"></a>  <span class="k">margin-right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-31"></a>  <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-32"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-33"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-34"></a><span class="p">.</span><span class="nc">breadcrumb</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-35"></a>  <span class="k">content</span><span class="p">:</span> <span class="s1">' / '</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-36"></a>  <span class="k">color</span><span class="p">:</span> <span class="mh">#888</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-37"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-38"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-39"></a><span class="p">.</span><span class="nc">breadcrumb</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="p">:</span><span class="nd">last-of-type</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-40"></a>  <span class="k">content</span><span class="p">:</span> <span class="s1">''</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-41"></a>  <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-42"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-43"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-44"></a><span class="p">.</span><span class="nc">thumbnails</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-45"></a>  <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-46"></a>  <span class="k">margin-right</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-47"></a><span class="p">}</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-48"></a>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-49"></a><span class="p">.</span><span class="nc">thumbnails</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="p">:</span><span class="nd">last-of-type</span> <span class="p">{</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-50"></a>  <span class="k">margin-right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_a578bb6aa5d147e88dea528a57bb2f39-51"></a><span class="p">}</span>
+</pre>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-5.png"><img alt="https://getnikola.com/images/lanyon-5.thumbnail.png" src="https://getnikola.com/images/lanyon-5.thumbnail.png"></a>
+<p class="caption">Little by little, things look&nbsp;better.</p>
+</div>
+<p>One clear problem is that the title &#8220;Lanyon · A Jekyll theme&#8221; is set in the
+theme itself. We don’t do that sort of thing in Nikola, we have settings for
+that. So, let’s use them. There is&nbsp;a <code class="docutils literal">html_site_title</code> function&nbsp;in
+<code class="docutils literal">base_helper.tmpl</code> which is just the thing. So we change base.tmpl to use&nbsp;it:</p>
+<pre class="code html+mako"><a name="rest_code_accac01d41024d5787daf364f434fcd3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"wrap"</span><span class="p">&gt;</span>
+<a name="rest_code_accac01d41024d5787daf364f434fcd3-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead"</span><span class="p">&gt;</span>
+<a name="rest_code_accac01d41024d5787daf364f434fcd3-3"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+<a name="rest_code_accac01d41024d5787daf364f434fcd3-4"></a>      <span class="cp">${</span><span class="n">header</span><span class="o">.</span><span class="n">html_site_title</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_accac01d41024d5787daf364f434fcd3-5"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_accac01d41024d5787daf364f434fcd3-6"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre>
+<p>That’s&nbsp;a <code class="docutils literal">&lt;h1&gt;</code> instead of&nbsp;a <code class="docutils literal">&lt;h3&gt;</code> like Lanyon does, but hey, it’s the
+right thing to do. If you want to go with&nbsp;an <code class="docutils literal">&lt;h3&gt;</code>, just&nbsp;change <code class="docutils literal">html_site_title</code> itself.</p>
+<p>And now we more or less have the correct page layout and styles. Except for a
+rather large&nbsp;thing…</p>
+</div>
+<div class="section" id="typography">
+<h2>Typography</h2>
+<p>You can see in the previous screenshot that text still looks quite different in our port: Serif versus Sans-Serif
+content, and the titles have different&nbsp;colors!</p>
+<p>Let’s start with the titles. Here’s how they look in&nbsp;Lanyon:</p>
+<pre class="code html"><a name="rest_code_ae8f074277664bf1853cd69159116565-1"></a><span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead-title"</span><span class="p">&gt;</span>
+<a name="rest_code_ae8f074277664bf1853cd69159116565-2"></a>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Home"</span><span class="p">&gt;</span>Lanyon<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_ae8f074277664bf1853cd69159116565-3"></a>  <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>A Jekyll theme<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<a name="rest_code_ae8f074277664bf1853cd69159116565-4"></a><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</pre>
+<p>Versus our&nbsp;port:</p>
+<pre class="code html"><a name="rest_code_ca371e51cf584a209766f3f214fb2371-1"></a><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">"brand"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://example.com/"</span> <span class="na">title</span><span class="o">=</span><span class="s">"My Nikola Site"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"home"</span><span class="p">&gt;</span>
+</pre>
+<p>So, it looks like we will have to&nbsp;fix <code class="docutils literal">html_site_title</code> after&nbsp;all:</p>
+<pre class="code html+mako"><a name="rest_code_0215520f5908415b890ebf2831056494-1"></a><span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">"html_site_title()"</span><span class="cp">&gt;</span>
+<a name="rest_code_0215520f5908415b890ebf2831056494-2"></a>    <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">id</span><span class="o">=</span><span class="s">"brand"</span> <span class="na">class</span><span class="o">=</span><span class="s">"masthead-title"</span><span class="p">&gt;</span>
+<a name="rest_code_0215520f5908415b890ebf2831056494-3"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">_link</span><span class="p">(</span><span class="s2">"root"</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span> <span class="na">title</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">blog_title</span><span class="cp">}</span><span class="s">"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"home"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">blog_title</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a name="rest_code_0215520f5908415b890ebf2831056494-4"></a>    <span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a name="rest_code_0215520f5908415b890ebf2831056494-5"></a><span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span>
+</pre>
+<p>As for the actual content, that’s not in any of the templates we have seen so far. The page you see is an
+&#8220;index.tmpl&#8221; page, which means it’s a list of blog posts shown one below the
+other. Obviously it’s not doing
+things in the way the Lanyon <span class="caps">CSS</span> expects it to. Here’s the original, which you
+can find in Nikola’s source&nbsp;code:</p>
+<pre class="code html+mako"><a name="rest_code_618de9440dd345ddbd7e0af163d491ca-1"></a><span class="cp">## -*- coding: utf-8 -*-</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"helper"</span> <span class="na">file=</span><span class="s">"index_helper.tmpl"</span><span class="cp">/&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"comments"</span> <span class="na">file=</span><span class="s">"comments_helper.tmpl"</span><span class="cp">/&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-4"></a><span class="cp">&lt;%</span><span class="nb">inherit</span> <span class="na">file=</span><span class="s">"base.tmpl"</span><span class="cp">/&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-5"></a>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-6"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-7"></a>    <span class="cp">${</span><span class="n">parent</span><span class="o">.</span><span class="n">extra_head</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-8"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="n">posts</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permalink</span> <span class="o">==</span> <span class="s1">'/'</span> <span class="ow">or</span> <span class="n">permalink</span> <span class="o">==</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="n">index_file</span><span class="p">):</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-9"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/html"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-10"></a>    <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-11"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-12"></a>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-13"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-14"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content_header"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-15"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"postindex"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-16"></a><span class="cp">%</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-17"></a>    <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"h-entry post-</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s1">'type'</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-18"></a>    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-19"></a>        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"p-name entry-title"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">class</span><span class="o">=</span><span class="s">"u-url"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">|</span><span class="n">h</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-20"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"metadata"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-21"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline author vcard"</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline-name fn"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="p">()</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-22"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"dateline"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"bookmark"</span><span class="p">&gt;&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">"published dt-published"</span> <span class="na">datetime</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">title</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-23"></a>            <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s1">'nocomments'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">site_has_comments</span><span class="p">:</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-24"></a>                <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"commentline"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">(),</span> <span class="n">post</span><span class="o">.</span><span class="n">_base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-25"></a>            <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-26"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-27"></a>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-28"></a>    <span class="cp">%</span><span class="k">if</span> <span class="n">index_teasers</span><span class="p">:</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-29"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"p-summary entry-summary"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-30"></a>    <span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-31"></a>    <span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-32"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"e-content entry-content"</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-33"></a>    <span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-34"></a>    <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-35"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-36"></a>    <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-37"></a><span class="cp">%</span><span class="k"> endfor</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-38"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-39"></a><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_pager</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-40"></a><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link_script</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-41"></a><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">mathjax_script</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_618de9440dd345ddbd7e0af163d491ca-42"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+</pre>
+<p>And this is how it looks after I played with it for a while, making it generate code that looks closer to
+the Lanyon&nbsp;original:</p>
+<pre class="code html+mako"><a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-1"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-2"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content_header"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-3"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"posts"</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-4"></a><span class="cp">%</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-5"></a>    <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"post h-entry post-</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s1">'type'</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-6"></a>    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-7"></a>        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"post-title p-name"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">class</span><span class="o">=</span><span class="s">"u-url"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">|</span><span class="n">h</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-8"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"metadata"</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-9"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline author vcard"</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline-name fn"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="p">()</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-10"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"dateline"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"bookmark"</span><span class="p">&gt;&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">"post-date published dt-published"</span> <span class="na">datetime</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">title</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-11"></a>            <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s1">'nocomments'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">site_has_comments</span><span class="p">:</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-12"></a>                <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"commentline"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">(),</span> <span class="n">post</span><span class="o">.</span><span class="n">_base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-13"></a>            <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-14"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-15"></a>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-16"></a>    <span class="cp">%</span><span class="k">if</span> <span class="n">index_teasers</span><span class="p">:</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-17"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"p-summary entry-summary"</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-18"></a>    <span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-19"></a>    <span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-20"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"e-content entry-content"</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-21"></a>    <span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-22"></a>    <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-23"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-24"></a>    <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-25"></a><span class="cp">%</span><span class="k"> endfor</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-26"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-27"></a><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_pager</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-28"></a><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link_script</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-29"></a><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">mathjax_script</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_e40a8c482e8f4d3e9412828dfb71cc2f-30"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+</pre>
+<p>With these changes, it looks…&nbsp;similar?</p>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-6.png"><img alt="https://getnikola.com/images/lanyon-6.thumbnail.png" src="https://getnikola.com/images/lanyon-6.thumbnail.png"></a>
+<p class="caption">It&nbsp;does!</p>
+</div>
+<p>Similar changes (basically adding class names to elements) needed to be done&nbsp;in <code class="docutils literal">post_header.tmpl</code>:</p>
+<pre class="code html+mako"><a name="rest_code_975ca65922c94748a21692a214435d20-1"></a><span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">"html_post_header()"</span><span class="cp">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-2"></a>    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-3"></a>        <span class="cp">${</span><span class="n">html_title</span><span class="p">()</span><span class="cp">}</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-4"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"metadata"</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-5"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline author vcard"</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"byline-name fn"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="p">()</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-6"></a>            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"dateline"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"bookmark"</span><span class="p">&gt;&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">"post-date published dt-published"</span> <span class="na">datetime</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">"datePublished"</span> <span class="na">title</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-7"></a>            <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s1">'nocomments'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">site_has_comments</span><span class="p">:</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-8"></a>                <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"commentline"</span><span class="p">&gt;</span><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">(),</span> <span class="n">post</span><span class="o">.</span><span class="n">_base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-9"></a>            <span class="cp">%</span><span class="k"> endif</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-10"></a>            <span class="cp">%</span><span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">description</span><span class="p">():</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-11"></a>                <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"description"</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">"description"</span> <span class="na">content</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">description</span><span class="p">()</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-12"></a>            <span class="cp">%</span><span class="k">endif</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-13"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-14"></a>        <span class="cp">${</span><span class="n">html_translations</span><span class="p">(</span><span class="n">post</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-15"></a>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a name="rest_code_975ca65922c94748a21692a214435d20-16"></a><span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span>
+</pre>
+</div>
+<div class="section" id="customization">
+<h2>Customization</h2>
+<p>The original Lanyon theme supports some personalization options. It suggests you do them by tweaking the templates, and
+you <em>can</em> also do that in the Nikola port. But we prefer to use options for that, so that you can get a later, better
+version of the theme and it will still &#8220;just&nbsp;work&#8221;.</p>
+<p>Let’s see the color schemes first. They apply easily, just tweak&nbsp;your <code class="docutils literal">body</code> element like&nbsp;this:</p>
+<pre class="code html"><a name="rest_code_27ae8a84cbbc4aaaa6f3da53b8624a0d-1"></a><span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">"theme-base-08"</span><span class="p">&gt;</span>
+<a name="rest_code_27ae8a84cbbc4aaaa6f3da53b8624a0d-2"></a>...
+<a name="rest_code_27ae8a84cbbc4aaaa6f3da53b8624a0d-3"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre>
+<p>We can&nbsp;tweak <code class="docutils literal">base.tmpl</code> to do just&nbsp;that:</p>
+<pre class="code html+mako"><a name="rest_code_2d0e9fe9b5f2478aae20c9f2d3a1dcbe-1"></a><span class="cp">%</span> <span class="k">if</span> <span class="n">lanyon_subtheme</span><span class="p">:</span>
+<a name="rest_code_2d0e9fe9b5f2478aae20c9f2d3a1dcbe-2"></a><span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">"</span><span class="cp">${</span><span class="n">lanyon_subtheme</span><span class="cp">}</span><span class="s">"</span><span class="p">&gt;</span>
+<a name="rest_code_2d0e9fe9b5f2478aae20c9f2d3a1dcbe-3"></a><span class="cp">%</span><span class="k">else</span><span class="p">:</span>
+<a name="rest_code_2d0e9fe9b5f2478aae20c9f2d3a1dcbe-4"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a name="rest_code_2d0e9fe9b5f2478aae20c9f2d3a1dcbe-5"></a><span class="cp">%</span><span class="k">endif</span>
+</pre>
+<p>And then we can put the options in&nbsp;conf.py’s <code class="docutils literal">GLOBAL_CONTEXT</code>:</p>
+<pre class="code python"><a name="rest_code_285048faa20f4b89bb544634d3788708-1"></a><span class="n">GLOBAL_CONTEXT</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_285048faa20f4b89bb544634d3788708-2"></a>    <span class="s2">"lanyon_subtheme"</span><span class="p">:</span> <span class="s2">"theme-base-08"</span>
+<a name="rest_code_285048faa20f4b89bb544634d3788708-3"></a><span class="p">}</span>
+</pre>
+<div class="figure">
+<a class="reference external image-reference" href="https://getnikola.com/images/lanyon-7.png"><img alt="https://getnikola.com/images/lanyon-7.thumbnail.png" src="https://getnikola.com/images/lanyon-7.thumbnail.png"></a>
+<p class="caption">Look at it, all themed&nbsp;up.</p>
+</div>
+<p>Doing the same for layout-reverse, sidebar-overlay and the rest is left as an exercise for the&nbsp;reader.</p>
+</div>
+<div class="section" id="bundles">
+<h2>Bundles</h2>
+<p>If&nbsp;the <code class="docutils literal">USE_BUNDLES</code> option set to True,
+Nikola can put several <span class="caps">CSS</span> or <span class="caps">JS</span> files together in a larger file, which can
+makes site load faster for some deployments. To do this, your theme needs&nbsp;a <code class="docutils literal">bundles</code> file. The file format is a modified
+<a class="reference external" href="https://docs.python.org/3/library/configparser.html">config</a> file with no
+defined section; the basic syntax&nbsp;is:</p>
+<pre class="literal-block">outputfile1.js=
+    thing1.js,
+    thing2.js,
+    ...
+outputfile2.css=
+    thing1.css,
+    thing2.css,
+    ...</pre>
+<p>For the Lanyon theme, it should look like&nbsp;this:</p>
+<pre class="literal-block">assets/css/all.css=
+    rst_base.css,
+    nikola_rst.css,
+    code.css,
+    poole.css,
+    lanyon.css,
+    custom.css,</pre>
+<p><strong>Note:</strong> trailing commas are&nbsp;optional</p>
+<p><strong>Note:</strong> Some themes also support&nbsp;the <code class="docutils literal">USE_CDN</code> option meaning that in some cases it will load one bundle with all <span class="caps">CSS</span> and in other will load some <span class="caps">CSS</span> files
+from a <span class="caps">CDN</span> and others from a bundle. This is complicated and probably not worth the&nbsp;effort.</p>
+</div>
+<div class="section" id="the-end">
+<h2>The&nbsp;End</h2>
+<p>And that’s it, that’s a whole theme. Eventually, once people start using it, they will notice small broken details, which will need handling one at a&nbsp;time.</p>
+<p>This theme should be available in <a class="reference external" href="http://themes.getnikola.com/v7/lanyon/">http://themes.getnikola.com/v7/lanyon/</a> and you can see it in action at <a class="reference external" href="https://themes.getnikola.com/v7/lanyon/demo/">https://themes.getnikola.com/v7/lanyon/demo/</a>&nbsp;.</p>
+<p>What if you want to extend other parts of the theme? Check out the <a class="reference external" href="../theming/">Theming reference</a>. You can also contribute your improvements to the <cite>nikola-themes &lt;https://github.com/getnikola/nikola&gt;</cite> repository on&nbsp;GitHub.</p>
+</div>
+</div>
+        <!-- TODO: How .sections are handled in .str|.md? -->
+</div>
+</div>    </article></main><footer id="site-footer"><section class="container"><nav class="cols dflex flex-g1"><ul class="col col-1">
+<a class="logo" href="../../">Skelleton framework</a>
+
+                    <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo&nbsp;Torreras</a></p>
+                </ul>
+<ul class="col col-2"></ul>
+<!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}],
+{'menuExtraClass': 'col col-3'}
+)
+ --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item with-children ">
+            <a href="en/rss.xml" target="_blank" class="menu-link "><span class="caps">RSS</span></a><ul class="submenu"><li class="menu-item">
+            <a href="#" class="menu-link ">child1</a>
+</li></ul>
+</li></ul></nav></section></footer>
+</div>
+
+
+        <script defer src="../../assets/js/main.js"></script><pre id="is_verbose"> Template in use: page.tmpl
+ </pre>
+</body>
+</html>

@@ -377,8 +377,8 @@ REDIRECTIONS = [
     ("blog/category/index.html","/blog/categories/index.html"),
     ("es/blog/categoria/index.html","/es/blog/categorias/index.html"),
 
-    ("blog/author/index.html","/blog/author/index.html"),
-    ("es/blog/autor/index.html","/es/blog/autores/index.html")
+    #("blog/author/index.html","/blog/author/index.html"),
+    #("es/blog/autor/index.html","/es/blog/autores/index.html")
 ]
 
 
