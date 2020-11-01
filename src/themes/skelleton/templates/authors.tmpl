@@ -3,12 +3,9 @@
 {% block pre_footer %}
     <h2>{{ messages("Authors") }}</h2>
     {{ authors|pprint  }}
-    <div class="metadata">
-        {{ feeds_translations.translation_link(kind) }}
-    </div>
 
     {% for author in authors %}
-        <a href="{{ TRANSLATION[lang] / AUTHOR_PATH }}/{{ author }}">{{ author }}</a>
+        <a href="{{ lang ~ AUTHOR_PATH }}/{{ author }}">{{ author }}</a>
     {% endfor %}
     <hr>
     <ul class="postlist">
