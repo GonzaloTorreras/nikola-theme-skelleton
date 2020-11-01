@@ -273,6 +273,18 @@ AUTHOR_PATH = {
 # the posts themselves. If set to False, it will be just a list of links.
 AUTHOR_PAGES_ARE_INDEXES = False
 
+
+
+
+###############
+# AUTHORS_INDEX_PATH DOESNT REALLY EXISTS BUT TESTING
+AUTHORS_INDEX_PATH = {
+    "en": INDEX_PATH + "/authors/index.html",
+    "es": INDEX_PATH + "/autores/index.html"
+}
+###############
+
+
 # Set descriptions for author pages to make them more interesting. The
 # default is no description. The value is used in the meta description
 # and displayed underneath the author list or index page’s title.
@@ -371,14 +383,25 @@ SLUG_AUTHOR_PATH = True
 #
 # If you don't need any of these, just set to []
 REDIRECTIONS = [
-    ("blog/tag/index.html","/blog/tags/index.html"),
-    ("es/blog/etiqueta/index.html","/es/blog/etiquetas/index.html"),
+    # CATEGORIES_INDEX_PATH and TAGS_INDEX_PATH not acting as expected, also missing AUTHORS_INDEX_PATH so removing better slug listings
+    # and just redirecting to home blog (disabling those listings )
+    #("blog/tag/index.html","/blog/tags/index.html"),
+    #("es/blog/etiqueta/index.html","/es/blog/etiquetas/index.html"),
 
-    ("blog/category/index.html","/blog/categories/index.html"),
-    ("es/blog/categoria/index.html","/es/blog/categorias/index.html"),
+    #("blog/category/index.html","/blog/categories/index.html"),
+    #("es/blog/categoria/index.html","/es/blog/categorias/index.html"),
 
     #("blog/author/index.html","/blog/author/index.html"),
     #("es/blog/autor/index.html","/es/blog/autores/index.html")
+
+    ("blog/tag/index.html","/blog/"),
+    ("es/blog/etiqueta/index.html","/es/blog/"),
+
+    ("blog/category/index.html","/blog/"),
+    ("es/blog/categoria/index.html","/es/blog/"),
+
+    #("blog/author/index.html","/blog/"),
+    #("es/blog/autor/index.html","/es/blog/")
 ]
 
 

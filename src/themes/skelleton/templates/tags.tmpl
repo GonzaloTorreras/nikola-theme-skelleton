@@ -8,7 +8,9 @@
 
 {% block pre_footer %}
 {% if items %}
-    {{ items|pprint }}
+    {% for k,v in items %}
+        <a href="{{ v }}">{{ k }}</a>
+    {% endfor %}
     <hr>
     {% endif %}
     {% if cat_items %}

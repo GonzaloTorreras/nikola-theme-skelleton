@@ -1,5 +1,8 @@
 {% set body_class = body_class ~ "authors "%}
 {% extends "listing.tmpl" %}
 {% block pre_footer %}
-{{ authors|pprint }}
+{{ authors|pprint  }}
+    {#% for k,v in authors %}
+        <a href="{{ v }}">{{ k }}</a>
+    {% endfor %#}
 {% endblock %}
