@@ -136,21 +136,34 @@
     ] -%}
     {%- for langname in translations|sort -%}
         {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
-        {%- set link = (_link('root', None, langname) if lang != langname else "#" ) -%} 
-        {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
-        {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
-        {# update dict with all the links xmlAttr formatted. #}
-        {%- set _dummy = translation_links[0].children.append({
-                            "href":link,
-                            "text": text,
-                            "rel": "alternate",
-                            "hreflang": langname,
-                            "class": class,
-                            "extra_li_class": "lang-item"
-                        }) -%} 
+        <!-- {{ kind }}-->
+        {% if lang != langname %} {# Ignore current lang #}
+            {% if post and post.is_translation_available(langname) %}
+                 {%- set link = post.permalink(langname) %}
+            {% elif kind %}
+
+                {%- set link = (_link('root', None, langname) if lang != langname else "#" ) -%} 
+                {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
+                
+                {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
+                
+            {% endif %}
+
+            
+            {# update dict with all the links xmlAttr formatted. #}
+            {%- set _dummy = translation_links[0].children.append({
+                "href":link,
+                "text": text,
+                "rel": "alternate",
+                "hreflang": langname,
+                "class": class,
+                "extra_li_class": "lang-item"
+            }) -%} 
+        {% endif %}
+
+
     {%- endfor -%}
     <div class="translation-menu-wrapper">
-    <!-- {{ post.permalink(langname) }} -->
        {{- menuConstructor(translation_links, {"menuExtraClass": "translation-menu"})-}}
     </div>
 {%- endmacro -%}
