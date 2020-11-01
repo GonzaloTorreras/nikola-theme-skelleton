@@ -142,7 +142,7 @@
         {# update dict with all the links xmlAttr formatted. #}
         {%- set _dummy = translation_links[0].children.append({
                             "href":link,
-                            "text": langname,
+                            "text": text,
                             "rel": "alternate",
                             "hreflang": langname,
                             "class": class,

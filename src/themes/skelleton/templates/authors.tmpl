@@ -2,11 +2,8 @@
 {% extends "listing.tmpl" %}
 {% block pre_footer %}
     <h2>{{ messages("Authors") }}</h2>
-    {{ authors|pprint  }}
 
-    {% for author in authors %}
-        <a href="{{ lang ~ AUTHOR_PATH }}/{{ author }}">{{ author }}</a>
-    {% endfor %}
+    {#{ authors }#}
     <hr>
     <ul class="postlist">
     {% for text, link in items %}
