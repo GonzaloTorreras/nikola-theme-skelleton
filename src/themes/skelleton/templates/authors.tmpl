@@ -1,8 +1,21 @@
 {% set body_class = body_class ~ "authors "%}
 {% extends "listing.tmpl" %}
 {% block pre_footer %}
-{{ authors|pprint  }}
-    {#% for k,v in authors %}
-        <a href="{{ v }}">{{ k }}</a>
-    {% endfor %#}
+    <h2>{{ messages("Authors") }}</h2>
+    {{ authors|pprint  }}
+    <div class="metadata">
+        {{ feeds_translations.translation_link(kind) }}
+    </div>
+
+    {% for author in authors %}
+        <a href="{{ TRANSLATION[lang] / AUTHOR_PATH }}/{{ author }}">{{ author }}</a>
+    {% endfor %}
+    <hr>
+    <ul class="postlist">
+    {% for text, link in items %}
+        {% if text not in hidden_authors %}
+            <li><a class="reference listtitle" href="{{ link }}">{{ text|e }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
 {% endblock %}
