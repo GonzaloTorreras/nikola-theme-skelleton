@@ -1,7 +1,7 @@
-public/
-cache/
-__pycache__/
-.doit.*
+#public/
+src/cache/
+src/__pycache__/
+src/.doit.*
 .history/
 nikola
 .vscode/

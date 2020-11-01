@@ -6,7 +6,9 @@
         {%- call ui.section({
             "class": "hero"
         }) %}
-
+        BLOG TITLE
+        <br>
+        FEATURED POSTS
 
         {% endcall %}
     {% endblock hero %}
@@ -14,7 +16,9 @@
     {%- call ui.section({
         "class": "item-listing-wrapper"
     }) %}
-        {{ items }}
+        {{ items|pprint }}
+        <br>
+        {{ posts|pprint }}
 
     {% if folders or files %}
         <ul>

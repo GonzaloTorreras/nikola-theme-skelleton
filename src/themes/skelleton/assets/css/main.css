@@ -1,4 +1,5 @@
-/** reset **/
+/*  Reset 
+    ========================================================================= */
 *, *:before, *:after {
     box-sizing: border-box;
   }
@@ -355,33 +356,65 @@
   }
 
 
-/*  MAIN.CSS
+/*  ==========================================================================
+      MAIN.CSS
     ========================================================================== */
 
     :root{
         --block-padding: 1.5rem;
         --grid-gap: 1rem;
 
-        --main-color: green;
-        --main-color-text: #fff;
 
-        --secondary-color: #1f1f1f;
-        --secondary-color-text: #fff;
 
         --font-size-min: 18px;
         --font-size-min: 22px;
         
-        --body-bg: #f1f1f1;
+        
 
         --header-bg: var(--secondary-color);
         --footer-bg: var(--secondary-color);
 
         --bg-section: var(--body-bg);
 
+        /** if you want to support dark theme
+            and in which order (1)dark (2)light.
+            Then use @media prefers-color-scheme
+        */
+        color-scheme: dark light;
+
+
         /** Available globally: 
         --border-radius: 10px;
 
         **/
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --main-color: green;
+        --main-color-text: #fff;
+
+        --secondary-color: #1f1f1f;
+        --secondary-color-text: #fff;
+
+        --body-bg: #f1f1f1;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root{
+        --main-color: green;
+        --main-color-text: #fff;
+
+        --secondary-color: #1f1f1f;
+        --secondary-color-text: #fff;
+
+        --body-bg: #f1f1f1;
+
+        --img-filter: grayscale(50%);
+      }
+
+      img:not([src*=".svg"]) {
+        filter: var(--img-filter);
+      }
     }
     html{
         font-size: var(--font-size-min);

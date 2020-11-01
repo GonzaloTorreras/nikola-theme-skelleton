@@ -43,76 +43,10 @@ TRANSLATIONS = {
 #     something.meta -> something.pl.meta
 TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
-# Links for the sidebar / navigation bar.  (translatable)
-# This is a dict.  The keys are languages, and values are tuples.
-#
-# For regular links:
-#     ('https://getnikola.com/', 'Nikola Homepage')
-#
-# For submenus:
-#     (
-#         (
-#             ('https://apple.com/', 'Apple'),
-#             ('https://orange.com/', 'Orange'),
-#         ),
-#         'Fruits'
-#     )
-#
-# WARNING: Support for submenus is theme-dependent.
-# WARNING: Some themes, including the default Bootstrap 4 theme.
-# WARNING: If you link to directories, make sure to follow
-#          ``STRIP_INDEXES``.  If it’s set to ``True``, end your links
-#          with a ``/``, otherwise end them with ``/index.html`` — or
-#          else they won’t be highlighted when active.
 
-NAVIGATION_LINKS = {
-    "en": (
-        ("/archive/", "Archive"),
-        ("/categories/", "Tags"),
-        ("/blog/", "Blog"),
-        ("/rss.xml", "RSS feed"),
 
-        (
-            (
-                ("/pages","Child 1.1"),
-                (
-                 (
-                     ("/pages","Child 1.2.1"),
-                     ("/pages","Child 1.2.2"),
-                 ),
-                 "Child 1.2"
-                )
-            ), 'Ele with childs'
-        ),
-    ),
 
-    "es": (
-        ("/archivo/", "Archivo"),
-        ("/categorias/", "Etiquetas"),
-        ("/blog/", "Blog"),
-        ("/rss.xml", "RSS feed"),
 
-        (
-            (
-                ("/pages","Child 1.1"),
-                (
-                 (
-                     ("/pages","Child 1.2.1"),
-                     ("/pages","Child 1.2.2"),
-                 ),
-                 "Child 1.2"
-                )
-            ), 'Ele with childs'
-        ),
-    )
-}
-
-# Alternative navigation links. Works the same way NAVIGATION_LINKS does,
-# although themes may not always support them. (translatable)
-# (Bootstrap 4: right-side of navbar, Bootblog 4: right side of title)
-#NAVIGATION_ALT_LINKS = {
-#    DEFAULT_LANG: ()
-#}
 
 # Name of the theme to use.
 THEME = "skelleton"
@@ -134,133 +68,24 @@ THEME_CONFIG = {
     #DEFAULT_LANG: {
         # Show the latest featured post in a large box, with the previewimage as its background.
         'featured_large': True
-    #}
 }
 
+
+BLOG_SUBFOLDER = "blog"
+PAGES_SUBFOLDER = ""
 
 POSTS = (
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
-    ("posts/*.txt", "posts", "post.tmpl"),
-    ("posts/*.html", "posts", "post.tmpl"),
+    ("posts/*.rst", BLOG_SUBFOLDER, "post.tmpl"),
+    ("posts/*.md", BLOG_SUBFOLDER, "post.tmpl"),
+    ("posts/*.txt", BLOG_SUBFOLDER, "post.tmpl"),
+    ("posts/*.html", BLOG_SUBFOLDER, "post.tmpl"),
 )
 PAGES = (
-    ("pages/*.rst", "pages", "page.tmpl"),
-    ("pages/*.md", "pages", "page.tmpl"),
-    ("pages/*.txt", "pages", "page.tmpl"),
-    ("pages/*.html", "pages", "page.tmpl"),
+    ("pages/*.rst", PAGES_SUBFOLDER, "page.tmpl"),
+    ("pages/*.md", PAGES_SUBFOLDER, "page.tmpl"),
+    ("pages/*.txt", PAGES_SUBFOLDER, "page.tmpl"),
+    ("pages/*.html", PAGES_SUBFOLDER, "page.tmpl"),
 )
-
-
-TIMEZONE = "Europe/Madrid"
-
-
-# Date format used to display post dates. (translatable)
-# Used by babel.dates, CLDR style: http://cldr.unicode.org/translation/date-time
-# You can also use 'full', 'long', 'medium', or 'short'
-DATE_FORMAT = {
-    "en": "MM-dd-yyyy",
-    "es": 'dd-MM-yyyy'
-}
-
-
-# Date fanciness.
-#
-# 0 = using DATE_FORMAT and TIMEZONE (without JS)
-# 1 = using LUXON_DATE_FORMAT and local user time (JS, using Luxon)
-# 2 = using a string like “2 days ago” (JS, using Luxon)
-#
-# Your theme must support it, Bootstrap already does.
-DATE_FANCINESS = 0
-
-# Customize the locale/region used for a language.
-# For example, to use British instead of US English: LOCALES = {'en': 'en_GB'}
-# LOCALES = {}
-
-# One or more folders containing files to be copied as-is into the output.
-# The format is a dictionary of {source: relative destination}.
-# Default is:
-# FILES_FOLDERS = {'files': ''}
-# Which means copy 'files' into 'output'
-
-# One or more folders containing code listings to be processed and published on
-# the site. The format is a dictionary of {source: relative destination}.
-# Default is:
-# LISTINGS_FOLDERS = {'listings': 'listings'}
-# Which means process listings from 'listings' into 'output/listings'
-
-# A mapping of languages to file-extensions that represent that language.
-# Feel free to add or delete extensions to any list, but don't add any new
-# compilers unless you write the interface for it yourself.
-#
-# The default compiler for `new_post` is the first entry in the POSTS tuple.
-
-COMPILERS = {
-    "rest": ['.rst', '.txt'],
-    "markdown": ['.md', '.mdown', '.markdown'],
-    "textile": ['.textile'],
-    "txt2tags": ['.t2t'],
-    "bbcode": ['.bb'],
-    "wiki": ['.wiki'],
-    "ipynb": ['.ipynb'],
-    "html": ['.html', '.htm'],
-    # PHP files are rendered the usual way (i.e. with the full templates).
-    # The resulting files have .php extensions, making it possible to run
-    # them without reconfiguring your server to recognize them.
-    "php": ['.php'],
-    # Pandoc detects the input from the source filename
-    # but is disabled by default as it would conflict
-    # with many of the others.
-    # "pandoc": ['.rst', '.md', '.txt'],
-}
-
-# Enable reST directives that insert the contents of external files such
-# as "include" and "raw." This maps directly to the docutils file_insertion_enabled
-# config. See: http://docutils.sourceforge.net/docs/user/config.html#file-insertion-enabled
-# REST_FILE_INSERTION_ENABLED = True
-
-# Create by default posts in one file format?
-# Set to False for two-file posts, with separate metadata.
-# ONE_FILE_POSTS = True
-
-# Preferred metadata format for new posts
-# "Nikola": reST comments, wrapped in a HTML comment if needed (default)
-# "YAML": YAML wrapped in "---"
-# "TOML": TOML wrapped in "+++"
-# "Pelican": Native markdown metadata or reST docinfo fields. Nikola style for other formats.
-METADATA_FORMAT = "YAML"
-
-# Use date-based path when creating posts?
-# Can be enabled on a per-post basis with `nikola new_post -d`.
-# The setting is ignored when creating pages.
-# NEW_POST_DATE_PATH = False
-
-# What format to use when creating posts with date paths?
-# Default is '%Y/%m/%d', other possibilities include '%Y' or '%Y/%m'.
-# NEW_POST_DATE_PATH_FORMAT = '%Y/%m/%d'
-
-# If this is set to True, the DEFAULT_LANG version will be displayed for
-# untranslated posts.
-# If this is set to False, then posts that are not translated to a language
-# LANG will not be visible at all in the pages in that language.
-SHOW_UNTRANSLATED_POSTS = False
-
-# Nikola supports logo display.  If you have one, you can put the URL here.
-# Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
-# The URL may be relative to the site root.
-# LOGO_URL = ''
-
-# When linking posts to social media, Nikola provides Open Graph metadata
-# which is used to show a nice preview. This includes an image preview
-# taken from the post's previewimage metadata field.
-# This option lets you use an image to be used if the post doesn't have it.
-# The default is None, valid values are URLs or output paths like
-# "/images/foo.jpg"
-# DEFAULT_PREVIEW_IMAGE = None
-
-# If you want to hide the title of your website (for example, if your logo
-# already contains the text), set this to False.
-# SHOW_BLOG_TITLE = True
 
 # Paths for different autogenerated bits. These are combined with the
 # translation paths.
@@ -269,7 +94,7 @@ SHOW_UNTRANSLATED_POSTS = False
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
 # (translatable)
-INDEX_PATH = "blog"
+INDEX_PATH = BLOG_SUBFOLDER
 
 
 # Final locations are:
@@ -341,8 +166,8 @@ TAGLIST_MINIMUM_POSTS = 1
 # output / TRANSLATION[lang] / CATEGORY_PATH / CATEGORY_PREFIX category RSS_EXTENSION (RSS feed for a category)
 # (translatable)
 CATEGORY_PATH = {
-    "en": INDEX_PATH + "category",
-    "es": INDEX_PATH + "categoria"
+    "en": INDEX_PATH + "/category",
+    "es": INDEX_PATH + "/categoria"
 }
 CATEGORY_PREFIX = ""
 
@@ -503,7 +328,7 @@ ARCHIVES_ARE_INDEXES = False
 # rel_path: a relative URL to the current page/post (default)
 # full_path: a URL with the full path from the root
 # absolute: a complete URL (that includes the SITE_URL)
-URL_TYPE = 'absolute'
+URL_TYPE = 'rel_path'
 
 # Extension for RSS feed files
 # RSS_EXTENSION = ".xml"
@@ -545,6 +370,185 @@ SLUG_AUTHOR_PATH = True
 #
 # If you don't need any of these, just set to []
 REDIRECTIONS = []
+
+
+
+# Links for the sidebar / navigation bar.  (translatable)
+# This is a dict.  The keys are languages, and values are tuples.
+#
+# For regular links:
+#     ('https://getnikola.com/', 'Nikola Homepage')
+#
+# For submenus:
+#     (
+#         (
+#             ('https://apple.com/', 'Apple'),
+#             ('https://orange.com/', 'Orange'),
+#         ),
+#         'Fruits'
+#     )
+#
+# WARNING: Support for submenus is theme-dependent.
+# WARNING: Some themes, including the default Bootstrap 4 theme.
+# WARNING: If you link to directories, make sure to follow
+#          ``STRIP_INDEXES``.  If it’s set to ``True``, end your links
+#          with a ``/``, otherwise end them with ``/index.html`` — or
+#          else they won’t be highlighted when active.
+
+NAVIGATION_LINKS = {
+    "en": (
+        ("/archive/", "Archive"),
+        ("/categories/", "Tags"),
+        (INDEX_PATH, "Blog"),
+        ("/rss.xml", "RSS feed"),
+
+        (
+            (
+                ("/pages","Child 1.1"),
+                (
+                 (
+                     ("/pages","Child 1.2.1"),
+                     ("/pages","Child 1.2.2"),
+                 ),
+                 "Child 1.2"
+                )
+            ), 'Ele with childs'
+        ),
+    ),
+
+    "es": (
+        ("/archivo/", "Archivo"),
+        ("/categorias/", "Etiquetas"),
+        ("/blog/", "Blog"),
+        ("/rss.xml", "RSS feed"),
+
+        (
+            (
+                ("/pages","Child 1.1"),
+                (
+                 (
+                     ("/pages","Child 1.2.1"),
+                     ("/pages","Child 1.2.2"),
+                 ),
+                 "Child 1.2"
+                )
+            ), 'Ele with childs'
+        ),
+    )
+}
+
+
+TIMEZONE = "Europe/Madrid"
+
+
+# Date format used to display post dates. (translatable)
+# Used by babel.dates, CLDR style: http://cldr.unicode.org/translation/date-time
+# You can also use 'full', 'long', 'medium', or 'short'
+DATE_FORMAT = {
+    "en": "MM-dd-yyyy",
+    "es": 'dd-MM-yyyy'
+}
+
+
+# Date fanciness.
+#
+# 0 = using DATE_FORMAT and TIMEZONE (without JS)
+# 1 = using LUXON_DATE_FORMAT and local user time (JS, using Luxon)
+# 2 = using a string like “2 days ago” (JS, using Luxon)
+#
+# Your theme must support it, Bootstrap already does.
+DATE_FANCINESS = 0
+
+# Customize the locale/region used for a language.
+# For example, to use British instead of US English: LOCALES = {'en': 'en_GB'}
+# LOCALES = {}
+
+# One or more folders containing files to be copied as-is into the output.
+# The format is a dictionary of {source: relative destination}.
+# Default is:
+# FILES_FOLDERS = {'files': ''}
+# Which means copy 'files' into 'output'
+
+# One or more folders containing code listings to be processed and published on
+# the site. The format is a dictionary of {source: relative destination}.
+# Default is:
+# LISTINGS_FOLDERS = {'listings': 'listings'}
+# Which means process listings from 'listings' into 'output/listings'
+
+# A mapping of languages to file-extensions that represent that language.
+# Feel free to add or delete extensions to any list, but don't add any new
+# compilers unless you write the interface for it yourself.
+#
+# The default compiler for `new_post` is the first entry in the POSTS tuple.
+
+COMPILERS = {
+    "rest": ['.rst', '.txt'],
+    "markdown": ['.md', '.mdown', '.markdown'],
+    "textile": ['.textile'],
+    "txt2tags": ['.t2t'],
+    "bbcode": ['.bb'],
+    "wiki": ['.wiki'],
+    "ipynb": ['.ipynb'],
+    "html": ['.html', '.htm'],
+    # PHP files are rendered the usual way (i.e. with the full templates).
+    # The resulting files have .php extensions, making it possible to run
+    # them without reconfiguring your server to recognize them.
+    "php": ['.php'],
+    # Pandoc detects the input from the source filename
+    # but is disabled by default as it would conflict
+    # with many of the others.
+    # "pandoc": ['.rst', '.md', '.txt'],
+}
+
+# Enable reST directives that insert the contents of external files such
+# as "include" and "raw." This maps directly to the docutils file_insertion_enabled
+# config. See: http://docutils.sourceforge.net/docs/user/config.html#file-insertion-enabled
+# REST_FILE_INSERTION_ENABLED = True
+
+# Create by default posts in one file format?
+# Set to False for two-file posts, with separate metadata.
+# ONE_FILE_POSTS = True
+
+# Preferred metadata format for new posts
+# "Nikola": reST comments, wrapped in a HTML comment if needed (default)
+# "YAML": YAML wrapped in "---"
+# "TOML": TOML wrapped in "+++"
+# "Pelican": Native markdown metadata or reST docinfo fields. Nikola style for other formats.
+METADATA_FORMAT = "YAML"
+
+# Use date-based path when creating posts?
+# Can be enabled on a per-post basis with `nikola new_post -d`.
+# The setting is ignored when creating pages.
+# NEW_POST_DATE_PATH = False
+
+# What format to use when creating posts with date paths?
+# Default is '%Y/%m/%d', other possibilities include '%Y' or '%Y/%m'.
+# NEW_POST_DATE_PATH_FORMAT = '%Y/%m/%d'
+
+# If this is set to True, the DEFAULT_LANG version will be displayed for
+# untranslated posts.
+# If this is set to False, then posts that are not translated to a language
+# LANG will not be visible at all in the pages in that language.
+SHOW_UNTRANSLATED_POSTS = False
+
+# Nikola supports logo display.  If you have one, you can put the URL here.
+# Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
+# The URL may be relative to the site root.
+# LOGO_URL = ''
+
+# When linking posts to social media, Nikola provides Open Graph metadata
+# which is used to show a nice preview. This includes an image preview
+# taken from the post's previewimage metadata field.
+# This option lets you use an image to be used if the post doesn't have it.
+# The default is None, valid values are URLs or output paths like
+# "/images/foo.jpg"
+# DEFAULT_PREVIEW_IMAGE = None
+
+# If you want to hide the title of your website (for example, if your logo
+# already contains the text), set this to False.
+# SHOW_BLOG_TITLE = True
+
+
 
 # Presets of commands to execute to deploy. Can be anything, for
 # example, you may use rsync:
@@ -609,17 +613,19 @@ GITHUB_COMMIT_SOURCE = True
 # <https://getnikola.com/handbook.html#post-processing-filters>
 #
 # from nikola import filters
-# FILTERS = {
-#    ".html": [filters.typogrify],
-#    ".js": [filters.closure_compiler],
+FILTERS = {
+    ".html": ["filters.typogrify"],
+#    ".js": ["filters.closure_compiler"],
+    ".js": ["filters.yui_compressor"],
+    ".css": ["filters.yui_compressor"],
 #    ".jpg": ["jpegoptim --strip-all -m75 -v %s"],
-# }
+}
 
 # Executable for the "yui_compressor" filter (defaults to 'yui-compressor').
-# YUI_COMPRESSOR_EXECUTABLE = 'yui-compressor'
+#YUI_COMPRESSOR_EXECUTABLE = 'yui-compressor'
 
 # Executable for the "closure_compiler" filter (defaults to 'closure-compiler').
-# CLOSURE_COMPILER_EXECUTABLE = 'closure-compiler'
+#CLOSURE_COMPILER_EXECUTABLE = 'closure-compiler'
 
 # Executable for the "optipng" filter (defaults to 'optipng').
 # OPTIPNG_EXECUTABLE = 'optipng'

@@ -7,7 +7,13 @@
 {% extends "listing.tmpl" %}
 
 {% block pre_footer %}
+{% if items %}
     {{ items|pprint }}
     <hr>
-    {{ cat_items|pprint }}
+    {% endif %}
+    {% if cat_items %}
+        {% for k,v in cat_items %}
+        <a href="{{ v }}">{{ k }}</a>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
