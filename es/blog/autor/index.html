@@ -31,8 +31,7 @@ ui.menuConstructor(
 [{'text': 'Archivo', 'href': '/es/blog/archivo/'}, {'text': 'Etiquetas', 'href': '/es/blog/categoria/'}, {'text': 'Blog', 'href': '/es/blog/'}, {'text': 'RSS feed', 'href': '/es/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
- -->
-<ul class="menu-horizontal flex-hright ">
+ --><ul class="menu-horizontal flex-hright ">
 <li class="menu-item">
             <a href="../archivo/" class="menu-link ">Archivo</a>
 </li>
@@ -75,26 +74,18 @@ ui.searchForm()
             <!-- 
 macro:
 ui.langSwitcher()
- -->        <!-- author_index-->
-             
+ -->        <!--author_index-->            
             
-                
-
-            
-
-            
-        <!-- author_index-->
-<div class="translation-menu-wrapper">
+        <!--author_index--><div class="translation-menu-wrapper">
 <!-- 
 macro:
 ui.menuConstructor(
-[{'href': '#', 'text': 'es', 'class': 'active', 'children': [{'href': '/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}]}],
+[{'href': '#', 'text': 'es', 'class': 'active', 'children': [{'href': '/es/blog/autor/', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': 'lang-item-link', 'extra_li_class': 'lang-item'}]}],
 {'menuExtraClass': 'translation-menu'}
 )
- -->
-<ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item active with-children ">
+ --><ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item active with-children ">
             <a href="#" class="menu-link active">es</a><ul class="submenu"><li class="menu-itemlang-item">
-            <a href="../../../" rel="alternate" hreflang="en" class="menu-link ">en</a>
+            <a href="." rel="alternate" hreflang="en" class="menu-link lang-item-link">en</a>
 </li></ul>
 </li></ul>
 </div>
