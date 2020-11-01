@@ -98,7 +98,7 @@
 
     {%- set _dummy = _opts.update(opts) if opts -%}{# mix incoming opts with defaults #}
 
-{{ '<ul class="menu-%s flex-hright %s">'|format(_opts.menuFlow, _opts.menuExtraClass ) }}
+{{- '<ul class="menu-%s flex-hright %s">'|format(_opts.menuFlow, _opts.menuExtraClass ) -}}
     {%- for item in items recursive -%} {# TODO: Sort if class active (active should be first element, so CSS can be simpler and have ":focus ~" for accesibility working. #}
         
         {%- set _dummy = item.update({"class": "menu-link %s"|format(item.class) }) -%}
@@ -136,26 +136,28 @@
     ] -%}
     {%- for langname in translations|sort -%}
         {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
-        <!-- {{ kind }}-->
-        {% set indexes_kind = ["author_index", "author", "archive", "tag", "tag_index", "category", "category_index", "index"] %}
-        {% if lang != langname %} {# Ignore current lang #}
+        <!-- {{- kind -}}-->
+        {%- set indexes_kind = ["author_index", "author", "archive", "tag", "tag_index", "category", "category_index", "index"] -%}
+        {%- if lang != langname -%} {# Ignore current lang #}
             
             {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
             
             {# Link depends on page kind #}
-            
-            {% if post and post.is_translation_available(langname) %}
-                 {%- set link = post.permalink(langname) %}
-            {% elif kind in indexes_kind %}
 
-                {%- set link = (_link('root', None, langname) if lang != langname else "#" ) -%} 
+            {%- if post and post.is_translation_available(langname) -%}
+                 {%- set link = post.permalink(langname) -%}
+            {%- elif kind in indexes_kind -%}
+
+                {#%- set link = _link(kind, None, langname) -%#}
+                {% set link = permalink %}
                 
-                {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
-                
-            {% endif %}
+            {%- else -%}
+                {# fallback to root, tho it shouldn't execute? #}
+                {%- set link = _link('root', None, langname)  -%} 
+            {%- endif -%}
 
             
-
+            {% set class = "lang-item-link" ~ (" active " if lang == langname) %}
             
             {# update dict with all the links xmlAttr formatted. #}
             {%- set _dummy = translation_links[0].children.append({
@@ -166,12 +168,12 @@
                 "class": class,
                 "extra_li_class": "lang-item"
             }) -%} 
-        {% endif %}
+        {%- endif -%}
 
 
     {%- endfor -%}
     <div class="translation-menu-wrapper">
-       {{- menuConstructor(translation_links, {"menuExtraClass": "translation-menu"})-}}
+       {{- menuConstructor(translation_links, {"menuExtraClass": "translation-menu"}) -}}
     </div>
 {%- endmacro -%}
 
