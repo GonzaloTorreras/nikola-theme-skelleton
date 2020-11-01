@@ -137,17 +137,24 @@
     {%- for langname in translations|sort -%}
         {# TODO: Get real dynamically the link to translated content post, index, cats etc. fallback -> to root + lang: /{lang} #}
         <!-- {{ kind }}-->
+        {% set indexes_kind = ["author_index", "author", "archive", "tag", "tag_index", "category", "category_index", "index"] %}
         {% if lang != langname %} {# Ignore current lang #}
+            
+            {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
+            
+            {# Link depends on page kind #}
+            
             {% if post and post.is_translation_available(langname) %}
                  {%- set link = post.permalink(langname) %}
-            {% elif kind %}
+            {% elif kind in indexes_kind %}
 
                 {%- set link = (_link('root', None, langname) if lang != langname else "#" ) -%} 
-                {%- set text =  langname if translation_menu_lang_code else messages("LANGUAGE", langname ) -%} {# Display full lang name or code lang. #}
                 
                 {#% set class = "lang-item-link" ~ (" active " if lang == langname) %#}
                 
             {% endif %}
+
+            
 
             
             {# update dict with all the links xmlAttr formatted. #}
