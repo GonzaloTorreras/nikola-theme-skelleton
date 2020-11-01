@@ -407,18 +407,18 @@ REDIRECTIONS = [
 
 NAVIGATION_LINKS = {
     "en": (
-        ("/archive/", "Archive"),
-        ("/categories/", "Tags"),
+        ( ARCHIVE_PATH["en"] + "/", "Archive"),
+        ( CATEGORY_PATH["en"] + "/", "Tags"),
         (INDEX_PATH, "Blog"),
         ("/rss.xml", "RSS feed"),
 
         (
             (
-                ("/pages","Child 1.1"),
+                ("/","Child 1.1"),
                 (
                  (
-                     ("/pages","Child 1.2.1"),
-                     ("/pages","Child 1.2.2"),
+                     ("/","Child 1.2.1"),
+                     ("/","Child 1.2.2"),
                  ),
                  "Child 1.2"
                 )
@@ -427,18 +427,18 @@ NAVIGATION_LINKS = {
     ),
 
     "es": (
-        ("/archivo/", "Archivo"),
-        ("/categorias/", "Etiquetas"),
-        ("/blog/", "Blog"),
-        ("/rss.xml", "RSS feed"),
+        ("/es/" + ARCHIVE_PATH["es"] + "/", "Archivo"),
+        ("/es/" + CATEGORY_PATH["es"] + "/", "Etiquetas"),
+        ("/es/" + INDEX_PATH + "/", "Blog"),
+        ("/es/rss.xml", "RSS feed"),
 
         (
             (
-                ("/pages","Child 1.1"),
+                ("/","Child 1.1"),
                 (
                  (
-                     ("/pages","Child 1.2.1"),
-                     ("/pages","Child 1.2.2"),
+                     ("/","Child 1.2.1"),
+                     ("/","Child 1.2.2"),
                  ),
                  "Child 1.2"
                 )
