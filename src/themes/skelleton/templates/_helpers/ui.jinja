@@ -150,6 +150,7 @@
                         }) -%} 
     {%- endfor -%}
     <div class="translation-menu-wrapper">
+    <!-- {{ post.permalink(langname) }} -->
        {{- menuConstructor(translation_links, {"menuExtraClass": "translation-menu"})-}}
     </div>
 {%- endmacro -%}
