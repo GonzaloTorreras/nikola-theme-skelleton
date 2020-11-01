@@ -22,22 +22,22 @@
             <!-- 
 macro:
 ui.legacy_menu_generator(
-(('/archive/', 'Archive'), ('/categories/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Child 1.1'), ((('/pages', 'Child 1.2.1'), ('/pages', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+(('blog/archive/', 'Archive'), ('blog/category/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
  False
 )
  --><!-- 
 macro:
 ui.menuConstructor(
-[{'text': 'Archive', 'href': '/archive/'}, {'text': 'Tags', 'href': '/categories/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+[{'text': 'Archive', 'href': 'blog/archive/'}, {'text': 'Tags', 'href': 'blog/category/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
  -->
 <ul class="menu-horizontal flex-hright ">
 <li class="menu-item">
-            <a href="../../archive/" class="menu-link ">Archive</a>
+            <a href="blog/archive/" class="menu-link ">Archive</a>
 </li>
 <li class="menu-item">
-            <a href="../../categories/" class="menu-link ">Tags</a>
+            <a href="blog/category/" class="menu-link ">Tags</a>
 </li>
 <li class="menu-item">
             <a href="blog" class="menu-link ">Blog</a>
@@ -48,13 +48,13 @@ False
 <li class="menu-item with-children ">
             <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
 <li class="menu-item">
-            <a href="../../pages" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
+            <a href="../../" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
 </li>
 <li class="menu-item">
-            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
+            <a href="../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
 </li>
 <li class="menu-item">
-            <a href="../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
+            <a href="../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
 </li>
 <li class="menu-item">
             <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child&nbsp;1.2</a>
@@ -100,12 +100,12 @@ ui.menuConstructor(
 
 
 
-    [(&#8216;blog&#8217;, &#8216;/blog/tags/blog/&#8217;),
- (&#8216;demo&#8217;, &#8216;/blog/tags/demo/&#8217;),
- (&#8216;etiqueta&#8217;, &#8216;/blog/tags/etiqueta/&#8217;),
- (&#8216;nikola&#8217;, &#8216;/blog/tags/nikola/&#8217;),
- (&#8216;python&#8217;, &#8216;/blog/tags/python/&#8217;),
- (&#8216;theming&#8217;, &#8216;/blog/tags/theming/&#8217;)]
+    [(&#8216;blog&#8217;, &#8216;/blog/tag/blog/&#8217;),
+ (&#8216;demo&#8217;, &#8216;/blog/tag/demo/&#8217;),
+ (&#8216;etiqueta&#8217;, &#8216;/blog/tag/etiqueta/&#8217;),
+ (&#8216;nikola&#8217;, &#8216;/blog/tag/nikola/&#8217;),
+ (&#8216;python&#8217;, &#8216;/blog/tag/python/&#8217;),
+ (&#8216;theming&#8217;, &#8216;/blog/tag/theming/&#8217;)]
     <hr></main><footer id="site-footer"><section class="container"><nav class="cols dflex flex-g1"><ul class="col col-1">
 <a class="logo" href="../../">Skelleton framework</a>
 

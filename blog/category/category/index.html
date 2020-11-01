@@ -21,22 +21,22 @@
             <!-- 
 macro:
 ui.legacy_menu_generator(
-(('/archive/', 'Archive'), ('/categories/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/pages', 'Child 1.1'), ((('/pages', 'Child 1.2.1'), ('/pages', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+(('blog/archive/', 'Archive'), ('blog/category/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
  False
 )
  --><!-- 
 macro:
 ui.menuConstructor(
-[{'text': 'Archive', 'href': '/archive/'}, {'text': 'Tags', 'href': '/categories/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/pages', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+[{'text': 'Archive', 'href': 'blog/archive/'}, {'text': 'Tags', 'href': 'blog/category/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
  -->
 <ul class="menu-horizontal flex-hright ">
 <li class="menu-item">
-            <a href="../../../archive/" class="menu-link ">Archive</a>
+            <a href="blog/archive/" class="menu-link ">Archive</a>
 </li>
 <li class="menu-item">
-            <a href="../../../categories/" class="menu-link ">Tags</a>
+            <a href="blog/category/" class="menu-link ">Tags</a>
 </li>
 <li class="menu-item">
             <a href="blog" class="menu-link ">Blog</a>
@@ -47,13 +47,13 @@ False
 <li class="menu-item with-children ">
             <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
 <li class="menu-item">
-            <a href="../../../pages" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
+            <a href="../../../" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
 </li>
 <li class="menu-item">
-            <a href="../../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
+            <a href="../../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
 </li>
 <li class="menu-item">
-            <a href="../../../pages" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
+            <a href="../../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
 </li>
 <li class="menu-item">
             <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child&nbsp;1.2</a>
@@ -116,13 +116,13 @@ macro:
 ui.post_listing(
 [<Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef>]
 )
- --><div class="post-listing"><article class="post-item" data-translations_available="en, es" data-reading_time="1" data-post_cats="" data-post_tags="etiqueta" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="" data-post_previewimage="None"><!-- <Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef> --><header class="post-header"><!-- 
+ --><div class="post-listing"><article class="post-item" data-translations_available="es, en" data-reading_time="1" data-post_cats="" data-post_tags="etiqueta" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="" data-post_previewimage="None"><!-- <Post: 'posts/test.rst' 4a7e949dabb79f3ad7efe237b59c69ef> --><header class="post-header"><!-- 
 macro:
 ui.post_tags(
 ['etiqueta']
 )
- --><!--['etiqueta']--><ul class="post-tags" itemprop="keywords"><li><a class="post-tag-link" href="../../tags/etiqueta/">etiqueta</a></li></ul></header><section class="post-content"><h2 class="post-title">
-                    <a class="post-link" href="../../test/">Test</a>
+ --><!--['etiqueta']--><ul class="post-tags" itemprop="keywords"><li><a class="post-tag-link" href="../../tag/etiqueta/">etiqueta</a></li></ul></header><section class="post-content"><h2 class="post-title">
+                    <a class="post-link" href="../../../posts/test/">Test</a>
                 </h2>
                 <div class="post-body">Write your post here.</div>
             </section></article></div>

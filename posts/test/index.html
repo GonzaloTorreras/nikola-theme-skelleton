@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Test | Skelleton framework</title>
+<!-- Debug: NO DESCRIPTION! --><link rel="canonical" href="https://gonzalotorreras.github.io/nikola-theme-skelleton/posts/test/">
+<!-- TODO: Double check author (blog_author?) --><!-- TODO: Canonical <span class="amp">&amp;</span> alternate multilingual --><!-- --><meta name="viewport" content="width=device-width">
+<link href="../../assets/css/main.css" rel="preload" as="style" type="text/css" onload="this.rel='stylesheet'">
+<link href="../../assets/css/blog.css" rel="preload" as="style" type="text/css" onload="this.rel='stylesheet'">
+<!-- TODO: FavIcon --><meta name="theme-color" content="#27462a">
+<!-- extra_head -->
+</head>
+<body class="blog post">
+    <div class="site-box is_boxed">
+        <a href="#content" hidden class="">Skip to main content</a>
+
+
+    <header id="site-header"><nav class="container header-menu menu-horizontal flex-jspace_between"><a class="logo" href="../../">Skelleton framework</a>
+
+            <!-- 
+macro:
+ui.legacy_menu_generator(
+(('blog/archive/', 'Archive'), ('blog/category/', 'Tags'), ('blog', 'Blog'), ('/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+ False
+)
+ --><!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'Archive', 'href': 'blog/archive/'}, {'text': 'Tags', 'href': 'blog/category/'}, {'text': 'Blog', 'href': 'blog'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+False
+)
+ -->
+<ul class="menu-horizontal flex-hright ">
+<li class="menu-item">
+            <a href="blog/archive/" class="menu-link ">Archive</a>
+</li>
+<li class="menu-item">
+            <a href="blog/category/" class="menu-link ">Tags</a>
+</li>
+<li class="menu-item">
+            <a href="blog" class="menu-link ">Blog</a>
+</li>
+<li class="menu-item">
+            <a href="../../rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
+</li>
+<li class="menu-item with-children ">
+            <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
+<li class="menu-item">
+            <a href="../../" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
+</li>
+<li class="menu-item">
+            <a href="../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
+</li>
+<li class="menu-item">
+            <a href="../../" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
+</li>
+<li class="menu-item">
+            <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child&nbsp;1.2</a>
+</li>
+</ul>
+</li>
+</ul>
+<!-- 
+macro:
+ui.searchForm()
+ --><div class="search-form-wrapper" role="search">
+    <form class="search-form" action="#">
+        <input type="text" required placeholder=""><button type="submit">S</button>
+    </form>
+</div>
+
+
+            <!-- 
+macro:
+ui.langSwitcher()
+ --><div class="translation-menu-wrapper">
+<!-- 
+macro:
+ui.menuConstructor(
+[{'href': '#', 'text': 'en', 'class': 'active', 'children': [{'href': '#', 'text': 'en', 'rel': 'alternate', 'hreflang': 'en', 'class': Undefined, 'extra_li_class': 'lang-item'}, {'href': '/es/.', 'text': 'es', 'rel': 'alternate', 'hreflang': 'es', 'class': Undefined, 'extra_li_class': 'lang-item'}]}],
+{'menuExtraClass': 'translation-menu'}
+)
+ -->
+<ul class="menu-horizontal flex-hright translation-menu"><li class="menu-item active with-children ">
+            <a href="#" class="menu-link active">en</a><ul class="submenu">
+<li class="menu-itemlang-item">
+            <a href="#" rel="alternate" hreflang="en" class="menu-link ">en</a>
+</li>
+<li class="menu-itemlang-item">
+            <a href="../../es/" rel="alternate" hreflang="es" class="menu-link ">es</a>
+</li>
+</ul>
+</li></ul>
+</div>
+        </nav></header><main id="site-content"><!-- 
+macro:
+ui.section(
+{'ele': 'article', 'class': 'post-item'}
+)
+ --><article class="section post-item"><div class="container">        <header class="post-header"><h1 class="post-title">Test</h1>
+            <aside class="post-meta"><a href="../../blog/author/gonzalo-torreras/">Gonzalo Torreras</a>
+                <!-- 
+macro:
+ui.post_tags(
+False
+)
+ --><!--['etiqueta']--><ul class="post-tags" itemprop="keywords"><li><a class="post-tag-link" href="../../blog/tag/etiqueta/">etiqueta</a></li></ul></aside></header><div class="post-content">
+            <p>Write your post&nbsp;here.</p>
+        </div>
+        <aside class="related-posts"><!-- TODO: related posts (by tag matchs) --></aside>
+</div>
+</article></main><footer id="site-footer"><section class="container"><nav class="cols dflex flex-g1"><ul class="col col-1">
+<a class="logo" href="../../">Skelleton framework</a>
+
+                    <p>Contents © 2020         <a href="mailto:hola@gonzalotorreras.com">Gonzalo&nbsp;Torreras</a></p>
+                </ul>
+<ul class="col col-2"></ul>
+<!-- 
+macro:
+ui.menuConstructor(
+[{'text': 'RSS', 'href': 'en/rss.xml', 'target': '_blank', 'children': [{'text': 'child1', 'href': '#'}]}],
+{'menuExtraClass': 'col col-3'}
+)
+ --><ul class="menu-horizontal flex-hright col col-3"><li class="menu-item with-children ">
+            <a href="en/rss.xml" target="_blank" class="menu-link "><span class="caps">RSS</span></a><ul class="submenu"><li class="menu-item">
+            <a href="#" class="menu-link ">child1</a>
+</li></ul>
+</li></ul></nav></section></footer>
+</div>
+
+
+        <script defer src="../../assets/js/main.js"></script><pre id="is_verbose"> Template in use: post.tmpl
+ </pre>
+</body>
+</html>
