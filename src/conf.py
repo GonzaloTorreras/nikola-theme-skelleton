@@ -172,10 +172,10 @@ CATEGORY_PATH = {
 CATEGORY_PREFIX = ""
 
 # Force category listing to be the INDEX.HTML of the prev CATEGORY_PATH setting.
-CATEGORIES_INDEX_PATH = {
-    "en": "index.html",
-    "es": "index.html"
-}
+#CATEGORIES_INDEX_PATH = {
+#    "en": INDEX_PATH + "index.html",
+#    "es": INDEX_PATH + "index.html"
+#}
 # If CATEGORY_ALLOW_HIERARCHIES is set to True, categories can be organized in
 # hierarchies. For a post, the whole path in the hierarchy must be specified,
 # using a forward slash ('/') to separate paths. Use a backslash ('\') to escape

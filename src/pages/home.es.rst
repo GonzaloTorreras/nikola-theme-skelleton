@@ -1,5 +1,5 @@
 .. title: Home ES
-.. slug: 
+.. slug: index
 .. date: 2012-03-30 23:00:00 UTC-03:00
 .. tags: tag1
 .. link: 
