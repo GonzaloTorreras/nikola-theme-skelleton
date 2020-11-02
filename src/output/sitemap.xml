@@ -52,7 +52,7 @@
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tag/</loc>
-  <lastmod>2020-11-02T00:18:00Z</lastmod>
+  <lastmod>2020-11-02T01:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tag/blog/</loc>
@@ -73,6 +73,10 @@
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tag/python/</loc>
   <lastmod>2020-11-02T00:18:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tag/tag/</loc>
+  <lastmod>2020-11-02T01:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/tag/theming/</loc>
@@ -133,11 +137,15 @@
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/</loc>
-  <lastmod>2020-11-02T00:18:00Z</lastmod>
+  <lastmod>2020-11-02T01:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/cat/</loc>
   <lastmod>2020-11-02T00:18:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/</loc>
+  <lastmod>2020-11-02T01:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categorias/</loc>
