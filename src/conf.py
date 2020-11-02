@@ -394,11 +394,11 @@ REDIRECTIONS = [
     #("blog/author/index.html","/blog/author/index.html"),
     #("es/blog/autor/index.html","/es/blog/autores/index.html")
 
-    ("blog/tag/index.html", SITE_URL + "/blog/tags"),
-    ("es/blog/etiqueta/index.html", SITE_URL + "/es/blog/etiquetas"),
+    ("blog/tag/index.html", SITE_URL + TAGS_INDEX_PATH["en"]),
+    ("es/blog/etiqueta/index.html", SITE_URL + TAGS_INDEX_PATH["es"]),
 
-    ("blog/category/index.html", SITE_URL + "/blog/categories"),
-    ("es/blog/categoria/index.html", SITE_URL + "/es/blog/categorias"),
+    ("blog/category/index.html", SITE_URL + CATEGORIES_INDEX_PATH["en"] ),
+    ("es/blog/categoria/index.html", SITE_URL + CATEGORIES_INDEX_PATH["es"]),
 
     #("blog/author/index.html","/blog/"),
     #("es/blog/autor/index.html","/es/blog/")
@@ -430,9 +430,11 @@ REDIRECTIONS = [
 
 NAVIGATION_LINKS = {
     "en": (
-        ( "/" + ARCHIVE_PATH["en"] + "/", "Archive"),
-        ( "/" + CATEGORY_PATH["en"] + "/", "Tags"),
         ("/" + INDEX_PATH, "Blog"),
+        ( "/" + TAGS_INDEX_PATH["en"] + "/", "Tags"),
+        ( "/" + CATEGORIES_INDEX_PATH["en"] + "/", "Categories"),
+        ("/es/" + ARCHIVE_PATH["en"] + "/", "Archive"),
+
         ("/rss.xml", "RSS feed"),
 
         (
@@ -450,9 +452,11 @@ NAVIGATION_LINKS = {
     ),
 
     "es": (
-        ("/es/" + ARCHIVE_PATH["es"] + "/", "Archivo"),
-        ("/es/" + CATEGORY_PATH["es"] + "/", "Etiquetas"),
         ("/es/" + INDEX_PATH + "/", "Blog"),
+        ("/es/" + CATEGORIES_INDEX_PATH["es"] + "/", "Categorias"),
+        ("/es/" + TAGS_INDEX_PATH["es"] + "/", "Etiquetas"),
+        ("/es/" + ARCHIVE_PATH["es"] + "/", "Archivo"),
+        
         ("/es/rss.xml", "RSS feed"),
 
         (
