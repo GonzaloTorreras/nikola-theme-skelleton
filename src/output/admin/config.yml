@@ -2,8 +2,8 @@ backend:
 	name: git-gateway
 	branch: master
 	display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
-	media_folder: "src/images/uploads"
-	public_folder: "/images/uploads"
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
 collections:
 	- name: "posts" # Used in routes, e.g., /admin/collections/blog
     label: "Posts" # Used in the UI
