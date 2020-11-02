@@ -22,24 +22,27 @@
             <!-- 
 macro:
 ui.legacy_menu_generator(
-(('/es/blog/archivo/', 'Archivo'), ('/es/blog/categoria/', 'Etiquetas'), ('/es/blog/', 'Blog'), ('/es/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+(('/es/blog/', 'Blog'), ('/es/blog/categorias/index.html/', 'Categorias'), ('/es/blog/etiquetas/index.html/', 'Etiquetas'), ('/es/blog/archivo/', 'Archivo'), ('/es/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
  False
 )
  --><!-- 
 macro:
 ui.menuConstructor(
-[{'text': 'Archivo', 'href': '/es/blog/archivo/'}, {'text': 'Etiquetas', 'href': '/es/blog/categoria/'}, {'text': 'Blog', 'href': '/es/blog/'}, {'text': 'RSS feed', 'href': '/es/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+[{'text': 'Blog', 'href': '/es/blog/'}, {'text': 'Categorias', 'href': '/es/blog/categorias/index.html/'}, {'text': 'Etiquetas', 'href': '/es/blog/etiquetas/index.html/'}, {'text': 'Archivo', 'href': '/es/blog/archivo/'}, {'text': 'RSS feed', 'href': '/es/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
  --><ul class="menu-horizontal flex-hright ">
 <li class="menu-item">
-            <a href="../archivo/" class="menu-link ">Archivo</a>
-</li>
-<li class="menu-item">
-            <a href="../categoria/" class="menu-link ">Etiquetas</a>
-</li>
-<li class="menu-item">
             <a href="../" class="menu-link ">Blog</a>
+</li>
+<li class="menu-item">
+            <a href="index.html/" class="menu-link ">Categorias</a>
+</li>
+<li class="menu-item">
+            <a href="../etiquetas/index.html/" class="menu-link ">Etiquetas</a>
+</li>
+<li class="menu-item">
+            <a href="../archivo/" class="menu-link ">Archivo</a>
 </li>
 <li class="menu-item">
             <a href="../../rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
