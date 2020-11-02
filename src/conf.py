@@ -433,7 +433,7 @@ NAVIGATION_LINKS = {
         ("/" + INDEX_PATH, "Blog"),
         ( "/" + TAGS_INDEX_PATH["en"], "Tags"),
         ( "/" + CATEGORIES_INDEX_PATH["en"], "Categories"),
-        ("/es/" + ARCHIVE_PATH["en"], "Archive"),
+        ("/" + ARCHIVE_PATH["en"], "Archive"),
 
         ("/rss.xml", "RSS feed"),
 

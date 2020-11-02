@@ -21,13 +21,13 @@
             <!-- 
 macro:
 ui.legacy_menu_generator(
-(('/blog', 'Blog'), ('/blog/tags/index.html', 'Tags'), ('/blog/categories/index.html', 'Categories'), ('/es/blog/archive', 'Archive'), ('/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+(('/blog', 'Blog'), ('/blog/tags/index.html', 'Tags'), ('/blog/categories/index.html', 'Categories'), ('/blog/archive', 'Archive'), ('/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
  False
 )
  --><!-- 
 macro:
 ui.menuConstructor(
-[{'text': 'Blog', 'href': '/blog'}, {'text': 'Tags', 'href': '/blog/tags/index.html'}, {'text': 'Categories', 'href': '/blog/categories/index.html'}, {'text': 'Archive', 'href': '/es/blog/archive'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+[{'text': 'Blog', 'href': '/blog'}, {'text': 'Tags', 'href': '/blog/tags/index.html'}, {'text': 'Categories', 'href': '/blog/categories/index.html'}, {'text': 'Archive', 'href': '/blog/archive'}, {'text': 'RSS feed', 'href': '/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
 False
 )
  --><ul class="menu-horizontal flex-hright ">
@@ -41,7 +41,7 @@ False
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/categories/index.html" class="menu-link ">Categories</a>
 </li>
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/archive" class="menu-link ">Archive</a>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/blog/archive" class="menu-link ">Archive</a>
 </li>
 <li class="menu-item">
             <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
@@ -114,7 +114,7 @@ macro:
 ui.post_listing(
 [<Post: 'posts/test.rst' 3cff63bc1cb8879a656373035770dde9>]
 )
- --><div class="post-listing"><article class="post-item" data-translations_available="es, en" data-reading_time="1" data-post_cats="" data-post_tags="tag" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="" data-post_previewimage="None"><!-- <Post: 'posts/test.rst' 3cff63bc1cb8879a656373035770dde9> --><header class="post-header"><!-- 
+ --><div class="post-listing"><article class="post-item" data-translations_available="en, es" data-reading_time="1" data-post_cats="" data-post_tags="tag" data-post_author="Gonzalo Torreras" data-post_date="2020-09-08 10:30:56+02:00" data-post_status="published" data-post_featured_image="" data-post_previewimage="None"><!-- <Post: 'posts/test.rst' 3cff63bc1cb8879a656373035770dde9> --><header class="post-header"><!-- 
 macro:
 ui.post_tags(
 ['tag']
