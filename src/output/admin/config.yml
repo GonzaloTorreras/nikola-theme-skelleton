@@ -1,5 +1,5 @@
 backend:
-	name: git-gateway
+	name: github
 	branch: master
 	display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
 media_folder: "src/images/uploads"
