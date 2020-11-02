@@ -394,11 +394,11 @@ REDIRECTIONS = [
     #("blog/author/index.html","/blog/author/index.html"),
     #("es/blog/autor/index.html","/es/blog/autores/index.html")
 
-    ("blog/tag/index.html","/blog/"),
-    ("es/blog/etiqueta/index.html","/es/blog/"),
+    ("blog/tag/index.html", SITE_URL + "/blog/tags"),
+    ("es/blog/etiqueta/index.html", SITE_URL + "/es/blog/etiquetas"),
 
-    ("blog/category/index.html","/blog/"),
-    ("es/blog/categoria/index.html","/es/blog/"),
+    ("blog/category/index.html", SITE_URL + "/blog/categories"),
+    ("es/blog/categoria/index.html", SITE_URL + "/es/blog/categorias"),
 
     #("blog/author/index.html","/blog/"),
     #("es/blog/autor/index.html","/es/blog/")
