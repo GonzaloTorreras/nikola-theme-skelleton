@@ -430,47 +430,47 @@ REDIRECTIONS = [
 
 NAVIGATION_LINKS = {
     "en": (
-        ("/" + INDEX_PATH, "Blog"),
-        ( "/" + TAGS_INDEX_PATH["en"], "Tags"),
-        ( "/" + CATEGORIES_INDEX_PATH["en"], "Categories"),
-        ("/" + ARCHIVE_PATH["en"], "Archive"),
+        (TRANSLATIONS["en"] + INDEX_PATH, "Blog"),
+        (TRANSLATIONS["en"] + TAGS_INDEX_PATH["en"], "Tags"),
+        (TRANSLATIONS["en"] + CATEGORIES_INDEX_PATH["en"], "Categories"),
+        (TRANSLATIONS["en"] + ARCHIVE_PATH["en"], "Archive"),
 
-        ("/rss.xml", "RSS feed"),
+        (TRANSLATIONS["en"] + "/rss.xml", "RSS feed"),
 
-        (
-            (
-                ("/","Child 1.1"),
-                (
-                 (
-                     ("/","Child 1.2.1"),
-                     ("/","Child 1.2.2"),
-                 ),
-                 "Child 1.2"
-                )
-            ), 'Ele with childs'
-        ),
+        #(
+        #    (
+        #        ("/","Child 1.1"),
+        #        (
+        #         (
+        #             ("/","Child 1.2.1"),
+        #             ("/","Child 1.2.2"),
+        #         ),
+        #         "Child 1.2"
+        #        )
+        #    ), 'Ele with childs'
+        #),
     ),
 
     "es": (
-        ("/es/" + INDEX_PATH + "/", "Blog"),
-        ("/es/" + CATEGORIES_INDEX_PATH["es"], "Categorias"),
-        ("/es/" + TAGS_INDEX_PATH["es"], "Etiquetas"),
-        ("/es/" + ARCHIVE_PATH["es"], "Archivo"),
+        (TRANSLATIONS["es"] + INDEX_PATH + "/", "Blog"),
+        (TRANSLATIONS["es"] + CATEGORIES_INDEX_PATH["es"], "Categorias"),
+        (TRANSLATIONS["es"] + TAGS_INDEX_PATH["es"], "Etiquetas"),
+        (TRANSLATIONS["es"] + ARCHIVE_PATH["es"], "Archivo"),
         
-        ("/es/rss.xml", "RSS feed"),
+        (TRANSLATIONS["es"] + "/rss.xml", "RSS feed"),
 
-        (
-            (
-                ("/","Child 1.1"),
-                (
-                 (
-                     ("/","Child 1.2.1"),
-                     ("/","Child 1.2.2"),
-                 ),
-                 "Child 1.2"
-                )
-            ), 'Ele with childs'
-        ),
+        #(
+        #    (
+        #        ("/","Child 1.1"),
+        #        (
+        #         (
+        #             ("/","Child 1.2.1"),
+        #             ("/","Child 1.2.2"),
+        #         ),
+        #         "Child 1.2"
+        #        )
+        #    ), 'Ele with childs'
+        #),
     )
 }
 

@@ -21,46 +21,30 @@
             <!-- 
 macro:
 ui.legacy_menu_generator(
-(('/es/blog/', 'Blog'), ('/es/blog/categorias/index.html', 'Categorias'), ('/es/blog/etiquetas/index.html', 'Etiquetas'), ('/es/blog/archivo', 'Archivo'), ('/es/rss.xml', 'RSS feed'), ((('/', 'Child 1.1'), ((('/', 'Child 1.2.1'), ('/', 'Child 1.2.2')), 'Child 1.2')), 'Ele with childs')),
+(('./esblog/', 'Blog'), ('./esblog/categorias/index.html', 'Categorias'), ('./esblog/etiquetas/index.html', 'Etiquetas'), ('./esblog/archivo', 'Archivo'), ('./es/rss.xml', 'RSS feed')),
  False
 )
  --><!-- 
 macro:
 ui.menuConstructor(
-[{'text': 'Blog', 'href': '/es/blog/'}, {'text': 'Categorias', 'href': '/es/blog/categorias/index.html'}, {'text': 'Etiquetas', 'href': '/es/blog/etiquetas/index.html'}, {'text': 'Archivo', 'href': '/es/blog/archivo'}, {'text': 'RSS feed', 'href': '/es/rss.xml'}, {'text': 'Ele with childs', 'href': '#', 'children': [{'text': 'Child 1.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 1, 'children': False}, {'text': 'Child 1.2.1', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2.2', 'href': '/', 'class': 'submenu-item', 'data-depth': 2, 'children': False}, {'text': 'Child 1.2', 'href': '#', 'class': 'submenu-item', 'data-depth': 1, 'children': []}]}],
+[{'text': 'Blog', 'href': './esblog/'}, {'text': 'Categorias', 'href': './esblog/categorias/index.html'}, {'text': 'Etiquetas', 'href': './esblog/etiquetas/index.html'}, {'text': 'Archivo', 'href': './esblog/archivo'}, {'text': 'RSS feed', 'href': './es/rss.xml'}],
 False
 )
  --><ul class="menu-horizontal flex-hright ">
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/" class="menu-link ">Blog</a>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/esblog/" class="menu-link ">Blog</a>
 </li>
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categorias/index.html" class="menu-link ">Categorias</a>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/esblog/categorias/index.html" class="menu-link ">Categorias</a>
 </li>
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/etiquetas/index.html" class="menu-link ">Etiquetas</a>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/esblog/etiquetas/index.html" class="menu-link ">Etiquetas</a>
 </li>
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/archivo" class="menu-link ">Archivo</a>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/esblog/archivo" class="menu-link ">Archivo</a>
 </li>
 <li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
-</li>
-<li class="menu-item with-children ">
-            <a href="#" class="menu-link ">Ele with childs</a><ul class="submenu">
-<li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/" class="menu-link submenu-item" data-depth="1" children="False">Child&nbsp;1.1</a>
-</li>
-<li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.1</a>
-</li>
-<li class="menu-item">
-            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/" class="menu-link submenu-item" data-depth="2" children="False">Child&nbsp;1.2.2</a>
-</li>
-<li class="menu-item">
-            <a href="#" class="menu-link submenu-item" data-depth="1" children="[]">Child&nbsp;1.2</a>
-</li>
-</ul>
+            <a href="https://gonzalotorreras.github.io/nikola-theme-skelleton/es/blog/categoria/categoria/es/rss.xml" class="menu-link "><span class="caps">RSS</span>&nbsp;feed</a>
 </li>
 </ul>
 <!-- 
