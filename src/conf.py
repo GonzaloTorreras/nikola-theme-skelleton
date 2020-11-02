@@ -430,9 +430,9 @@ REDIRECTIONS = [
 
 NAVIGATION_LINKS = {
     "en": (
-        ( ARCHIVE_PATH["en"] + "/", "Archive"),
-        ( CATEGORY_PATH["en"] + "/", "Tags"),
-        (INDEX_PATH, "Blog"),
+        ( "/" + ARCHIVE_PATH["en"] + "/", "Archive"),
+        ( "/" + CATEGORY_PATH["en"] + "/", "Tags"),
+        ("/" + INDEX_PATH, "Blog"),
         ("/rss.xml", "RSS feed"),
 
         (
