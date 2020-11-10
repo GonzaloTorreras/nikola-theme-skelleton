@@ -4,6 +4,8 @@ backend:
     branch: master
     display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
 
+publish_mode: editorial_workflow
+
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
 
