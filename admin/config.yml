@@ -1,7 +1,7 @@
 backend:
-	name: github
-	branch: master
-	display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
+name: github
+branch: master
+display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
 collections:
