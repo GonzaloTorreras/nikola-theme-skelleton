@@ -1,7 +1,7 @@
 backend:
-name: github
-branch: master
-display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
+    name: github
+    branch: master
+    display_url: https://gonzalotorreras.github.io/nikola-theme-skelleton/
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
 collections:
@@ -14,16 +14,16 @@ collections:
     format: "yaml-frontmatter"
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string", required: false}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Updated", name: "updated", widget: "datetime", required: false}
-      - {label: "Status", name: "status", widget: "select", options: ["published", "featured", "draft", "private"], required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Category", name: "category", widget: "string", required: false}
-      - {label: "Description", name: "description", widget: "string", required: false}
-      - {label: "Featured Image", name: "previewimage", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Author", name: "author", widget: "string", required: false}
+        - {label: "Date", name: "date", widget: "datetime"}
+        - {label: "Updated", name: "updated", widget: "datetime", required: false}
+        - {label: "Status", name: "status", widget: "select", options: ["published", "featured", "draft", "private"], required: false}
+        - {label: "Tags", name: "tags", widget: "list", required: false}
+        - {label: "Category", name: "category", widget: "string", required: false}
+        - {label: "Description", name: "description", widget: "string", required: false}
+        - {label: "Featured Image", name: "previewimage", widget: "image", required: false}
+        - {label: "Body", name: "body", widget: "markdown"}
     - name: "pages" # Used in routes, e.g., /admin/collections/blog
     label: "Pages" # Used in the UI
     label_singular: "Page"
@@ -33,13 +33,13 @@ collections:
     format: "yaml-frontmatter"
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string", required: false}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Updated", name: "updated", widget: "datetime", required: false}
-      - {label: "Status", name: "status", widget: "select", options: ["published", "featured", "draft", "private"], required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Category", name: "category", widget: "string", required: false}
-      - {label: "Description", name: "description", widget: "string", required: false}
-      - {label: "Featured Image", name: "previewimage", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Author", name: "author", widget: "string", required: false}
+        - {label: "Date", name: "date", widget: "datetime"}
+        - {label: "Updated", name: "updated", widget: "datetime", required: false}
+        - {label: "Status", name: "status", widget: "select", options: ["published", "featured", "draft", "private"], required: false}
+        - {label: "Tags", name: "tags", widget: "list", required: false}
+        - {label: "Category", name: "category", widget: "string", required: false}
+        - {label: "Description", name: "description", widget: "string", required: false}
+        - {label: "Featured Image", name: "previewimage", widget: "image", required: false}
+        - {label: "Body", name: "body", widget: "markdown"}
